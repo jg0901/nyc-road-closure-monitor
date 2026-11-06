@@ -1,0 +1,64 @@
+{
+  "snapshots": [
+    {
+      "run_id": "20261106T120000Z",
+      "snapshot_hash": "b689c416905eab5e206c7825206b81ab9ea87d314edcb10f582fd8aaf78ae89e",
+      "path": "data/snapshots/20261106T120000Z.snapshot.json.gz",
+      "row_count": 5,
+      "fetched_at_utc": "2026-11-05T15:21:23Z",
+      "source_rows_updated_at_utc": "2025-11-05T00:00:00Z",
+      "raw_path": "data/raw/20261106T120000Z.raw.json.gz",
+      "quality": {
+        "row_count": 5,
+        "ok": true,
+        "duplicate_key_count": 0,
+        "duplicate_keys_sample": {},
+        "null_key_rows": 0,
+        "missing_required": {},
+        "unparseable_dates": {},
+        "unexpected_fields": [],
+        "absent_fields": []
+      }
+    },
+    {
+      "run_id": "20261108T120000Z",
+      "snapshot_hash": "0d2211536bf7ba5e8cc12ead3f66a7b23233d77f6046562765c747a621f0f65d",
+      "path": "data/snapshots/20261108T120000Z.snapshot.json.gz",
+      "row_count": 5,
+      "fetched_at_utc": "2026-11-05T15:21:23Z",
+      "source_rows_updated_at_utc": "2025-11-05T00:00:00Z",
+      "raw_path": "data/raw/20261108T120000Z.raw.json.gz",
+      "quality": {
+        "row_count": 5,
+        "ok": true,
+        "duplicate_key_count": 0,
+        "duplicate_keys_sample": {},
+        "null_key_rows": 0,
+        "missing_required": {},
+        "unparseable_dates": {},
+        "unexpected_fields": [],
+        "absent_fields": []
+      }
+    }
+  ],
+  "runs": [
+    {
+      "run_id": "20261106T120000Z",
+      "status": "success",
+      "snapshot_written": true,
+      "snapshot_hash": "b689c416905eab5e206c7825206b81ab9ea87d314edcb10f582fd8aaf78ae89e",
+      "row_count": 5,
+      "fetched_at_utc": "2026-11-05T15:21:23Z",
+      "raw_path": "data/raw/20261106T120000Z.raw.json.gz"
+    },
+    {
+      "run_id": "20261108T120000Z",
+      "status": "success",
+      "snapshot_written": true,
+      "snapshot_hash": "0d2211536bf7ba5e8cc12ead3f66a7b23233d77f6046562765c747a621f0f65d",
+      "row_count": 5,
+      "fetched_at_utc": "2026-11-05T15:21:23Z",
+      "raw_path": "data/raw/20261108T120000Z.raw.json.gz"
+    }
+  ]
+}

@@ -1,0 +1,116 @@
+{
+  "run_id": "20261108T120000Z",
+  "status": "success",
+  "error": null,
+  "warnings": [],
+  "source": {
+    "source_id": "nyc_opendata_street_closures_block",
+    "source_url": "https://data.cityofnewyork.us/resource/i6b5-j7bu.json",
+    "dataset_name": "Street Closures (fixture)",
+    "source_rows_updated_at_utc": "2025-11-05T00:00:00Z",
+    "fetched_at_utc": "2026-11-05T15:21:23Z",
+    "pages": 3
+  },
+  "counts": {
+    "rows_fetched": 5,
+    "rows_normalized": 5,
+    "diff": {
+      "added": 1,
+      "modified": 2,
+      "unchanged": 2,
+      "missing": 1
+    }
+  },
+  "quality": {
+    "row_count": 5,
+    "ok": true,
+    "duplicate_key_count": 0,
+    "duplicate_keys_sample": {},
+    "null_key_rows": 0,
+    "missing_required": {},
+    "unparseable_dates": {},
+    "unexpected_fields": [],
+    "absent_fields": []
+  },
+  "field_change_counts": {
+    "work_end_date": 1,
+    "purpose": 1
+  },
+  "snapshot": {
+    "run_id": "20261108T120000Z",
+    "status": "success",
+    "snapshot_written": true,
+    "snapshot_hash": "0d2211536bf7ba5e8cc12ead3f66a7b23233d77f6046562765c747a621f0f65d",
+    "row_count": 5,
+    "fetched_at_utc": "2026-11-05T15:21:23Z",
+    "raw_path": "data/raw/20261108T120000Z.raw.json.gz"
+  },
+  "compared_to_run_id": "20261106T120000Z",
+  "log_path": "logs/20261108T120000Z.log",
+  "diff": {
+    "counts": {
+      "added": 1,
+      "modified": 2,
+      "unchanged": 2,
+      "missing": 1
+    },
+    "field_change_counts": {
+      "work_end_date": 1,
+      "purpose": 1
+    },
+    "added": [
+      {
+        "key": "1006",
+        "fields": {
+          "segmentid": "S-600",
+          "onstreetname": "CANAL ST",
+          "fromstreetname": "BOWERY",
+          "tostreetname": "CENTRE ST",
+          "borough": "MANHATTAN",
+          "work_start_date": "2026-11-10",
+          "work_end_date": "2026-11-17",
+          "purpose": "CRANE"
+        }
+      }
+    ],
+    "modified": [
+      {
+        "key": "1001",
+        "changes": {
+          "work_end_date": {
+            "from": "2026-11-20",
+            "to": "2026-12-05"
+          }
+        }
+      },
+      {
+        "key": "1003",
+        "changes": {
+          "purpose": {
+            "from": "MILLING",
+            "to": "RESURFACING"
+          }
+        }
+      }
+    ],
+    "missing": [
+      {
+        "key": "1005",
+        "fields": {
+          "segmentid": "S-500",
+          "onstreetname": "VICTORY BLVD",
+          "fromstreetname": "BAY ST",
+          "tostreetname": "JERSEY ST",
+          "borough": "STATEN ISLAND",
+          "work_start_date": "2026-11-02",
+          "work_end_date": "2026-11-09",
+          "purpose": "WATER MAIN"
+        }
+      }
+    ],
+    "unchanged_keys": [
+      "1002",
+      "1004"
+    ]
+  }
+}
