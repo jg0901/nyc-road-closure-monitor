@@ -1,0 +1,79 @@
+# V2: scheduled, observable collection.
+#
+# Every run: tests → API collector → advisory scrapers → commit manifests/snapshots/reports back to the repo.
+# History therefore lives in git (small for now; move to object storage when it grows — see README).
+# A failed collector still gets its failure report committed, and the job is marked failed afterwards,
+# so a red run in the Actions tab = the alert.
+name: collect
+
+on:
+  schedule:
+    - cron: "17 11 * * *"        # daily 11:17 UTC = 19:17 Manila. Odd minute avoids the :00 rush.
+  workflow_dispatch:             # "Run workflow" button in the Actions tab
+
+permissions:
+  contents: write                # needed to push the history commit
+
+concurrency:
+  group: collect                 # never let two runs overlap (they would fight over the manifest)
+  cancel-in-progress: false
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Tests (fixtures only, no network)
+        run: python -m pytest
+
+      - name: Config from example
+        run: cp config/settings.example.json config/settings.json
+
+      - name: API collector (NYC Open Data construction closures)
+        id: api
+        env:
+          SOCRATA_APP_TOKEN: ${{ secrets.SOCRATA_APP_TOKEN }}
+        run: python -m src.run --config config/settings.json
+        continue-on-error: true           # keep going so the failure report gets committed
+
+      - name: Advisory scrapers (weekly + weekend)
+        id: advisory
+        run: python -m src.adapters.dot_advisory --config config/settings.json
+        continue-on-error: true
+
+      - name: Commit history
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data logs
+          if git diff --cached --quiet; then
+            echo "nothing to commit"
+          else
+            git commit -m "collect: $(date -u +%Y-%m-%dT%H:%M:%SZ) api=${{ steps.api.outcome }} advisory=${{ steps.advisory.outcome }}"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
+
+      - name: Upload latest reports as run artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: reports-${{ github.run_id }}
+          path: |
+            data/reports/latest.report.*
+            data/advisory/*/reports/latest.report.*
+          if-no-files-found: ignore
+
+      - name: Fail the job if any collector failed
+        if: steps.api.outcome == 'failure' || steps.advisory.outcome == 'failure'
+        run: |
+          echo "api=${{ steps.api.outcome }} advisory=${{ steps.advisory.outcome }}"
+          exit 1

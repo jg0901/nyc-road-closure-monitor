@@ -3,7 +3,7 @@
 Auditable collector for the NYC Open Data **Street Closures due to Construction Activities by Block** dataset.
 Fetches the full dataset on a schedule, keeps a durable snapshot history, and reports what changed between pulls.
 
-**Status:** V1 scaffold (local ingestion + snapshot diff). V2 (scheduled, observable) pending.
+**Status:** V1 done (verified on live data 2026-11-06). V2 scheduled workflow enabled; awaiting two scheduled runs.
 
 ## Problem
 
@@ -157,18 +157,26 @@ src/run.py          single-command orchestrator / CLI
 src/adapters/       dot_advisory.py — Weekly Traffic Advisory HTML scraper (separate history)
 tests/              synthetic cases: first run, unchanged, modified, missing, bad response, blank pull, advisory parse/diff
 data/sample/        small publishable example only (history lives outside git)
-docs/               notes, V2 workflow draft
+docs/               learning notes (what happened, V1 explained)
+.github/workflows/  collect.yml — daily scheduled run (V2)
 ```
 
 ## Sample output
 
 _(fill after first real run: paste `data/reports/latest.report.md` and a trimmed `manifest.json`)_
 
-## V2 (pending)
+## V2: scheduled run (`.github/workflows/collect.yml`)
 
-- [ ] scheduled run (GitHub Actions — see `docs/v2-workflow-draft.yml`) with history persisted outside the runner
+Daily at 11:17 UTC (19:17 Manila) and on demand (Actions tab → collect → Run workflow). Each run: pytest →
+API collector → weekly + weekend scrapers → commits `data/` and `logs/` back to `main` as `github-actions[bot]` →
+marks the job **failed** if any collector failed (the red run is the alert; the failure report is still committed).
+History lives in git for now: manifests, normalized snapshots (only when the dataset changed), reports, logs.
+Raw API pulls stay out of git (geometry makes them large; they are re-fetchable). Advisory raw HTML is tiny and kept.
+
+Secret: `SOCRATA_APP_TOKEN` (repo Settings → Secrets and variables → Actions). Optional; without it the API throttles.
+
 - [ ] two successful scheduled runs observed
-- [ ] failure demonstration (forced bad dataset id → failure report, non-zero exit)
+- [ ] failure demonstration (wrong `dataset_id` → red run, failure report committed) — then revert
 - [ ] optional: POST `latest.report.json` to an n8n webhook
 
 ## Sources

@@ -2,14 +2,9 @@
 .env
 config/settings.json
 
-# growing history stays out of git (keep data/sample/ and manifest only when small)
+# Raw API pulls are large (geometry) and re-fetchable; everything else in data/ and logs/ is history
+# committed by the scheduled workflow. Revisit when the repo passes ~100 MB (move to object storage).
 data/raw/
-data/snapshots/*.snapshot.json.gz
-data/reports/
-data/advisory/*/raw/
-data/advisory/*/snapshots/*.snapshot.json.gz
-data/advisory/*/reports/
-logs/
 
 __pycache__/
 *.pyc
