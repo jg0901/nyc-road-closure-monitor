@@ -56,7 +56,18 @@ def test_quality_report_flags_dups_missing_bad_dates():
     assert qr.duplicate_keys == {"1001": 2}
     assert qr.missing_required == {"segmentid": 1}
     assert qr.unparseable_dates == {"work_end_date": 1}
-    assert len(out) == 3  # not fatal by default
+    assert len(out) == 2 and qr.output_rows == 2  # colliding row dropped (first kept), not fatal by default
+    assert qr.exact_duplicate_rows == 0
+
+
+def test_exact_duplicate_rows_are_dropped_silently(base_rows):
+    # Source publishes the same permit 2-4 times with different Socrata :id — seen live 2026-11-06.
+    rows = base_rows + [dict(base_rows[0], **{":id": "row-dup1"}), dict(base_rows[0], **{":id": "row-dup2"}),
+                        dict(base_rows[3], **{":id": "row-dup3"})]
+    out, qr = normalize.normalize_rows(rows, _schema())
+    assert qr.ok
+    assert qr.row_count == 8 and qr.output_rows == 5 and len(out) == 5
+    assert qr.exact_duplicate_rows == 3 and qr.duplicate_keys == {}
 
 
 def test_duplicate_keys_can_be_fatal():

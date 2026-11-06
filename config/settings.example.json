@@ -18,20 +18,31 @@
     }
   },
   "schema": {
-    "_comment": "VERIFY on first live pull. key_fields and business_fields are guesses from the roadmap data contract, not from the live schema.",
-    "key_fields": ["uniqueid"],
+    "_comment": "Verified against live schema 2026-11-06. Columns: uniqueid, segmentid, oft, onstreetname, fromstreetname, tostreetname, borough_code, work_start_date, work_end_date, purpose, the_geom (+ Socrata :id/:created_at/:updated_at/:version, which change on the city's weekly full reload and are NOT stable).",
+    "key_fields": [
+      "uniqueid"
+    ],
     "business_fields": [
       "segmentid",
+      "oft",
       "onstreetname",
       "fromstreetname",
       "tostreetname",
-      "borough",
+      "borough_code",
       "work_start_date",
       "work_end_date",
       "purpose"
     ],
-    "date_fields": ["work_start_date", "work_end_date"],
-    "required_fields": ["uniqueid", "segmentid", "work_start_date", "work_end_date"],
+    "date_fields": [
+      "work_start_date",
+      "work_end_date"
+    ],
+    "required_fields": [
+      "uniqueid",
+      "segmentid",
+      "work_start_date",
+      "work_end_date"
+    ],
     "fail_on_duplicate_keys": false
   },
   "quality": {
@@ -39,7 +50,7 @@
     "max_row_delta_pct": 50
   },
   "advisory": {
-    "_comment": "Secondary adapter: NYC DOT Weekly Traffic Advisory HTML page. Temporary/event closures; excludes emergency and long-term construction. NOT interchangeable with the API dataset — kept in its own history.",
+    "_comment": "Secondary adapter: NYC DOT Weekly Traffic Advisory HTML page. Temporary/event closures; excludes emergency and long-term construction. NOT interchangeable with the API dataset \u2014 kept in its own history.",
     "enabled": true,
     "url": "https://www.nyc.gov/html/dot/html/motorist/weektraf.shtml",
     "content_selector": "#_content",

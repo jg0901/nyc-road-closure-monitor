@@ -30,8 +30,10 @@ class NormalizeError(ValueError):
 
 @dataclass
 class QualityReport:
-    row_count: int = 0
-    duplicate_keys: dict[str, int] = field(default_factory=dict)   # key -> occurrences
+    row_count: int = 0                 # raw rows in
+    output_rows: int = 0               # rows after dedupe
+    exact_duplicate_rows: int = 0      # same key AND same content_hash: source published the row twice
+    duplicate_keys: dict[str, int] = field(default_factory=dict)   # key -> occurrences, DIFFERENT content (collision)
     missing_required: dict[str, int] = field(default_factory=dict)  # field -> rows missing
     unparseable_dates: dict[str, int] = field(default_factory=dict) # field -> rows failed
     unexpected_fields: list[str] = field(default_factory=list)      # in data, not in config
@@ -45,7 +47,9 @@ class QualityReport:
     def to_dict(self) -> dict[str, Any]:
         return {
             "row_count": self.row_count,
+            "output_rows": self.output_rows,
             "ok": self.ok,
+            "exact_duplicate_rows": self.exact_duplicate_rows,
             "duplicate_key_count": len(self.duplicate_keys),
             "duplicate_keys_sample": dict(list(self.duplicate_keys.items())[:10]),
             "null_key_rows": self.null_key_rows,
@@ -137,21 +141,32 @@ def normalize_rows(rows: list[dict[str, Any]], schema: SchemaConfig) -> tuple[li
         log.warning("configured fields absent from data (schema drift?): %s", qr.absent_fields)
 
     out: list[dict[str, Any]] = []
-    counts: dict[str, int] = {}
+    seen: dict[str, str] = {}          # key -> content_hash of the row we kept
+    collisions: dict[str, int] = {}
     for r in rows:
         n = normalize_row(r, schema, qr)
         if n["key"] is None:
             qr.null_key_rows += 1
             continue
-        counts[n["key"]] = counts.get(n["key"], 0) + 1
+        k = n["key"]
+        if k in seen:
+            if seen[k] == n["content_hash"]:
+                qr.exact_duplicate_rows += 1      # source published identical row again: drop silently
+            else:
+                collisions[k] = collisions.get(k, 1) + 1  # same key, different content: keep first, flag
+            continue
+        seen[k] = n["content_hash"]
         out.append(n)
 
-    qr.duplicate_keys = {k: c for k, c in counts.items() if c > 1}
+    qr.output_rows = len(out)
+    qr.duplicate_keys = collisions
+    if qr.exact_duplicate_rows:
+        log.info("dropped %d exact duplicate rows (same key and content)", qr.exact_duplicate_rows)
     if qr.duplicate_keys:
-        log.warning("%d keys occur more than once; key_fields=%s may not be a stable key",
+        log.warning("%d keys collide with DIFFERENT content; key_fields=%s may not be a stable key",
                     len(qr.duplicate_keys), schema.key_fields)
         if schema.fail_on_duplicate_keys:
-            raise NormalizeError(f"{len(qr.duplicate_keys)} duplicate keys with key_fields={schema.key_fields}")
+            raise NormalizeError(f"{len(qr.duplicate_keys)} colliding keys with key_fields={schema.key_fields}")
     if qr.null_key_rows:
         raise NormalizeError(f"{qr.null_key_rows} rows have a null key for key_fields={schema.key_fields}")
 

@@ -81,7 +81,8 @@ def to_markdown(report: dict[str, Any], diff: dict[str, Any] | None = None, samp
     q = report.get("quality") or {}
     if q:
         lines += ["", "## Quality",
-                  f"- key check ok: {q.get('ok')}  |  duplicate keys: {q.get('duplicate_key_count')}  "
+                  f"- key check ok: {q.get('ok')}  |  exact duplicate rows dropped: {q.get('exact_duplicate_rows', 0)}  "
+                  f"|  key collisions (different content): {q.get('duplicate_key_count')}  "
                   f"|  null-key rows: {q.get('null_key_rows')}",
                   f"- missing required: {q.get('missing_required')}",
                   f"- unparseable dates: {q.get('unparseable_dates')}",

@@ -75,7 +75,7 @@ Exit code `0` = success, `1` = failure. A failure always writes `data/reports/<r
 | `source.dataset_id` | Socrata 4x4 id. `i6b5-j7bu` = by Block. Swap here if the city retires it for the newer Block+Intersection dataset. |
 | `source.order_by` | `:id` — stable pagination. Do not remove. |
 | `source.window` | optional permit-date window. Default `2026-11-01` → `2027-01-31`: only rows whose `[work_start_date, work_end_date]` **overlaps** that range are fetched (SODA `$where`). Set to `null` for a full pull. The filter is recorded in every snapshot's metadata. |
-| `schema.key_fields` | stable key. **`["uniqueid"]` is a guess from the roadmap — verify with `--key-check` on the first pull.** |
+| `schema.key_fields` | `["uniqueid"]` — verified 2026-11-06: 3,689 rows → 3,530 distinct ids, and every repeat is an exact duplicate row (same content, different Socrata `:id`). |
 | `schema.business_fields` | fields that go into `content_hash`. Changing this list changes every hash (expected). |
 | `schema.required_fields` | reported if blank; not fatal. |
 | `schema.fail_on_duplicate_keys` | `false` by default so the first pull can *show* you duplicates instead of dying. |
@@ -86,7 +86,9 @@ Exit code `0` = success, `1` = failure. A failure always writes `data/reports/<r
 
 Run on every pull, reported in `report.json → quality` and the Markdown report:
 
-- key uniqueness (`duplicate_keys`), null keys (fatal)
+- exact duplicate rows (same key + same content) are dropped and counted (`exact_duplicate_rows`) — the source
+  publishes some permits 2–4 times; key collisions with *different* content are kept-first and flagged (`duplicate_keys`)
+- null keys (fatal)
 - required fields present
 - date parsing (`unparseable_dates`)
 - schema drift: fields in the data not in config (`unexpected_fields`) and configured fields absent from the data (`absent_fields`)
@@ -127,9 +129,10 @@ parser can be fixed and replayed with `--from-html`.
   time: the first snapshot is whatever the city publishes on the day of the first run. A permit that was listed
   on Nov 1 and removed before the first run is invisible to this collector.
 - `segmentid` can describe road geometry, not a unique permit — do not use it alone as a key.
+- The city does a full truncate-and-reload weekly (every row shares one `:created_at`), so Socrata's `:id`,
+  `:version` and `:updated_at` are not stable across weeks. Only `uniqueid` + the content hash carry history.
 - This dataset (construction permits) and the DOT Weekly Traffic Advisory (temporary/event closures) are not
   interchangeable, which is why the advisory scraper keeps its own history.
-- Key/business field names in `settings.example.json` are unverified until the first live pull.
 - Advisory scraper: no stable IDs on the page; keys are derived from wording. The page is replaced weekly, so
   week-over-week diffs mostly reflect the new advisory period, not changes to a persistent record.
 
