@@ -185,3 +185,36 @@ def test_replay_from_saved_html(tmp_path):
     rc = adv.run(s, from_html=s.advisory.raw_dir / "w1.advisory.html.gz", run_id="replay")
     assert rc == 0
     assert load_manifest(s.advisory.manifest)["runs"][-1]["deduplicated_to"] == "w1"
+
+
+# ------------------------------------------------------------------ parser robustness
+
+def _wrap_after(html: str, marker: str, open_tag: str, close_tag: str) -> str:
+    """Wrap everything after `marker` (up to </div>) in a container, simulating a parser that
+    nests trailing content (seen live: Python 3.13 + bs4 4.14 nesting siblings inside <br />)."""
+    i = html.index(marker) + len(marker)
+    j = html.rindex("</div>")
+    return html[:i] + open_tag + html[i:j] + close_tag + html[j:]
+
+
+def test_content_nested_in_wrapper_is_still_parsed():
+    nested = _wrap_after(WEEK1, "<h2 id=\"bronx\">Bronx</h2>", "<span class='x'><div>", "</div></span>")
+    a = adv.parse_advisory(nested)
+    assert a.sections == ["Manhattan", "Bronx", "Staten Island"]
+    kinds = [r["fields"]["kind"] for r in a.records]
+    assert kinds.count("closure") == 6 and kinds.count("event") == 2
+
+
+def test_parse_is_identical_flat_vs_nested():
+    flat = adv.parse_advisory(WEEK1).records
+    nested = adv.parse_advisory(_wrap_after(WEEK1, "<h2 id=\"manhattan\">Manhattan</h2>", "<div><div>", "</div></div>")).records
+    assert [(r["key"], r["content_hash"]) for r in flat] == [(r["key"], r["content_hash"]) for r in nested]
+
+
+def test_miscellaneous_label_is_a_list_not_a_closure():
+    html = WEEK1.replace("<strong>Formation:</strong>", "<strong>Miscellaneous:</strong>")
+    a = adv.parse_advisory(html)
+    names = [r["fields"]["name"] for r in a.records]
+    assert "Miscellaneous:" not in names
+    e = next(r for r in a.records if r["fields"]["name"].startswith("The 53rd"))
+    assert "Miscellaneous" in e["fields"]["streets"]

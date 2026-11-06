@@ -4,7 +4,8 @@ Separate source from the Open Data construction-closure API, with its own raw/sn
 history. Covers temporary/event closures; per the page itself it does NOT reflect emergency
 closures or long-term construction projects.
 
-Page structure (verified 2026-11-06, div#_content is a FLAT sequence of children):
+Page structure (verified 2026-11-06; logically a FLAT sequence under div#_content, but the
+parser walks descendants because some html.parser builds nest everything after a <br /> inside it):
 
     <h2>Weekly Traffic Advisory for Saturday October 31, 2026, to Friday November 6, 2026</h2>
     <p>intro</p> <p><strong>*Note: Bold text indicates updated information.</strong></p> <ul>jump links</ul>
@@ -53,7 +54,7 @@ _MONTHS = "January|February|March|April|May|June|July|August|September|October|N
 _PERIOD_RE = re.compile(
     rf"Weekly Traffic Advisory for\s+(?:\w+\s+)?({_MONTHS})\s+(\d{{1,2}}),?\s+(\d{{4}}),?\s+to\s+(?:\w+\s+)?({_MONTHS})\s+(\d{{1,2}}),?\s+(\d{{4}})",
     re.I)
-_LIST_LABELS = ("location", "formation", "route", "dispersal", "assembly", "staging")
+_STRUCTURAL = {"h2", "h3", "h4", "strong", "p", "ul"}
 
 
 class ParseError(ValueError):
@@ -72,6 +73,24 @@ class Advisory:
 
 def _txt(el: Tag) -> str:
     return re.sub(r"\s+", " ", el.get_text(" ", strip=True)).strip()
+
+
+def _structural_elements(root: Tag):
+    """Yield h2/h3/h4/strong/p/ul in document order, skipping any that sit inside another
+    structural tag (strong inside p, li inside ul). Does NOT require them to be direct children:
+    some parser builds (seen: Python 3.13 + bs4 4.14) nest everything after a `<br />` inside the
+    br, and DOT may wrap sections in divs. Walking descendants makes both irrelevant."""
+    for el in root.descendants:
+        if not isinstance(el, Tag) or el.name not in _STRUCTURAL:
+            continue
+        parent, nested = el.parent, False
+        while parent is not None and parent is not root:
+            if parent.name in _STRUCTURAL:
+                nested = True
+                break
+            parent = parent.parent
+        if not nested:
+            yield el
 
 
 def _is_fully_bold(p: Tag) -> bool:
@@ -117,9 +136,7 @@ def parse_advisory(html: str, content_selector: str = "#_content") -> Advisory:
     current: dict[str, Any] | None = None
     pending_label: str | None = None
 
-    for el in root.children:
-        if not isinstance(el, Tag):
-            continue
+    for el in _structural_elements(root):
         tag, text = el.name, _txt(el)
         if not text and tag != "ul":
             continue
@@ -157,8 +174,8 @@ def parse_advisory(html: str, content_selector: str = "#_content") -> Advisory:
             continue
 
         if tag == "strong":
-            label = text.rstrip(":").strip().lower()
-            if text.endswith(":") and any(label.startswith(x) for x in _LIST_LABELS):
+            if text.endswith(":"):
+                # "Location(s):", "Formation:", "Route:", "Dispersal:", "Miscellaneous:" ... → label for the next <ul>
                 pending_label = text.rstrip(":").strip()
                 continue
             # bare <strong> = closure location heading
