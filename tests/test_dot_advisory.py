@@ -134,7 +134,11 @@ def _reset_logging():
 
 def _run(s, session, run_id, **kw):
     _reset_logging()
-    return adv.run(s, session=session, run_id=run_id, **kw)
+    return adv.run(s, session=session, run_id=run_id, pages=kw.pop("pages", ["weekly"]), **kw)
+
+
+def _weekly(s):
+    return next(c for c in s.advisory if c.name == "weekly")
 
 
 def test_two_weeks_end_to_end(tmp_path):
@@ -142,15 +146,15 @@ def test_two_weeks_end_to_end(tmp_path):
     assert _run(s, FakeHtmlSession(WEEK1), "w1") == 0
     assert _run(s, FakeHtmlSession(WEEK1), "w1b") == 0        # same page again → dedup
     assert _run(s, FakeHtmlSession(WEEK2), "w2") == 0
-    m = load_manifest(s.advisory.manifest)
+    m = load_manifest(_weekly(s).manifest)
     assert [x["run_id"] for x in m["snapshots"]] == ["w1", "w2"]
     assert m["runs"][1]["deduplicated_to"] == "w1"
     assert m["snapshots"][0]["raw_path"].endswith("w1.advisory.html.gz")
-    rep = json.loads((s.advisory.report_dir / "w2.report.json").read_text())
+    rep = json.loads((_weekly(s).report_dir / "w2.report.json").read_text())
     assert rep["status"] == "success" and rep["compared_to_run_id"] == "w1"
     assert rep["counts"]["diff"] == {"added": 1, "modified": 1, "unchanged": 5, "missing": 2}
     assert rep["quality"]["by_kind"] == {"closure": 6, "event": 1}
-    assert (s.advisory.raw_dir / "w1.retrieval.json").exists()
+    assert (_weekly(s).raw_dir / "w1.retrieval.json").exists()
     # advisory history is separate from the API history
     assert not s.paths.manifest.exists()
 
@@ -158,15 +162,15 @@ def test_two_weeks_end_to_end(tmp_path):
 def test_failed_fetch_writes_failure_report(tmp_path):
     s = _settings(tmp_path)
     assert _run(s, FakeHtmlSession(None, script=[(503, ""), (503, "")]), "w1") == 1
-    m = load_manifest(s.advisory.manifest)
+    m = load_manifest(_weekly(s).manifest)
     assert m["snapshots"] == [] and m["runs"][0]["status"] == "failure"
-    assert "FAILURE" in (s.advisory.report_dir / "latest.report.md").read_text()
+    assert "FAILURE" in (_weekly(s).report_dir / "latest.report.md").read_text()
 
 
 def test_tiny_body_is_a_fetch_error(tmp_path):
     s = _settings(tmp_path)
     assert _run(s, FakeHtmlSession("<html></html>"), "w1") == 1
-    assert "FetchError" in load_manifest(s.advisory.manifest)["runs"][0]["error"]
+    assert "FetchError" in load_manifest(_weekly(s).manifest)["runs"][0]["error"]
 
 
 def test_layout_change_is_a_failure_not_an_empty_snapshot(tmp_path):
@@ -174,7 +178,7 @@ def test_layout_change_is_a_failure_not_an_empty_snapshot(tmp_path):
     assert _run(s, FakeHtmlSession(WEEK1), "w1") == 0
     broken = "<html><body><div id='_content'>" + "<p>filler</p>" * 100 + "</div></body></html>"
     assert _run(s, FakeHtmlSession(broken), "w2") == 1
-    m = load_manifest(s.advisory.manifest)
+    m = load_manifest(_weekly(s).manifest)
     assert len(m["snapshots"]) == 1 and "ParseError" in m["runs"][-1]["error"]
 
 
@@ -182,9 +186,9 @@ def test_replay_from_saved_html(tmp_path):
     s = _settings(tmp_path)
     assert _run(s, FakeHtmlSession(WEEK1), "w1") == 0
     _reset_logging()
-    rc = adv.run(s, from_html=s.advisory.raw_dir / "w1.advisory.html.gz", run_id="replay")
+    rc = adv.run(s, from_html=_weekly(s).raw_dir / "w1.advisory.html.gz", run_id="replay", pages=["weekly"])
     assert rc == 0
-    assert load_manifest(s.advisory.manifest)["runs"][-1]["deduplicated_to"] == "w1"
+    assert load_manifest(_weekly(s).manifest)["runs"][-1]["deduplicated_to"] == "w1"
 
 
 # ------------------------------------------------------------------ parser robustness
@@ -218,3 +222,42 @@ def test_miscellaneous_label_is_a_list_not_a_closure():
     assert "Miscellaneous:" not in names
     e = next(r for r in a.records if r["fields"]["name"].startswith("The 53rd"))
     assert "Miscellaneous" in e["fields"]["streets"]
+
+
+# ------------------------------------------------------------------ multiple pages
+
+WEEKEND = WEEK1.replace("Weekly Traffic Advisory for Saturday October 31, 2026, to Friday November 6, 2026",
+                        "Weekend Traffic Advisory for Friday November 6, 2026, to Sunday November 8, 2026")
+
+
+def test_weekend_heading_and_page_key():
+    a = adv.parse_advisory(WEEKEND, page="weekend")
+    assert (a.period_start, a.period_end) == ("2026-11-06", "2026-11-08")
+    w = adv.parse_advisory(WEEK1, page="weekly")
+    assert all(r["fields"]["page"] == "weekend" for r in a.records)
+    # same location text on the two pages must NOT share a key
+    assert a.records[0]["fields"]["name"] == w.records[0]["fields"]["name"]
+    assert a.records[0]["key"] != w.records[0]["key"]
+
+
+def test_pages_have_separate_histories(tmp_path):
+    s = _settings(tmp_path)
+    assert {c.name for c in s.advisory} == {"weekly", "weekend"}
+    assert _run(s, FakeHtmlSession(WEEK1), "r1", pages=["weekly", "weekend"]) == 0
+    weekly, weekend = _weekly(s), next(c for c in s.advisory if c.name == "weekend")
+    assert weekly.manifest.exists() and weekend.manifest.exists()
+    assert weekly.manifest != weekend.manifest
+    assert (weekly.log_dir / "r1.log").exists() and (weekend.log_dir / "r1.log").exists()
+    assert load_manifest(weekend.manifest)["snapshots"][0]["row_count"] == 8
+
+
+def test_one_failing_page_does_not_block_the_other(tmp_path):
+    s = _settings(tmp_path)
+
+    class Switch:
+        def get(self, url, params=None, headers=None, timeout=None):
+            return FakeResponse(200, None, text=WEEK1) if "weektraf" in url else FakeResponse(503, None, text="")
+    assert _run(s, Switch(), "r1", pages=["weekly", "weekend"]) == 1   # weekend failed
+    assert load_manifest(_weekly(s).manifest)["snapshots"]             # weekly still wrote
+    weekend = next(c for c in s.advisory if c.name == "weekend")
+    assert load_manifest(weekend.manifest)["runs"][0]["status"] == "failure"

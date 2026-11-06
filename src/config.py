@@ -79,20 +79,31 @@ class PathsConfig:
 
 @dataclass
 class AdvisoryConfig:
-    """Secondary adapter: NYC DOT Weekly Traffic Advisory (HTML). Separate source, separate history."""
-    url: str = "https://www.nyc.gov/html/dot/html/motorist/weektraf.shtml"
-    source_id: str = "nyc_dot_weekly_traffic_advisory"
+    """One NYC DOT advisory HTML page (weekly, weekend, ...). Separate source, separate history per page."""
+    name: str                                   # "weekly" | "weekend" — goes into every record key
+    url: str
+    base_dir: Path = Path("data/advisory")      # history lives in <base_dir>/<name>/
+    log_root: Path = Path("logs/advisory")
     content_selector: str = "#_content"
     timeout_seconds: int = 30
     max_retries: int = 4
     backoff_seconds: float = 2.0
-    enabled: bool = True
     app_token: str | None = None  # never sent; present so the shared retry helper's duck-typing works
-    raw_dir: Path = Path("data/advisory/raw")
-    snapshot_dir: Path = Path("data/advisory/snapshots")
-    report_dir: Path = Path("data/advisory/reports")
-    manifest: Path = Path("data/advisory/snapshots/manifest.json")
-    log_dir: Path = Path("logs/advisory")
+
+    @property
+    def source_id(self) -> str:
+        return f"nyc_dot_{self.name}_traffic_advisory"
+
+    @property
+    def raw_dir(self) -> Path: return self.base_dir / self.name / "raw"
+    @property
+    def snapshot_dir(self) -> Path: return self.base_dir / self.name / "snapshots"
+    @property
+    def report_dir(self) -> Path: return self.base_dir / self.name / "reports"
+    @property
+    def manifest(self) -> Path: return self.snapshot_dir / "manifest.json"
+    @property
+    def log_dir(self) -> Path: return self.log_root / self.name
 
 
 @dataclass
@@ -101,7 +112,7 @@ class Settings:
     schema: SchemaConfig
     quality: QualityConfig
     paths: PathsConfig
-    advisory: AdvisoryConfig | None = None
+    advisory: list[AdvisoryConfig] = field(default_factory=list)
 
 
 def _strip_comments(d: dict[str, Any]) -> dict[str, Any]:
@@ -117,17 +128,24 @@ def load_settings(path: str | Path, root: str | Path | None = None) -> Settings:
     paths_raw = _strip_comments(raw["paths"])
     paths = PathsConfig(**{k: (root / v) for k, v in paths_raw.items()})
 
-    advisory = None
-    if "advisory" in raw and raw["advisory"] is not None:
-        a = _strip_comments(raw["advisory"])
-        for k in ("raw_dir", "snapshot_dir", "report_dir", "manifest", "log_dir"):
-            if k in a:
-                a[k] = root / a[k]
-        advisory = AdvisoryConfig(**a)
-        for k in ("raw_dir", "snapshot_dir", "report_dir", "manifest", "log_dir"):
-            p = getattr(advisory, k)
-            if not p.is_absolute():
-                setattr(advisory, k, root / p)
+    advisory: list[AdvisoryConfig] = []
+    a = raw.get("advisory")
+    if a and a.get("enabled", True):
+        a = _strip_comments(a)
+        shared = {k: v for k, v in a.items() if k not in ("enabled", "pages")}
+        for k in ("base_dir", "log_root"):
+            if k in shared:
+                shared[k] = root / shared[k]
+        for page in a.get("pages", []):
+            page = _strip_comments(page)
+            if not page.get("enabled", True):
+                continue
+            page.pop("enabled", None)
+            advisory.append(AdvisoryConfig(**{**shared, **page}))
+        for cfg in advisory:
+            for k in ("base_dir", "log_root"):
+                if not getattr(cfg, k).is_absolute():
+                    setattr(cfg, k, root / getattr(cfg, k))
 
     return Settings(
         source=SourceConfig(**_strip_comments(raw["source"])),

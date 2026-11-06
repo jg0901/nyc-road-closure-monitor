@@ -100,15 +100,22 @@ Run on every pull, reported in `report.json → quality` and the Markdown report
 If it equals the latest snapshot's hash, the run is logged in `manifest.json → runs` with `deduplicated_to`,
 and no new snapshot file or entry is written. Running twice on unchanged data → 1 snapshot, 2 runs.
 
-## Secondary source: NYC DOT Weekly Traffic Advisory (scraper)
+## Secondary source: NYC DOT traffic advisory pages (scraper)
 
-`src/adapters/dot_advisory.py` scrapes https://www.nyc.gov/html/dot/html/motorist/weektraf.shtml.
-It is a **separate adapter with separate history** (`data/advisory/`): temporary/event closures, which the page
-itself says exclude emergency situations and long-term construction. Never merge its rows with the API dataset.
+`src/adapters/dot_advisory.py` scrapes the DOT advisory HTML pages. Each page is a **separate source with its own
+history** under `data/advisory/<page>/`: temporary/event closures, which the pages themselves say exclude emergency
+situations and long-term construction. Never merge these rows with the API dataset.
+
+| page | URL | notes |
+|---|---|---|
+| `weekly` | …/motorist/weektraf.shtml | Sat–Fri; ~15 closures + events |
+| `weekend` | …/motorist/wkndtraf.shtml | Fri–Sun; ~200 closures, same grammar inside an extra `<div>` |
+| special | …/motorist/trafalrt.shtml | not configured — prose only as of 2026-11-06, no records to parse |
 
 ```bash
-python -m src.adapters.dot_advisory --config config/settings.json              # fetch → raw html.gz → parse → snapshot → diff → report
-python -m src.adapters.dot_advisory --config config/settings.json --from-html data/advisory/raw/<run_id>.advisory.html.gz
+python -m src.adapters.dot_advisory --config config/settings.json                 # all configured pages
+python -m src.adapters.dot_advisory --config config/settings.json --page weekend   # one page
+python -m src.adapters.dot_advisory --config config/settings.json --page weekly --from-html data/advisory/weekly/raw/<run_id>.advisory.html.gz
 ```
 
 Page model (verified 2026-11-06; `div#_content` is a flat sequence):
@@ -116,8 +123,10 @@ Page model (verified 2026-11-06; `div#_content` is a flat sequence):
 (a fully-bold `<p>` = DOT's "updated" marker) → `<h3>Festivals, Parades and Events` → `<h4>event` + `Embargo` paragraph +
 `<strong>Location(s):/Formation:/Route:/Dispersal:</strong>` + `<ul>` street lists.
 
-Records: `kind=closure|event`, `section`, `name`, `description`, `updated`, `embargo`, `streets{label: [..]}`.
-Key = sha1(kind|section|name) — there is no ID on the page, so a reworded location shows as *missing + added*.
+Records: `page`, `kind=closure|event`, `section`, `name`, `description`, `updated`, `embargo`, `streets{label: [..]}`.
+Key = sha1(page|kind|section|name) — there is no ID on the page, so a reworded location shows as *missing + added*.
+The parser walks descendants rather than direct children: one html.parser build (Python 3.13 + bs4 4.14) nests everything
+after a `<br />` inside it, which silently dropped half the page on the first live run.
 A layout change raises `ParseError` → failure report, no snapshot. The raw HTML of every pull is kept, so the
 parser can be fixed and replayed with `--from-html`.
 

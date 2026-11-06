@@ -50,15 +50,21 @@
     "max_row_delta_pct": 50
   },
   "advisory": {
-    "_comment": "Secondary adapter: NYC DOT Weekly Traffic Advisory HTML page. Temporary/event closures; excludes emergency and long-term construction. NOT interchangeable with the API dataset \u2014 kept in its own history.",
+    "_comment": "Secondary adapters: NYC DOT advisory HTML pages. Temporary/event closures; the pages say they exclude emergency and long-term construction. NOT interchangeable with the API dataset - each page keeps its own history under base_dir/<name>/. 'special' (trafalrt.shtml) is prose-only as of 2026-11-06, so not configured.",
     "enabled": true,
-    "url": "https://www.nyc.gov/html/dot/html/motorist/weektraf.shtml",
+    "base_dir": "data/advisory",
+    "log_root": "logs/advisory",
     "content_selector": "#_content",
-    "raw_dir": "data/advisory/raw",
-    "snapshot_dir": "data/advisory/snapshots",
-    "report_dir": "data/advisory/reports",
-    "manifest": "data/advisory/snapshots/manifest.json",
-    "log_dir": "logs/advisory"
+    "pages": [
+      {
+        "name": "weekly",
+        "url": "https://www.nyc.gov/html/dot/html/motorist/weektraf.shtml"
+      },
+      {
+        "name": "weekend",
+        "url": "https://www.nyc.gov/html/dot/html/motorist/wkndtraf.shtml"
+      }
+    ]
   },
   "paths": {
     "raw_dir": "data/raw",
