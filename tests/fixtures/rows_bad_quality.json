@@ -1,0 +1,41 @@
+[
+ {
+  ":id": "row-1",
+  ":updated_at": "2026-11-01T10:00:00.000",
+  "uniqueid": "1001",
+  "segmentid": "S-100",
+  "onstreetname": "  broadway ",
+  "fromstreetname": "W 42 ST",
+  "tostreetname": "W 43 ST",
+  "borough": "Manhattan",
+  "work_start_date": "2026-11-03T00:00:00.000",
+  "work_end_date": "2026-11-20T00:00:00.000",
+  "purpose": "CRANE"
+ },
+ {
+  ":id": "row-2",
+  ":updated_at": "2026-11-01T10:00:00.000",
+  "uniqueid": "1001",
+  "segmentid": "S-200",
+  "onstreetname": "ATLANTIC AVE",
+  "fromstreetname": "FLATBUSH AVE",
+  "tostreetname": "4 AVE",
+  "borough": "Brooklyn",
+  "work_start_date": "2026-10-15T00:00:00.000",
+  "work_end_date": "2026-12-01T00:00:00.000",
+  "purpose": "PAVING"
+ },
+ {
+  ":id": "row-3",
+  ":updated_at": "2026-11-01T10:00:00.000",
+  "uniqueid": "1003",
+  "segmentid": "",
+  "onstreetname": "QUEENS BLVD",
+  "fromstreetname": "71 AVE",
+  "tostreetname": "72 AVE",
+  "borough": "Queens",
+  "work_start_date": "11/01/2026",
+  "work_end_date": "soon",
+  "purpose": "MILLING"
+ }
+]
