@@ -23,6 +23,9 @@ jobs:
       - run: python -m pytest
       - name: Write config from example
         run: cp config/settings.example.json config/settings.json
+      - name: Run advisory scraper
+        run: python -m src.adapters.dot_advisory --config config/settings.json
+        continue-on-error: true
       - name: Run collector
         id: collect
         env:

@@ -98,6 +98,27 @@ Run on every pull, reported in `report.json → quality` and the Markdown report
 If it equals the latest snapshot's hash, the run is logged in `manifest.json → runs` with `deduplicated_to`,
 and no new snapshot file or entry is written. Running twice on unchanged data → 1 snapshot, 2 runs.
 
+## Secondary source: NYC DOT Weekly Traffic Advisory (scraper)
+
+`src/adapters/dot_advisory.py` scrapes https://www.nyc.gov/html/dot/html/motorist/weektraf.shtml.
+It is a **separate adapter with separate history** (`data/advisory/`): temporary/event closures, which the page
+itself says exclude emergency situations and long-term construction. Never merge its rows with the API dataset.
+
+```bash
+python -m src.adapters.dot_advisory --config config/settings.json              # fetch → raw html.gz → parse → snapshot → diff → report
+python -m src.adapters.dot_advisory --config config/settings.json --from-html data/advisory/raw/<run_id>.advisory.html.gz
+```
+
+Page model (verified 2026-11-06; `div#_content` is a flat sequence):
+`<h2>Weekly Traffic Advisory for <start> to <end>` → per-borough `<h2 id=...>` → bare `<strong>location</strong>` + `<p>` description
+(a fully-bold `<p>` = DOT's "updated" marker) → `<h3>Festivals, Parades and Events` → `<h4>event` + `Embargo` paragraph +
+`<strong>Location(s):/Formation:/Route:/Dispersal:</strong>` + `<ul>` street lists.
+
+Records: `kind=closure|event`, `section`, `name`, `description`, `updated`, `embargo`, `streets{label: [..]}`.
+Key = sha1(kind|section|name) — there is no ID on the page, so a reworded location shows as *missing + added*.
+A layout change raises `ParseError` → failure report, no snapshot. The raw HTML of every pull is kept, so the
+parser can be fixed and replayed with `--from-html`.
+
 ## Limitations
 
 - Permit windows ≠ continuous closure. Per NYC DOT, a full-closure permit covers a period during which the street
@@ -107,8 +128,10 @@ and no new snapshot file or entry is written. Running twice on unchanged data �
   on Nov 1 and removed before the first run is invisible to this collector.
 - `segmentid` can describe road geometry, not a unique permit — do not use it alone as a key.
 - This dataset (construction permits) and the DOT Weekly Traffic Advisory (temporary/event closures) are not
-  interchangeable. The advisory is out of scope for V1/V2.
+  interchangeable, which is why the advisory scraper keeps its own history.
 - Key/business field names in `settings.example.json` are unverified until the first live pull.
+- Advisory scraper: no stable IDs on the page; keys are derived from wording. The page is replaced weekly, so
+  week-over-week diffs mostly reflect the new advisory period, not changes to a persistent record.
 
 ## Project layout
 
@@ -119,7 +142,8 @@ src/snapshot.py     durable snapshots + manifest, idempotency
 src/compare.py      snapshot diff → business change categories
 src/report.py       compact JSON + Markdown run report
 src/run.py          single-command orchestrator / CLI
-tests/              synthetic cases: first run, unchanged, modified, missing, bad response, blank pull
+src/adapters/       dot_advisory.py — Weekly Traffic Advisory HTML scraper (separate history)
+tests/              synthetic cases: first run, unchanged, modified, missing, bad response, blank pull, advisory parse/diff
 data/sample/        small publishable example only (history lives outside git)
 docs/               notes, V2 workflow draft
 ```

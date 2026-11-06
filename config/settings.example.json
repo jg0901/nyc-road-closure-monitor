@@ -38,6 +38,17 @@
     "min_rows": 1,
     "max_row_delta_pct": 50
   },
+  "advisory": {
+    "_comment": "Secondary adapter: NYC DOT Weekly Traffic Advisory HTML page. Temporary/event closures; excludes emergency and long-term construction. NOT interchangeable with the API dataset — kept in its own history.",
+    "enabled": true,
+    "url": "https://www.nyc.gov/html/dot/html/motorist/weektraf.shtml",
+    "content_selector": "#_content",
+    "raw_dir": "data/advisory/raw",
+    "snapshot_dir": "data/advisory/snapshots",
+    "report_dir": "data/advisory/reports",
+    "manifest": "data/advisory/snapshots/manifest.json",
+    "log_dir": "logs/advisory"
+  },
   "paths": {
     "raw_dir": "data/raw",
     "snapshot_dir": "data/snapshots",

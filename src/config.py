@@ -78,11 +78,30 @@ class PathsConfig:
 
 
 @dataclass
+class AdvisoryConfig:
+    """Secondary adapter: NYC DOT Weekly Traffic Advisory (HTML). Separate source, separate history."""
+    url: str = "https://www.nyc.gov/html/dot/html/motorist/weektraf.shtml"
+    source_id: str = "nyc_dot_weekly_traffic_advisory"
+    content_selector: str = "#_content"
+    timeout_seconds: int = 30
+    max_retries: int = 4
+    backoff_seconds: float = 2.0
+    enabled: bool = True
+    app_token: str | None = None  # never sent; present so the shared retry helper's duck-typing works
+    raw_dir: Path = Path("data/advisory/raw")
+    snapshot_dir: Path = Path("data/advisory/snapshots")
+    report_dir: Path = Path("data/advisory/reports")
+    manifest: Path = Path("data/advisory/snapshots/manifest.json")
+    log_dir: Path = Path("logs/advisory")
+
+
+@dataclass
 class Settings:
     source: SourceConfig
     schema: SchemaConfig
     quality: QualityConfig
     paths: PathsConfig
+    advisory: AdvisoryConfig | None = None
 
 
 def _strip_comments(d: dict[str, Any]) -> dict[str, Any]:
@@ -98,9 +117,22 @@ def load_settings(path: str | Path, root: str | Path | None = None) -> Settings:
     paths_raw = _strip_comments(raw["paths"])
     paths = PathsConfig(**{k: (root / v) for k, v in paths_raw.items()})
 
+    advisory = None
+    if "advisory" in raw and raw["advisory"] is not None:
+        a = _strip_comments(raw["advisory"])
+        for k in ("raw_dir", "snapshot_dir", "report_dir", "manifest", "log_dir"):
+            if k in a:
+                a[k] = root / a[k]
+        advisory = AdvisoryConfig(**a)
+        for k in ("raw_dir", "snapshot_dir", "report_dir", "manifest", "log_dir"):
+            p = getattr(advisory, k)
+            if not p.is_absolute():
+                setattr(advisory, k, root / p)
+
     return Settings(
         source=SourceConfig(**_strip_comments(raw["source"])),
         schema=SchemaConfig(**_strip_comments(raw["schema"])),
         quality=QualityConfig(**_strip_comments(raw.get("quality", {}))),
         paths=paths,
+        advisory=advisory,
     )

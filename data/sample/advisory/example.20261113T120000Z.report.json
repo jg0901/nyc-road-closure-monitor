@@ -1,0 +1,140 @@
+{
+  "run_id": "20261113T120000Z",
+  "status": "success",
+  "error": null,
+  "warnings": [],
+  "source": {
+    "source_id": "nyc_dot_weekly_traffic_advisory",
+    "source_url": "https://www.nyc.gov/html/dot/html/motorist/weektraf.shtml",
+    "dataset_name": "NYC DOT Weekly Traffic Advisory",
+    "source_rows_updated_at_utc": null,
+    "fetched_at_utc": "2026-11-06T14:07:21Z",
+    "pages": 1
+  },
+  "counts": {
+    "rows_fetched": 7,
+    "rows_normalized": 7,
+    "diff": {
+      "added": 1,
+      "modified": 1,
+      "unchanged": 5,
+      "missing": 2
+    }
+  },
+  "quality": {
+    "row_count": 7,
+    "ok": true,
+    "by_kind": {
+      "closure": 6,
+      "event": 1
+    },
+    "sections": 4,
+    "updated_flagged": 1,
+    "duplicate_key_count": 0,
+    "null_key_rows": 0,
+    "missing_required": {},
+    "unparseable_dates": {},
+    "absent_fields": [],
+    "parse_warnings": []
+  },
+  "field_change_counts": {
+    "description": 1
+  },
+  "snapshot": {
+    "run_id": "20261113T120000Z",
+    "status": "success",
+    "snapshot_written": true,
+    "snapshot_hash": "417e42d06353b22111ade4f60fe7f45ba5caf249da63447c0a4fd9c440b4693a",
+    "row_count": 7,
+    "fetched_at_utc": "2026-11-06T14:07:21Z",
+    "raw_path": "data/advisory/raw/20261113T120000Z.advisory.html.gz"
+  },
+  "compared_to_run_id": "20261106T120000Z",
+  "log_path": "logs/advisory/20261113T120000Z.log",
+  "diff": {
+    "counts": {
+      "added": 1,
+      "modified": 1,
+      "unchanged": 5,
+      "missing": 2
+    },
+    "field_change_counts": {
+      "description": 1
+    },
+    "added": [
+      {
+        "key": "cf5deb7dc1340fb3",
+        "fields": {
+          "kind": "closure",
+          "section": "Queens",
+          "section_id": "queens",
+          "category": null,
+          "name": "Northern Boulevard between 48th Street and 51st Street",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "One lane will be closed weeknights from 10pm to 5am through November 27, 2026."
+        }
+      }
+    ],
+    "modified": [
+      {
+        "key": "de70b35199115cbb",
+        "changes": {
+          "description": {
+            "from": "As of Sunday October 25th, 2026, through Friday November 20th, 2026, a full northbound and southbound tube will continue to be closed (not at the same time), will take place every week 10pm Sunday night to 5am Friday morning.",
+            "to": "As of Sunday October 25th, 2026, through Friday November 20th, 2026, a full northbound and southbound tube will continue to be closed (not at the same time), will take place every week 11pm Sunday night to 5am Friday morning."
+          }
+        }
+      }
+    ],
+    "missing": [
+      {
+        "key": "051a2cc5f0efe9df",
+        "fields": {
+          "kind": "event",
+          "section": "Manhattan",
+          "section_id": "manhattan",
+          "category": "Festivals, Parades and Events",
+          "name": "The 53rd Annual New Yorks Village Halloween Parade",
+          "embargo": "Embargo : Special Event Construction Embargo / October 28th, 2026, to October 31st, 2026",
+          "updated": false,
+          "streets": {
+            "Formation": [
+              "6th Avenue between Spring Street and Canal Street",
+              "Dominick Street between Varick Street and 6th Avenue"
+            ],
+            "Route": [
+              "6th Avenue between Spring Street and 16th Street"
+            ],
+            "Dispersal": [
+              "West 16th Street between 6th Avenue and 7th Avenue"
+            ]
+          },
+          "description": "The following streets will be closed Saturday October 31st, 2026, for the 53rd Annual New Yorks Village Halloween Parade."
+        }
+      },
+      {
+        "key": "1145362e41d29f02",
+        "fields": {
+          "kind": "closure",
+          "section": "Bronx",
+          "section_id": "bronx",
+          "category": null,
+          "name": "Bruckner Expressway at Hunts Point Avenue",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "The exit will be closed intermittently Monday nights to Friday mornings from 10pm to 5am until May 12, 2027, to facilitate NYCDOT-Bridges removal and installation of steel beams."
+        }
+      }
+    ],
+    "unchanged_keys": [
+      "59c8dad8b2ec4794",
+      "5e2830291010acf9",
+      "d4b60fa77efc7565",
+      "a08a450c81234e1c",
+      "a92ceacedb7c4594"
+    ]
+  }
+}

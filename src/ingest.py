@@ -70,15 +70,16 @@ def _now_utc() -> str:
 
 
 def _headers(cfg: SourceConfig) -> dict[str, str]:
-    h = {"Accept": "application/json", "User-Agent": "nyc-mobility-lab/0.1"}
+    h = {"Accept": "application/json", "User-Agent": "nyc-road-closure-monitor/0.1"}
     if cfg.app_token:
         h["X-App-Token"] = cfg.app_token
     return h
 
 
 def _get_with_retries(session: _Session, url: str, params: dict | None, cfg: SourceConfig,
-                      request_log: list[dict[str, Any]]) -> Any:
-    """GET with bounded retries. Returns parsed JSON or raises FetchError."""
+                      request_log: list[dict[str, Any]], expect: str = "json") -> Any:
+    """GET with bounded retries. Returns parsed JSON (expect="json") or body text (expect="text"),
+    or raises FetchError."""
     last_err: str | None = None
     for attempt in range(1, cfg.max_retries + 1):
         started = time.monotonic()
@@ -88,6 +89,8 @@ def _get_with_retries(session: _Session, url: str, params: dict | None, cfg: Sou
             request_log.append({"url": url, "params": params, "status": resp.status_code,
                                 "attempt": attempt, "elapsed_ms": elapsed_ms})
             if resp.status_code == 200:
+                if expect == "text":
+                    return resp.text
                 try:
                     return resp.json()
                 except ValueError as e:

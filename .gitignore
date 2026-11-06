@@ -6,6 +6,9 @@ config/settings.json
 data/raw/
 data/snapshots/*.snapshot.json.gz
 data/reports/
+data/advisory/raw/
+data/advisory/snapshots/*.snapshot.json.gz
+data/advisory/reports/
 logs/
 
 __pycache__/

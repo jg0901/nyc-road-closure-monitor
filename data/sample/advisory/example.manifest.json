@@ -1,0 +1,74 @@
+{
+  "snapshots": [
+    {
+      "run_id": "20261106T120000Z",
+      "snapshot_hash": "5f43d15b4a05f1065609a10d377852b226eec953585e8784a5adb87ddeb84dbe",
+      "path": "data/advisory/snapshots/20261106T120000Z.snapshot.json.gz",
+      "row_count": 8,
+      "fetched_at_utc": "2026-11-06T14:07:21Z",
+      "source_rows_updated_at_utc": null,
+      "raw_path": "data/advisory/raw/20261106T120000Z.advisory.html.gz",
+      "quality": {
+        "row_count": 8,
+        "ok": true,
+        "by_kind": {
+          "closure": 6,
+          "event": 2
+        },
+        "sections": 3,
+        "updated_flagged": 1,
+        "duplicate_key_count": 0,
+        "null_key_rows": 0,
+        "missing_required": {},
+        "unparseable_dates": {},
+        "absent_fields": [],
+        "parse_warnings": []
+      }
+    },
+    {
+      "run_id": "20261113T120000Z",
+      "snapshot_hash": "417e42d06353b22111ade4f60fe7f45ba5caf249da63447c0a4fd9c440b4693a",
+      "path": "data/advisory/snapshots/20261113T120000Z.snapshot.json.gz",
+      "row_count": 7,
+      "fetched_at_utc": "2026-11-06T14:07:21Z",
+      "source_rows_updated_at_utc": null,
+      "raw_path": "data/advisory/raw/20261113T120000Z.advisory.html.gz",
+      "quality": {
+        "row_count": 7,
+        "ok": true,
+        "by_kind": {
+          "closure": 6,
+          "event": 1
+        },
+        "sections": 4,
+        "updated_flagged": 1,
+        "duplicate_key_count": 0,
+        "null_key_rows": 0,
+        "missing_required": {},
+        "unparseable_dates": {},
+        "absent_fields": [],
+        "parse_warnings": []
+      }
+    }
+  ],
+  "runs": [
+    {
+      "run_id": "20261106T120000Z",
+      "status": "success",
+      "snapshot_written": true,
+      "snapshot_hash": "5f43d15b4a05f1065609a10d377852b226eec953585e8784a5adb87ddeb84dbe",
+      "row_count": 8,
+      "fetched_at_utc": "2026-11-06T14:07:21Z",
+      "raw_path": "data/advisory/raw/20261106T120000Z.advisory.html.gz"
+    },
+    {
+      "run_id": "20261113T120000Z",
+      "status": "success",
+      "snapshot_written": true,
+      "snapshot_hash": "417e42d06353b22111ade4f60fe7f45ba5caf249da63447c0a4fd9c440b4693a",
+      "row_count": 7,
+      "fetched_at_utc": "2026-11-06T14:07:21Z",
+      "raw_path": "data/advisory/raw/20261113T120000Z.advisory.html.gz"
+    }
+  ]
+}
