@@ -1,0 +1,48 @@
+{
+  "source": {
+    "source_id": "nyc_opendata_street_closures_block",
+    "domain": "https://data.cityofnewyork.us",
+    "dataset_id": "i6b5-j7bu",
+    "page_size": 1000,
+    "order_by": ":id",
+    "timeout_seconds": 30,
+    "max_retries": 4,
+    "backoff_seconds": 2,
+    "app_token_env": "SOCRATA_APP_TOKEN",
+    "window": {
+      "_comment": "Optional. Only rows whose permit window OVERLAPS [start, end] are fetched (SODA $where). Set to null for a full pull. Filters EVENT time (permit dates), not observation time: there are no snapshots before the first run.",
+      "start": "2026-11-01",
+      "end": "2027-01-31",
+      "start_field": "work_start_date",
+      "end_field": "work_end_date"
+    }
+  },
+  "schema": {
+    "_comment": "VERIFY on first live pull. key_fields and business_fields are guesses from the roadmap data contract, not from the live schema.",
+    "key_fields": ["uniqueid"],
+    "business_fields": [
+      "segmentid",
+      "onstreetname",
+      "fromstreetname",
+      "tostreetname",
+      "borough",
+      "work_start_date",
+      "work_end_date",
+      "purpose"
+    ],
+    "date_fields": ["work_start_date", "work_end_date"],
+    "required_fields": ["uniqueid", "segmentid", "work_start_date", "work_end_date"],
+    "fail_on_duplicate_keys": false
+  },
+  "quality": {
+    "min_rows": 1,
+    "max_row_delta_pct": 50
+  },
+  "paths": {
+    "raw_dir": "data/raw",
+    "snapshot_dir": "data/snapshots",
+    "report_dir": "data/reports",
+    "manifest": "data/snapshots/manifest.json",
+    "log_dir": "logs"
+  }
+}

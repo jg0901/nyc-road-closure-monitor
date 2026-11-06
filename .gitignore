@@ -1,0 +1,14 @@
+# secrets
+.env
+config/settings.json
+
+# growing history stays out of git (keep data/sample/ and manifest only when small)
+data/raw/
+data/snapshots/*.snapshot.json.gz
+data/reports/
+logs/
+
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
