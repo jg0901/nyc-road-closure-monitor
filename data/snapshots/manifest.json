@@ -1,0 +1,39 @@
+{
+  "snapshots": [
+    {
+      "run_id": "20261107T164955Z",
+      "snapshot_hash": "cffcfba83cf65e46684f85656804f584918d35226e00e90800a706d7dc28eeb4",
+      "path": "data/snapshots/20261107T164955Z.snapshot.json.gz",
+      "row_count": 3530,
+      "fetched_at_utc": "2026-11-07T16:49:55Z",
+      "source_rows_updated_at_utc": "2026-11-02T13:19:25Z",
+      "raw_path": "data/raw/20261107T164955Z.raw.json.gz",
+      "quality": {
+        "row_count": 3689,
+        "output_rows": 3530,
+        "ok": true,
+        "exact_duplicate_rows": 159,
+        "duplicate_key_count": 0,
+        "duplicate_keys_sample": {},
+        "null_key_rows": 0,
+        "missing_required": {},
+        "unparseable_dates": {},
+        "unexpected_fields": [
+          "the_geom"
+        ],
+        "absent_fields": []
+      }
+    }
+  ],
+  "runs": [
+    {
+      "run_id": "20261107T164955Z",
+      "status": "success",
+      "snapshot_written": true,
+      "snapshot_hash": "cffcfba83cf65e46684f85656804f584918d35226e00e90800a706d7dc28eeb4",
+      "row_count": 3530,
+      "fetched_at_utc": "2026-11-07T16:49:55Z",
+      "raw_path": "data/raw/20261107T164955Z.raw.json.gz"
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+2026-11-07 16:50:13,345 INFO nyc_road_closure_monitor.advisory: advisory[weekly] run 20261107T165013Z start
+2026-11-07 16:50:13,880 INFO src.snapshot: snapshot written: data/advisory/weekly/snapshots/20261107T165013Z.snapshot.json.gz
+2026-11-07 16:50:13,881 INFO src.report: report written: data/advisory/weekly/reports/20261107T165013Z.report.json
+2026-11-07 16:50:13,881 INFO nyc_road_closure_monitor.advisory: advisory[weekly] run 20261107T165013Z success: period 2026-11-07..2026-11-13, {'closure': 16, 'event': 5}, diff {'added': 21, 'modified': 0, 'unchanged': 0, 'missing': 0}
