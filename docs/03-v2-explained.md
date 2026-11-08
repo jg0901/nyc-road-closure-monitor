@@ -86,7 +86,7 @@ The Socrata token is passed only to the API collector step:
   continue-on-error: true
 ```
 
-The placeholder above corresponds to the standard GitHub expression syntax for repository secrets.
+The `env` entry uses GitHub's standard expression syntax to reference the `SOCRATA_APP_TOKEN` repository secret.
 
 The secret is optional; the API can be queried without it but may encounter stricter rate limits. Repository secrets belong in **Settings → Secrets and variables → Actions**, not in `config/settings.example.json` or the public Git history.
 
