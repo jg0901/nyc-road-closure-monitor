@@ -1,5 +1,5 @@
 {
-  "run_id": "20261107T165013Z",
+  "run_id": "20261108T170207Z",
   "status": "success",
   "error": null,
   "warnings": [],
@@ -8,16 +8,16 @@
     "source_url": "https://www.nyc.gov/html/dot/html/motorist/weektraf.shtml",
     "dataset_name": "NYC DOT Weekly Traffic Advisory",
     "source_rows_updated_at_utc": null,
-    "fetched_at_utc": "2026-11-07T16:50:13Z",
+    "fetched_at_utc": "2026-11-08T17:02:08Z",
     "pages": 1
   },
   "counts": {
     "rows_fetched": 21,
     "rows_normalized": 21,
     "diff": {
-      "added": 21,
+      "added": 0,
       "modified": 0,
-      "unchanged": 0,
+      "unchanged": 21,
       "missing": 0
     }
   },
@@ -39,370 +39,50 @@
   },
   "field_change_counts": {},
   "snapshot": {
-    "run_id": "20261107T165013Z",
+    "run_id": "20261108T170207Z",
     "status": "success",
-    "snapshot_written": true,
+    "snapshot_written": false,
+    "deduplicated_to": "20261107T165013Z",
     "snapshot_hash": "afdefafa8d97a01d17e5e0d62df3d11dbf08ce218c8bf47df3c82eba48adb5b0",
     "row_count": 21,
-    "fetched_at_utc": "2026-11-07T16:50:13Z",
-    "raw_path": "data/advisory/weekly/raw/20261107T165013Z.advisory.html.gz"
+    "fetched_at_utc": "2026-11-08T17:02:08Z",
+    "raw_path": "data/advisory/weekly/raw/20261108T170207Z.advisory.html.gz"
   },
-  "compared_to_run_id": null,
-  "log_path": "logs/advisory/weekly/20261107T165013Z.log",
+  "compared_to_run_id": "20261107T165013Z",
+  "log_path": "logs/advisory/weekly/20261108T170207Z.log",
   "diff": {
     "counts": {
-      "added": 21,
+      "added": 0,
       "modified": 0,
-      "unchanged": 0,
+      "unchanged": 21,
       "missing": 0
     },
     "field_change_counts": {},
-    "added": [
-      {
-        "key": "9a127f2b1a3cf74d",
-        "fields": {
-          "page": "weekly",
-          "kind": "closure",
-          "section": "Manhattan",
-          "section_id": "manhattan",
-          "category": null,
-          "name": "Battery Park Underpass",
-          "embargo": null,
-          "updated": false,
-          "streets": {},
-          "description": "As of Sunday October 25th, 2026, through Friday November 20th, 2026, a full northbound and southbound tube will continue to be closed (not at the same time), will take place every week 10pm Sunday night to 5am Friday morning. Traffic will return to its original configuration after work hours. These closures are necessary for the continued work on flood mitigation construction activities on Battery Park Underpass, as permitted by NYCDOT Bridges."
-        }
-      },
-      {
-        "key": "a8b5b5fa78faa767",
-        "fields": {
-          "page": "weekly",
-          "kind": "closure",
-          "section": "Manhattan",
-          "section_id": "manhattan",
-          "category": null,
-          "name": "Southbound Route 9A between West 30th Street and West 26th Street",
-          "embargo": null,
-          "updated": false,
-          "streets": {},
-          "description": "One out of three southbound lanes will be closed on Saturdays from 12:01am to 9am, and two out of three from 1am to 6am on Sundays. One out of three lanes will be closed from 12:01am to 10am and two of three from 2am to 8am, on Sunday nights. One of three lanes will also be closed 9pm to midnight and two of three lanes closed from 12:01am to 5am Monday mornings to facilitate NYCDEP infrastructure repairs and roadway repaving from October 24th, 2026, to November 16th, 2026."
-        }
-      },
-      {
-        "key": "0f850bab85d90a34",
-        "fields": {
-          "page": "weekly",
-          "kind": "closure",
-          "section": "Manhattan",
-          "section_id": "manhattan",
-          "category": null,
-          "name": "South Street (FDR Drive Service Road) between Gouverneur Slip West and Montgomery Street",
-          "embargo": null,
-          "updated": true,
-          "streets": {},
-          "description": "This street will be closed from 9pm to 5am Friday and 9pm to 9am Saturday through November 13, 2026 for Montgomery Street flood gate installation and testing."
-        }
-      },
-      {
-        "key": "383c05fe0b7a7657",
-        "fields": {
-          "page": "weekly",
-          "kind": "closure",
-          "section": "Manhattan",
-          "section_id": "manhattan",
-          "category": null,
-          "name": "Southbound Henry Hudson Parkway (HHP) to West 79th Street and Riverside Drive",
-          "embargo": null,
-          "updated": false,
-          "streets": {},
-          "description": "The exit will be closed intermittently Monday nights to Friday mornings from 10pm to 5am and on Friday nights from 11pm to 7am Saturday mornings until May 12, 2027, to facilitate NYCDOT-Bridges removal and installation of steel beams."
-        }
-      },
-      {
-        "key": "4faa8148768525c2",
-        "fields": {
-          "page": "weekly",
-          "kind": "event",
-          "section": "Manhattan",
-          "section_id": "manhattan",
-          "category": "Festivals, Parades and Events",
-          "name": "Veterans Day Festival",
-          "embargo": null,
-          "updated": false,
-          "streets": {
-            "Location(s)": [
-              "Broadway between Liberty Street and Battery Place"
-            ]
-          },
-          "description": "The following streets will be closed Wednesday November 11th, 2026, for Veterans Day Festival event at the Discretion of the NYPD in Manhattan"
-        }
-      },
-      {
-        "key": "c4863cd094017e5e",
-        "fields": {
-          "page": "weekly",
-          "kind": "event",
-          "section": "Manhattan",
-          "section_id": "manhattan",
-          "category": "Festivals, Parades and Events",
-          "name": "NYC Veterans Day Parade",
-          "embargo": "Embargo : Special Event Construction Embargo / November 8th, 2026, to November 11th, 2026",
-          "updated": false,
-          "streets": {
-            "Streets": [
-              "Review NYC DOT's construction embargos for special events"
-            ]
-          },
-          "description": "The following streets will be closed Wednesday November 11th, 2026, for the NYC Veterans Day Parade event at the Discretion of the NYPD in Manhattan"
-        }
-      },
-      {
-        "key": "360fba079dc94c6c",
-        "fields": {
-          "page": "weekly",
-          "kind": "event",
-          "section": "Manhattan",
-          "section_id": "manhattan",
-          "category": "Festivals, Parades and Events",
-          "name": "Financial Community Fall Fair",
-          "embargo": null,
-          "updated": false,
-          "streets": {
-            "Location(s)": [
-              "Park Place between Broadway and Church Street"
-            ]
-          },
-          "description": "The following streets will be closed Thursday November 12th, 2026, for the Financial Community Fall Fair event at the Discretion of the NYPD in Manhattan"
-        }
-      },
-      {
-        "key": "da5585f6f290466f",
-        "fields": {
-          "page": "weekly",
-          "kind": "closure",
-          "section": "Bronx/Manhattan",
-          "section_id": "bxman",
-          "category": null,
-          "name": "Broadway Bridge over the Harlem River",
-          "embargo": null,
-          "updated": true,
-          "streets": {},
-          "description": "As of Monday November 16th, 2026, through Friday December 11th, 2026, the Bronx-bound right lane will be closed from 7am to 3pm, additionally, alternating center-lane will be closed in either direction from 10am to 2pm. These closures are in addition to the current Manhattan-bound right lane and adjacent sidewalk closures. At least one lane in each direction will be available at all times. Lanes will reopen normally each day after 3pm. These closures are necessary for the continued structural steel repairs on the Broadway Bridge as permitted by NYCDOT Bridges."
-        }
-      },
-      {
-        "key": "a955db609ba36922",
-        "fields": {
-          "page": "weekly",
-          "kind": "closure",
-          "section": "Bronx",
-          "section_id": "bronx",
-          "category": null,
-          "name": "Hutchinson River Parkway Bridge over the Hutchinson River",
-          "embargo": null,
-          "updated": false,
-          "streets": {},
-          "description": "As of Monday October 19th, 2026, and intermittently through Friday November 13th, 2026, a full bridge closure will take place in either northbound or southbound direction of the bridge (not at the same time) weeknights from 12:01am to 5am. Traffic will return to its original configuration after work hours. The closures are necessary to conduct structural repairs on the Hutchinson River Parkway Bridge as permitted by NYCDOT Bridges."
-        }
-      },
-      {
-        "key": "61c09e84193f6529",
-        "fields": {
-          "page": "weekly",
-          "kind": "closure",
-          "section": "Bronx",
-          "section_id": "bronx",
-          "category": null,
-          "name": "Cross Bronx Expressway (I-95) between Arthur Avenue and Clay Avenue",
-          "embargo": null,
-          "updated": false,
-          "streets": {},
-          "description": "Single-lane will be closed in both directions Monday to Friday from 12:01am to 5am and double-lane will be closed from 1am to 5am, except holidays. These closures are to facilitate rehabilitation of the bridges overpassing Webster Avenue, Metro-North Railroad, and Third Avenue and will continue through December 14, 2026."
-        }
-      },
-      {
-        "key": "7369ee22b72e5ad1",
-        "fields": {
-          "page": "weekly",
-          "kind": "closure",
-          "section": "Brooklyn",
-          "section_id": "brooklyn",
-          "category": null,
-          "name": "Third Street Bridge over the Gowanus Canal",
-          "embargo": null,
-          "updated": false,
-          "streets": {},
-          "description": "As of Monday, October 19th, 2026, through Friday, November 13th, 2026, the bridge will be fully closed between 11pm to 5am Tuesday nights into Wednesday mornings and Thursday night into Friday mornings. The bridge will be fully closed to cyclists, motorists, and pedestrians. These closures are necessary to conduct the continued repairs on the Third Street Bridge over Gowanus Canal."
-        }
-      },
-      {
-        "key": "473827974715a719",
-        "fields": {
-          "page": "weekly",
-          "kind": "event",
-          "section": "Brooklyn",
-          "section_id": "brooklyn",
-          "category": "Festivals, Parades and Events",
-          "name": "8th Annual Veterans Appreciation Parade and Resource Fair",
-          "embargo": null,
-          "updated": false,
-          "streets": {
-            "Formation": [
-              "Park Place between Howard Avenue and Ralph Avenue"
-            ],
-            "Route": [
-              "Ralph Avenue between Park Place and Fulton Street",
-              "Fulton Street between Ralph Avenue and New York Avenue"
-            ],
-            "Dispersal": [
-              "New York Avenue between Fulton Street and Atlantic Avenue"
-            ]
-          },
-          "description": "The following streets will be closed Saturday November 7, 2026, for the 8th Annual Veterans Appreciation Parade and Resource Fair event at the Discretion of the NYPD in Brooklyn"
-        }
-      },
-      {
-        "key": "ab673aec7afc4106",
-        "fields": {
-          "page": "weekly",
-          "kind": "closure",
-          "section": "Brooklyn/Queens",
-          "section_id": "brqn",
-          "category": null,
-          "name": "Metropolitan Avenue Bridge over Newtown Creek",
-          "embargo": null,
-          "updated": false,
-          "streets": {},
-          "description": "As of Monday November 2nd, 2026,intermittently through Friday November 27th, 2026, a single vehicular lane closure will take place in either Brooklyn-bound or Queens-bound direction (not at the same time) from 11pm to 5am. The Brooklyn-bound travel and bike lane will not be affected. The Queens-bound bike lane will be closed to cyclists. Saturday work may also be required from 7 a.m. to 1 p.m. These closures are necessary for conducting maintenance on Metropolitan Avenue Bridge over Newtown Creek, as permitted by NYCDOT Bridges."
-        }
-      },
-      {
-        "key": "28d25314408d42c0",
-        "fields": {
-          "page": "weekly",
-          "kind": "closure",
-          "section": "Brooklyn/Queens",
-          "section_id": "brqn",
-          "category": null,
-          "name": "Greenpoint Avenue Bridge over Newtown Creek",
-          "embargo": null,
-          "updated": false,
-          "streets": {},
-          "description": "As of Monday October 19th, 2026, and intermittently through November 13th, 2026, a single lane will be closed on either Eastbound or Westbound direction (not at the same time) from 11pm to 5am Monday to Friday. During repairs, the bike lanes will be open on both directions. One lane of traffic in each direction will be maintained at all times. Traffic will be restored to its original configuration after work hours. These closures are necessary for the continued repairs on Greenpoint Avenue Bridge, as permitted by NYCDOT Bridges."
-        }
-      },
-      {
-        "key": "9881a527b518d685",
-        "fields": {
-          "page": "weekly",
-          "kind": "closure",
-          "section": "Queens",
-          "section_id": "queens",
-          "category": null,
-          "name": "130th Avenue Bridge over Belt Parkway",
-          "embargo": null,
-          "updated": true,
-          "streets": {},
-          "description": "As of Monday November 9th, 2026, through Friday December 4th, 2026, the south sidewalk will be closed to pedestrians. The newly reconstructed north sidewalk of the bridge will be open. Lane closure on 130th Avenue will remain necessary Monday to Friday from 7am to 7pm, Saturday 8am to 6pm, and Sunday from 9am to 6pm. The newly reconstructed north sidewalk of the bridge will be open. One lane in each direction will be maintained. Traffic lanes will return to normal configuration after work hours. This work is necessary for the continued rehabilitation work of the south sidewalk of the 130 Avenue Bridge over the Belt Parkway as permitted by NYCDOT Bridges."
-        }
-      },
-      {
-        "key": "c068e5b9aca9c86c",
-        "fields": {
-          "page": "weekly",
-          "kind": "closure",
-          "section": "Queens",
-          "section_id": "queens",
-          "category": null,
-          "name": "Hillside Avenue Bridge over Cross Island Parkway",
-          "embargo": null,
-          "updated": true,
-          "streets": {},
-          "description": "As of Monday November 9th, 2026, to Friday December 4th, 2026, Single-lane closures on the Cross Island Parkway will take place weekdays from 9am to 7pm Monday to Friday, and Weekends Saturday from 8am to 6pm, Sunday 9am to 6pm. At least one lane in each direction will be maintained at all times. Northern sidewalk will be open to pedestrians and southern sidewalk will be closed. Traffic will return to its original configuration after work hours. These closures are necessary to continue the rehabilitation of the southern half of Hillside Avenue Bridge as permitted by NYCDOT Bridges."
-        }
-      },
-      {
-        "key": "11bf62275ead40fe",
-        "fields": {
-          "page": "weekly",
-          "kind": "closure",
-          "section": "Queens",
-          "section_id": "queens",
-          "category": null,
-          "name": "Springfield Boulevard Bridge over Belt Southern Parkway between North Conduit Avenue and South Conduit Avenue",
-          "embargo": null,
-          "updated": true,
-          "streets": {},
-          "description": "Single-lane closure will take place Monday November 9th, 2026, through Friday December 4th, 2026, from 9am to 2pm, and 10pm to 5am Monday to Friday, weekdays and weeknights. One southbound lane will be maintained. One sidewalk will remain open for pedestrian access, and no more than one crosswalk will be at each intersection. Traffic lanes will return to normal configuration after work hours. These closures are necessary for the continued rehabilitation of the west sidewalk the Springfield Boulevard Bridge over Belt Southern Parkway between North and South Conduit Avenues as permitted by NYCDOT Bridges."
-        }
-      },
-      {
-        "key": "0877fc39d1a97f08",
-        "fields": {
-          "page": "weekly",
-          "kind": "closure",
-          "section": "Queens",
-          "section_id": "queens",
-          "category": null,
-          "name": "Roosevelt Avenue Bridge",
-          "embargo": null,
-          "updated": true,
-          "streets": {},
-          "description": "As of Wednesday November 11th, 2026, through Tuesday December 22nd, 2026, there will be a temporary detour to traffic on the Roosevelt Avenue Bridge over the Van Wyck Expressway between the hours of 11:59pm to 5am. During this temporary detour, the eastbound traffic lanes on Roosevelt Avenue Bridge will be closed and one lane of traffic will be maintained in the westbound direction only. Eastbound traffic will be detoured to the Northern Boulevard Bridge. As of Monday October 9th, 2026, through Friday November 20th, 2026, two southbound and one northbound lane on the Van Wyck Expressway will be closed 10pm to 5am single lane northbound and from 11pm to 5am double lane Southbound. One southbound and one northbound lane will remain open during these closures. These closures are necessary for the continued steel repair as part of the NYCDOT Roosevelt Avenue Bridge rehabilitation project."
-        }
-      },
-      {
-        "key": "e4c3cb0e626c8c1c",
-        "fields": {
-          "page": "weekly",
-          "kind": "event",
-          "section": "Queens",
-          "section_id": "queens",
-          "category": "Festivals, Parades and Events",
-          "name": "Flight 587 Memorial Service",
-          "embargo": "Embargo : Special Event Construction Embargo / November 10th, 2026, to November 12th, 2026",
-          "updated": false,
-          "streets": {
-            "Streets": [
-              "Review NYC DOT's construction embargos for special events"
-            ]
-          },
-          "description": "The following streets will be closed Thursday November 12th, 2026, for Flight 587 Memorial Service event at the Discretion of the NYPD in Queens Date : Thursday, November 12th, 2026 Borough : Queens Time : At the Discretion of NYPD Closure : At the Discretion of NYPD"
-        }
-      },
-      {
-        "key": "03d01a417fbf5c99",
-        "fields": {
-          "page": "weekly",
-          "kind": "closure",
-          "section": "Staten Island",
-          "section_id": "statenisland",
-          "category": null,
-          "name": "Front Street between Wave Street and Hannah Street",
-          "embargo": null,
-          "updated": false,
-          "streets": {},
-          "description": "This street will be closed from 7am to 6pm Monday to Friday through December 20, 2026 for new Stapleton waterfront infrastructure."
-        }
-      },
-      {
-        "key": "8b16253cb23c60cc",
-        "fields": {
-          "page": "weekly",
-          "kind": "closure",
-          "section": "Staten Island",
-          "section_id": "statenisland",
-          "category": null,
-          "name": "Front Street/Murray Hubert Avenue between Thompson Street and Bay Street",
-          "embargo": null,
-          "updated": false,
-          "streets": {},
-          "description": "This street will be closed from 7am to 6pm Monday to Friday through December 20, 2026 for new Stapleton waterfront infrastructure."
-        }
-      }
-    ],
+    "added": [],
     "modified": [],
     "missing": [],
-    "unchanged_keys": []
+    "unchanged_keys": [
+      "9a127f2b1a3cf74d",
+      "a8b5b5fa78faa767",
+      "0f850bab85d90a34",
+      "383c05fe0b7a7657",
+      "4faa8148768525c2",
+      "c4863cd094017e5e",
+      "360fba079dc94c6c",
+      "da5585f6f290466f",
+      "a955db609ba36922",
+      "61c09e84193f6529",
+      "7369ee22b72e5ad1",
+      "473827974715a719",
+      "ab673aec7afc4106",
+      "28d25314408d42c0",
+      "9881a527b518d685",
+      "c068e5b9aca9c86c",
+      "11bf62275ead40fe",
+      "0877fc39d1a97f08",
+      "e4c3cb0e626c8c1c",
+      "03d01a417fbf5c99",
+      "8b16253cb23c60cc"
+    ]
   }
 }
