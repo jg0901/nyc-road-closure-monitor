@@ -1,270 +1,373 @@
-# V2 explained — scheduled, observable, for someone new to CI/CD
+# V2 Technical Guide: GitHub Actions Scheduling, Persistence, and Observability
 
-V1 was "it works when I run it". V2 is "it runs without me, I can see what it did, and it tells me when it
-fails". That is the whole of operations in one sentence, and this doc walks through how
-`.github/workflows/collect.yml` delivers each of those three things.
+> **Scope:** Automated operation of the existing V1 collectors  
+> **Workflow:** [`.github/workflows/collect.yml`](../.github/workflows/collect.yml)  
+> **Related:** [V1 pipeline guide](02-v1-explained.md) · [Implementation case study](01-what-happened-today.md) · [README](../README.md)
 
-Read Part A for the concepts, Part B with the YAML file open next to it, Part C before you press the button,
-Part D when something goes wrong.
+## 1. What V2 adds
 
----
+V1 performs source collection, validation, historical snapshotting, and comparison when invoked manually. V2 adds an **execution and operations layer**: runs occur on a schedule, historical outputs survive the runner, and failures are visible through GitHub Actions.
 
-## Part A — Concepts
+These are distinct concerns:
 
-### A1. What GitHub Actions is
+| Concern | V1 responsibility | V2 responsibility |
+| --- | --- | --- |
+| Correctness | Fetch, normalize, check quality, diff | Run tests before collection |
+| Execution | Python command-line entry points | Schedule and manual GitHub Actions triggers |
+| Persistence | Local snapshots, manifests, reports | Commit selected outputs back to GitHub |
+| Isolation | One source-specific pipeline per command | Execute API and advisory collectors separately |
+| Failure handling | Failure reports and nonzero exit codes | Preserve available evidence; mark failing workflow |
+| Observability | JSON, Markdown, logs | GitHub run status, commits, and report artifacts |
 
-GitHub will run a list of shell commands for you on a computer it owns, whenever a trigger you choose fires.
-That's it. The list of commands is a **workflow** (a YAML file in `.github/workflows/`). One execution of it
-is a **run**. A run contains one or more **jobs**; a job is a sequence of **steps** on one machine (the
-**runner**). Our workflow has one job, `collect`, with nine steps.
+**Operational objective:** Repeated execution should be safe for the snapshot history, source failures should not masquerade as legitimate data changes, and run results should be inspectable without access to the runner's temporary filesystem.
 
-You've already met the idea under a different name: a cron job on a server, or a scheduled task in Windows.
-The difference is that the machine is rented per run and thrown away afterwards.
+## 2. GitHub Actions execution model
 
-### A2. The runner is disposable — this changes everything
+A **workflow** is a YAML definition stored under `.github/workflows/`. A **run** is one execution of that definition. A workflow contains **jobs**, and each job contains sequential **steps** executed by a runner.
 
-Every run starts on a **brand-new Linux VM**: empty disk, nothing installed, no files from last time. When the
-job ends the VM is deleted. Consequences:
+The `collect` workflow has a single job on `ubuntu-latest`. That job uses a newly provisioned, temporary environment. Files generated during the run do not automatically survive after the job ends.
 
-- The repo must be *checked out* (downloaded) at the start of every run (`actions/checkout`).
-- Python and libraries must be *installed* every run (`setup-python`, `pip install`).
-- Anything the run produced — our snapshots, manifests, reports — **vanishes with the VM** unless the run puts
-  it somewhere persistent before it ends.
+Consequently, a history-producing pipeline cannot rely only on runner-local paths for long-term persistence. In this project, selected outputs are **committed back to the repository**.
 
-That last point is the roadmap's "never rely on runner-local SQLite" warning. We chose to persist by
-**committing the files back into the repo** (git is persistent storage GitHub already gives us). Later, when
-history gets big, the same step would upload to object storage (S3 / Supabase) instead. Nothing else changes.
+### Why not just use a scheduled task on a laptop?
 
-### A3. Triggers
+A local scheduler requires the machine to be powered on, correctly configured, and connected at the scheduled time. GitHub Actions supplies managed execution, repository integration, access to secrets, workflow history, and downloadable artifacts. It does not guarantee exact execution time, and it is not a substitute for dedicated production orchestration.
 
-Two in our file:
+## 3. Workflow triggers and concurrency
 
-- `schedule` with a **cron** expression: `17 11 * * *` → minute 17, hour 11, every day-of-month, every month,
-  every weekday → **11:17 UTC daily** = 19:17 Manila. GitHub cron is **always UTC**; you convert.
-  The odd minute is deliberate: thousands of workflows fire at `:00`, and GitHub delays those.
-- `workflow_dispatch`: puts a **Run workflow** button in the Actions tab. For testing and for "I don't want to
-  wait until 19:17".
-
-Two cron facts that surprise people: (1) scheduled runs can start **several minutes late** under load — it's
-"no earlier than", not "exactly"; (2) GitHub **pauses scheduled workflows on public repos after 60 days with no
-commits**. Our runs commit daily, so this never triggers, but if you ever stop the commit step, remember this.
-
-### A4. Permissions and secrets
-
-- `permissions: contents: write` — by default the token a run gets can only *read* the repo. We need to push,
-  so we ask for write. Principle of least privilege: ask for exactly what the job needs.
-- `${{ secrets.SOCRATA_APP_TOKEN }}` — a value you store in **Settings → Secrets and variables → Actions**. It
-  is injected into the step as an environment variable, masked (`***`) in logs, never written to the repo.
-  If the secret doesn't exist, the variable is simply empty and our code runs without a token (throttled but
-  working). Secrets are **not available** to runs triggered by pull requests from forks — irrelevant for a
-  solo repo, good to know later.
-
-### A5. Why history lives in git (for now)
-
-Pros: free, already there, every change to `manifest.json` is itself a commit with a timestamp, you can `git log
--- data/snapshots/manifest.json` and see the whole run history, and cloning the repo gives anyone the full data.
-
-Cons: git is bad at large or frequently-changing binary files. Our numbers: API snapshot ≈ 150 KB gzipped and
-only written when the data changes (weekly), weekend advisory ≈ 20 KB, reports a few KB, logs a few KB.
-≈ 1 MB/month. Fine for a year. The README says to revisit at ~100 MB.
-
-What stays out: `data/raw/` for the API (every row carries street geometry; ~1 MB per pull, daily → too much).
-Raw is re-fetchable, and the snapshot + manifest are what history needs. Advisory raw HTML (8–40 KB) is kept
-because the parser is the fragile part there and you'll want the exact bytes to replay.
-
-### A6. What "observable" means here
-
-Three places to look, cheapest first:
-
-1. **The Actions tab** — green ✓ or red ✗ per run. Red = a collector failed. That's the alert, no email needed
-   (you can turn on email notifications for failed workflows in your GitHub settings).
-2. **The commit** — each run leaves a commit `collect: <time> api=success advisory=success` on `main`. The
-   outcome is in the message; `git log --oneline` is a run history.
-3. **The files** — `data/reports/latest.report.md`, `data/advisory/weekly/reports/latest.report.md`, the
-   manifests, and `logs/`. Committed, so `git pull` brings them to your laptop. Also attached to each run as a
-   downloadable **artifact** (zip at the bottom of the run page).
-
----
-
-## Part B — The workflow file, step by step
-
-Open `.github/workflows/collect.yml`.
+The relevant workflow configuration is:
 
 ```yaml
 name: collect
-```
-The name shown in the Actions tab.
 
-```yaml
 on:
   schedule:
     - cron: "17 11 * * *"
   workflow_dispatch:
+
+concurrency:
+  group: collect
+  cancel-in-progress: false
 ```
-Triggers (A3).
+
+### Scheduled execution
+
+The cron expression `17 11 * * *` means **11:17 UTC every day**, equivalent to **19:17 Philippine time**. It is not a local-machine time setting. Scheduled runs can be delayed under GitHub load, and scheduled workflows can be disabled after prolonged repository inactivity under GitHub's platform policies.
+
+`workflow_dispatch` also makes the workflow manually executable from GitHub's Actions interface.
+
+### Concurrency control
+
+All runs share concurrency group `collect`. This prevents two workflow instances from running simultaneously and writing the same manifest at the same time. `cancel-in-progress: false` avoids canceling a running instance when another is triggered.
+
+GitHub concurrency is not an unlimited FIFO queue: new pending runs may replace earlier pending runs. The setting reduces overlap but does not guarantee every requested execution will eventually run.
+
+**Why it matters:** A manifest is read, updated, and committed as a unit. Concurrent writers could each base an update on an old state, resulting in conflicts or lost history.
+
+## 4. Permissions and secrets
+
+The workflow requests:
 
 ```yaml
 permissions:
   contents: write
 ```
-Allow pushing (A4).
+
+This lets the run's `GITHUB_TOKEN` write repository contents as allowed by repository and organization settings. It is needed because the workflow creates commits and pushes them to `main`.
+
+The Socrata token is passed only to the API collector step:
 
 ```yaml
-concurrency:
-  group: collect
-  cancel-in-progress: false
+- name: API collector (NYC Open Data construction closures)
+  id: api
+  env:
+    SOCRATA_APP_TOKEN: ${{ secrets.SOCRATA_APP_TOKEN }}
+  run: python -m src.run --config config/settings.json
+  continue-on-error: true
 ```
-Only one run of this workflow at a time. If a run is still going when the next trigger fires, the new one
-**waits** (not cancels). Two runs committing to `manifest.json` simultaneously would produce a merge conflict
-and one would fail the push. This is the "deterministic state transitions" line from the roadmap, in one stanza.
+
+The placeholder above corresponds to the standard GitHub expression syntax for repository secrets.
+
+The secret is optional; the API can be queried without it but may encounter stricter rate limits. Repository secrets belong in **Settings → Secrets and variables → Actions**, not in `config/settings.example.json` or the public Git history.
+
+**Security boundary:** A commit author name is not an authentication mechanism. The workflow authenticates its push with GitHub's short-lived token and uses `github-actions[bot]` as the commit identity.
+
+## 5. Step-by-step workflow lifecycle
+
+The [workflow file](../.github/workflows/collect.yml) contains ten steps.
+
+### Step 1 — Checkout
 
 ```yaml
-jobs:
-  collect:
-    runs-on: ubuntu-latest
+- uses: actions/checkout@v4
 ```
-One job, on GitHub's standard Linux image.
 
-**Step 1 — checkout.** `actions/checkout@v4` clones the repo into the runner's working directory. Without this
-the runner has nothing. The `@v4` pins the action's major version so an upstream change can't break us silently.
+Checks out source files and existing committed data history onto the runner. The checkout is important because the manifest stored in Git provides the baseline for the next comparison.
 
-**Step 2 — Python.** `actions/setup-python@v5` with `python-version: "3.12"`. We pin 3.12 (not "latest") so the
-runner's behaviour is predictable — you already saw a 3.13-specific HTML parsing difference on your laptop.
+### Step 2 — Set up Python
 
-**Step 3 — dependencies.** `pip install -r requirements.txt`. Same file you used locally; same libraries.
-
-**Step 4 — tests.** `python -m pytest`. If the tests fail, the job stops here and goes red *before touching the
-API*. Broken code never writes history. This is the cheapest guardrail in the file.
-
-**Step 5 — config.** `cp config/settings.example.json config/settings.json`. The runner has no private
-`settings.json` (it's gitignored), so the example *is* the config in production. Hence: keep the example
-correct, always.
-
-**Step 6 — API collector.**
 ```yaml
-id: api
-env:
-  SOCRATA_APP_TOKEN: ${{ secrets.SOCRATA_APP_TOKEN }}
-run: python -m src.run --config config/settings.json
-continue-on-error: true
+- uses: actions/setup-python@v5
+  with:
+    python-version: "3.12"
 ```
-- `id:` lets later steps refer to this step's outcome (`steps.api.outcome`).
-- `env:` injects the secret for this step only.
-- `continue-on-error: true` — **normally a non-zero exit code stops the job immediately**. We override that,
-  because if the collector fails we still want steps 8 and 9 to run: commit the failure report, then fail the
-  job *on purpose*. Without this, a failed fetch would leave no trace in the repo.
 
-**Step 7 — scrapers.** Same shape, `id: advisory`. Runs weekly + weekend; the adapter itself continues past a
-failing page and exits 1 if any failed.
+Pins the Python major/minor interpreter version for more predictable runtime behavior. The `ubuntu-latest` environment and dependency versions are not fully immutable; further pinning would be needed for strict reproducibility.
 
-**Step 8 — commit history.**
+### Step 3 — Install dependencies
+
+```yaml
+- name: Install dependencies
+  run: pip install -r requirements.txt
+```
+
+Installs `requests`, `beautifulsoup4`, and `pytest` from project dependency constraints.
+
+### Step 4 — Run tests
+
+```yaml
+- name: Tests (fixtures only, no network)
+  run: python -m pytest
+```
+
+The tests run before either source collector. Because this step does **not** set `continue-on-error`, a failing test prevents the later collection commands from running normally.
+
+The tests use local fixtures and fake HTTP sessions. They validate program behavior but cannot prove that the live API or DOT pages have not changed.
+
+### Step 5 — Create runtime configuration
+
+```yaml
+- name: Config from example
+  run: cp config/settings.example.json config/settings.json
+```
+
+The ignored local `settings.json` does not exist in a fresh checkout. The public example is copied into place for the runner. Therefore, `config/settings.example.json` is both a documentation template and the workflow's production configuration source.
+
+A change to the example date window, dataset ID, schema, or quality threshold affects the next scheduled collection.
+
+### Step 6 — Execute the API collector
+
+```yaml
+- name: API collector (NYC Open Data construction closures)
+  id: api
+  env:
+    SOCRATA_APP_TOKEN: ${{ secrets.SOCRATA_APP_TOKEN }}
+  run: python -m src.run --config config/settings.json
+  continue-on-error: true
+```
+
+The collector fetches the configured construction-permit dataset, validates and normalizes records, updates the API manifest, compares observations, and writes reports.
+
+`continue-on-error: true` lets the workflow proceed to the advisory collector and persistence steps even when this command exits nonzero. The step's `outcome` still retains the failure signal.
+
+### Step 7 — Execute the advisory collectors
+
+```yaml
+- name: Advisory scrapers (weekly + weekend)
+  id: advisory
+  run: python -m src.adapters.dot_advisory --config config/settings.json
+  continue-on-error: true
+```
+
+The command attempts every configured advisory page. Each page has a separate manifest and report tree. A page failure does not prevent the adapter from attempting other pages; the command exits nonzero if any page fails.
+
+This step also continues after failure so that available output can be committed.
+
+### Step 8 — Commit generated history
+
+The workflow configures the Git author as `github-actions[bot]`, then stages `data` and `logs`:
+
 ```bash
 git config user.name "github-actions[bot]"
 git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 git add data logs
-if git diff --cached --quiet; then echo "nothing to commit"; else
-  git commit -m "collect: $(date -u +%Y-%m-%dT%H:%M:%SZ) api=${{ steps.api.outcome }} advisory=${{ steps.advisory.outcome }}"
+
+if git diff --cached --quiet; then
+  echo "nothing to commit"
+else
+  git commit -m "collect: <UTC timestamp> api=<outcome> advisory=<outcome>"
   git pull --rebase origin main
   git push origin HEAD:main
 fi
 ```
-- The commit author is the bot, not you. Those commits are machine-made; attributing them to a human would be
-  misleading in `git blame`. (Your own commits stay yours.)
-- `git add data logs` stages everything the run produced (minus what `.gitignore` excludes).
-- `git diff --cached --quiet` → "is anything actually staged?" If the dataset was unchanged *and* nothing else
-  moved, there'd be nothing — in practice the manifest's `runs` list always grows, so there's always a commit.
-- The commit message carries both outcomes: `api=success advisory=failure` is readable in `git log` forever.
-- `git pull --rebase` before `push`: if you pushed a code change between checkout and now, this replays the
-  bot's commit on top of yours instead of failing. `HEAD:main` pushes the current commit to `main`.
 
-**Step 9 — artifact.** `actions/upload-artifact@v4` attaches the `latest.report.*` files to the run page.
-`if: always()` means it runs even if an earlier step failed — a failure report is exactly when you want this.
-`if-no-files-found: ignore` so a run that died before producing any report doesn't fail *again* here.
+The example above abbreviates the actual dynamically generated commit message; the repository workflow includes GitHub expressions that insert the observed step outcomes.
 
-**Step 10 — fail on purpose.**
+The essential details are:
+
+- `git add data logs` respects `.gitignore`, so API raw files under `data/raw/` are excluded.
+- The manifest's run list generally changes after a collector attempt even if no new snapshot is needed.
+- `git diff --cached --quiet` avoids committing when nothing was staged.
+- `git pull --rebase origin main` attempts to replay the generated commit on the latest remote branch state.
+- `git push origin HEAD:main` persists history to the repository.
+
+**Operational risk:** A rebasing conflict, missing write permission, branch restriction, or push failure can prevent persistence. The collector's local success does not imply that the generated history reached GitHub.
+
+### Step 9 — Upload report artifacts
+
 ```yaml
-if: steps.api.outcome == 'failure' || steps.advisory.outcome == 'failure'
-run: exit 1
+- name: Upload latest reports as run artifact
+  if: always()
+  uses: actions/upload-artifact@v4
+  with:
+    name: reports-${{ github.run_id }}
+    path: |
+      data/reports/latest.report.*
+      data/advisory/*/reports/latest.report.*
+    if-no-files-found: ignore
 ```
-Only now, after the evidence is committed and uploaded, do we turn the run red. This is the roadmap's "a failed
-fetch must not be treated as an empty dataset; alert/report must expose failure" — the report exposes it, the
-red run alerts.
+
+This attaches the latest reports to the GitHub Actions run. `if: always()` makes the artifact step eligible even if an earlier step failed.
+
+Artifacts are not the same as source-control history. Their retention depends on GitHub configuration and applicable platform policies. Additionally, an artifact is useful only if report files were generated before the failure.
+
+### Step 10 — Mark a collector failure at the job level
+
+```yaml
+- name: Fail the job if any collector failed
+  if: steps.api.outcome == 'failure' || steps.advisory.outcome == 'failure'
+  run: exit 1
+```
+
+The failure signal is evaluated **after** the persistence and artifact steps. This lets collection failures produce durable diagnostic evidence when the remaining operations complete.
+
+The workflow can fail for other reasons too—tests, setup, artifact upload, or Git push—even if this explicit final failure step does not run.
+
+## 6. Why `outcome` matters with `continue-on-error`
+
+In GitHub Actions, `continue-on-error: true` permits later steps to run. However, this setting changes how the step contributes to job success.
+
+Two related contexts matter:
+
+- `steps.<id>.outcome`: the underlying result before `continue-on-error` is applied.
+- `steps.<id>.conclusion`: the result after `continue-on-error` processing.
+
+The workflow checks `steps.api.outcome` and `steps.advisory.outcome`, preserving the real error signal for the final failure gate.
+
+Without a final failure gate, an operationally failed collector could appear inside a successful job because its own error had been explicitly tolerated.
+
+## 7. Persistence: what survives a workflow run?
+
+| Artifact | Stored in Git? | Notes |
+| --- | --- | --- |
+| API normalized snapshots and manifest | Yes | New snapshots only when the normalized dataset changes |
+| API JSON/Markdown reports | Yes | Generated per collection attempt and latest pointers |
+| API raw responses under `data/raw/` | **No** | Ignored; runner copy disappears when the job ends |
+| Weekly/weekend raw advisory HTML | Yes | Small raw pages retained to reproduce parser behavior |
+| Advisory snapshots and manifests | Yes | Independent source histories |
+| Logs | Yes | Useful for diagnosing retrieval and parser errors |
+| Latest reports as Actions artifacts | Separately | Downloadable from workflow runs, subject to retention |
+
+**Important reproducibility boundary:** The workflow's raw Socrata API response is not retained in Git, and the temporary runner is destroyed. A future API request may return different data. Therefore, an old scheduled API execution cannot necessarily be replayed byte-for-byte from the public repository; only its normalized snapshot and metadata are persisted. This is a trade-off between storage size and full raw lineage.
+
+Git-based storage is appropriate at this project's current size, but it scales poorly for growing binary snapshots and large frequently rewritten JSON reports. Object storage would be a more scalable future design.
+
+## 8. Operational interpretation of reports
+
+The most useful inspection paths are:
+
+| Question | Location |
+| --- | --- |
+| Did execution complete successfully? | GitHub **Actions → collect** run status |
+| Did the collectors fail? | Workflow step outcomes and `latest.report.json` `status` |
+| What changed in the API feed? | `data/reports/latest.report.md` |
+| What changed in weekly notices? | `data/advisory/weekly/reports/latest.report.md` |
+| What changed in weekend notices? | `data/advisory/weekend/reports/latest.report.md` |
+| What was the previous persisted state? | `data/snapshots/manifest.json` or per-advisory manifest |
+| Was a new snapshot written? | Run entry's `snapshot_written` and `deduplicated_to` |
+| What retries or warnings occurred? | Run-specific files under `logs/` |
+
+There are three distinct concepts:
+
+1. **Run status:** Whether the collector or workflow completed successfully.
+2. **Dataset state:** Whether the normalized content differs from the previous snapshot.
+3. **Real-world event:** Whether a road was actually closed or reopened.
+
+A green workflow may create no new snapshot. A newly missing record does not necessarily represent a reopening. A failed workflow may leave unchanged historical snapshots.
+
+## 9. Failure scenarios and first-line diagnosis
+
+| Symptom | Possible cause | Diagnostic action |
+| --- | --- | --- |
+| Test step fails | Source code or test regression | Run `python -m pytest` locally; inspect failed assertions |
+| API collector: HTTP 404 | Dataset ID incorrect or removed | Check `source.dataset_id` and public dataset URL |
+| API collector: HTTP 400 | Invalid `$where` or schema mismatch | Review window fields and source schema |
+| API collector: repeated HTTP 429/503 | Rate limiting or transient service outage | Examine retries; check optional app token and source availability |
+| API collector: too few rows | Filter excludes all data or source returned suspicious volume | Inspect `source.window` and `quality.min_rows` |
+| API collector: null key | Missing configured identity field | Inspect source rows and `schema.key_fields` |
+| Advisory: `ParseError` | Unexpected HTML layout or no recognized notices | Inspect saved HTML; extend parser regression fixtures |
+| Advisory: duplicate-key warning | Two notices derive the same key | Inspect the affected page and identity rule |
+| Commit step: permission denied | Token permissions, branch restrictions, or repo policy | Inspect `contents: write` and repository workflow permissions |
+| Commit step: rebase conflict | Concurrent edits to committed data/manifest | Resolve conflict from latest main; rerun after reconciliation |
+| No scheduled run | Delay, disabled workflow, or scheduler behavior | Inspect Actions status and workflow settings |
+| Collection succeeded but no new snapshot | Source content unchanged | Inspect `snapshot_written=false` and dataset hash |
+
+The GitHub Actions log is the first place to inspect for failures that happen **before** the Python application can write its own report.
+
+## 10. Operational validation
+
+A useful acceptance checklist for this automation design is:
+
+- [ ] A manually dispatched workflow completes successfully.
+- [ ] A scheduled workflow completes successfully.
+- [ ] A second successful unchanged observation does not produce a duplicate snapshot.
+- [ ] A source failure produces a failure report and no new successful snapshot.
+- [ ] A collector failure remains visible in the final GitHub Actions job result.
+- [ ] Available reports and logs remain accessible after the runner is destroyed.
+- [ ] A controlled re-run does not produce duplicate or conflicting manifest entries.
+
+A source-failure demonstration is possible in a controlled environment by temporarily using an invalid dataset identifier and observing the resulting failure report, followed by restoration of the valid configuration. Performing such a test on the active `main` branch affects the scheduled workflow and therefore requires care. Fixture-based failure tests provide a safer default.
+
+The presence of a scheduled workflow file is not itself proof that the schedule has executed successfully for multiple days; the actual Actions run history must be checked.
+
+## 11. Known limitations and possible extensions
+
+### Current boundaries
+
+- GitHub scheduled execution is not an exact-time service-level guarantee.
+- The workflow records failures but does not currently implement an external webhook or guaranteed paging notification.
+- The Git repository is serving as lightweight operational storage, not as a long-term object store.
+- Raw API payloads from ephemeral scheduled runs are excluded from persisted history.
+- The Git push and manifest update are not a transactional database operation.
+- Live page parsing and upstream API availability remain dependencies outside the repository's control.
+
+### Possible improvements
+
+| Improvement | Benefit | Status |
+| --- | --- | --- |
+| External notification on collector failure or meaningful change | Faster operational response | Not implemented |
+| Object-storage archive for source raw responses | Reproducible reprocessing and scalable history | Not implemented |
+| Explicit comparison-schema versioning | Distinguish business changes from transformation contract changes | Not implemented |
+| Stronger concurrency/persistence controls | Safer multi-writer or larger-scale operation | Not implemented |
+| Operational dashboard | Trend monitoring for volumes, failures, freshness, and DQ | Not implemented |
+
+The goal is not to expand the stack unnecessarily. Each addition should address a demonstrated reliability, observability, or user-value requirement.
+
+## 12. Command reference
+
+```bash
+# Run tests
+python -m pytest
+
+# Run the API collector manually
+python -m src.run --config config/settings.json
+
+# Run both DOT advisory pages
+python -m src.adapters.dot_advisory --config config/settings.json
+
+# Replay a locally retained API response
+python -m src.run --config config/settings.json --from-raw data/raw/<run_id>.raw.json.gz
+
+# Review local Git state
+git status
+git log --oneline -10
+
+# Inspect the committed manifest history
+git log -- data/snapshots/manifest.json
+```
+
+For a clean local run, the ignored configuration must first be created from `config/settings.example.json`.
 
 ---
 
-## Part C — Operating it
-
-### C1. First run (do this once)
-
-1. `git pull` locally, and delete your local untracked history so the runner's commit becomes the baseline:
-   `Remove-Item -Recurse -Force data\snapshots\manifest.json, data\advisory, logs`.
-2. (Optional) add the secret: repo **Settings → Secrets and variables → Actions → New repository secret** →
-   name `SOCRATA_APP_TOKEN`, value = the token from https://data.cityofnewyork.us/profile/app_tokens.
-3. **Actions** tab → **collect** → **Run workflow** → **Run workflow**. Refresh after ~10 s; a run appears.
-4. Click it → click the `collect` job → watch steps turn green. ~2 min.
-5. Back on the repo's Code tab: a new commit by `github-actions[bot]` on `main`. `git pull` locally.
-
-### C2. The failure demo (V2 definition of done, line 2)
-
-You need to *see* the red path once so you trust it.
-
-1. Edit `config/settings.example.json`: change `"dataset_id": "i6b5-j7bu"` to `"i6b5-xxxx"`. Commit, push.
-2. Run workflow. Expect: step 6 red but the job continues, step 8 commits `api=failure`, step 9 uploads the
-   failure report, step 10 turns the run **red**.
-3. Open `data/reports/latest.report.md` on GitHub: `# Run … — FAILURE`, with the HTTP 404 in `error`.
-   Open the manifest: the last run has `"status": "failure"` and **no new snapshot**.
-4. Revert the dataset id. Commit, push. Next run is green again; the failure stays in history as evidence.
-
-### C3. Gate 2 checklist
-
-- [ ] one `workflow_dispatch` run green
-- [ ] one `schedule` run green (tomorrow 19:17 Manila; check the Actions tab after ~19:30)
-- [ ] one forced failure: red run, failure report committed, no snapshot written
-- [ ] README "Sample output" filled from the runner's `latest.report.md`
-
-When all four are ticked, the roadmap says: V2 is done, move on. Don't polish.
-
-### C4. Day-to-day
-
-Nothing. Glance at the Actions tab every few days, or turn on failure emails (GitHub → Settings →
-Notifications → Actions → "Send notifications for failed workflows only"). `git pull` when you want the data
-locally. The weekly/weekend pages roll on Sat/Fri; the API reloads on Mondays; the diffs will be boring most
-days and interesting on those.
-
----
-
-## Part D — When a run goes red
-
-Click the run → the job → the red step. Read the last 20 lines. Then match:
-
-| symptom | likely cause | fix |
-|---|---|---|
-| Step 4 `pytest` red | code bug pushed | run tests locally, fix, push; the next run heals |
-| Step 6 red, `HTTP 404` | wrong `dataset_id` or the city retired the dataset | check the dataset page; update config |
-| Step 6 red, `HTTP 400` | `$where` names a column that no longer exists | schema drift — re-run `--key-check`, fix `window.*_field` |
-| Step 6 red, `gave up after 4 attempts … 503` | Socrata outage or throttling | add/confirm the app token; otherwise just wait for tomorrow's run |
-| Step 6 red, `only 0 rows fetched` | window excludes everything, or API returned empty | check `window` dates; check the dataset page shows rows |
-| Step 7 red, `ParseError: no closure/event records parsed` | DOT changed the page layout | download the artifact's raw html, fix parser, add a fixture test, push |
-| Step 7 red for one page only | that page is down / restructured | the other page still committed; fix at leisure |
-| Step 8 red, `permission denied` on push | `permissions: contents: write` missing, or repo settings block Actions from writing | Settings → Actions → General → Workflow permissions → Read and write |
-| Step 8 red, rebase conflict | you and the bot edited the same committed file | `git pull` locally, resolve, push; re-run workflow |
-| Scheduled run never appeared | cron delay (wait 15 min), or workflow disabled after inactivity | Actions tab → enable workflow; or dispatch manually |
-| Run green but no new commit | nothing changed *and* manifest unchanged — shouldn't happen | check step 8 log says "nothing to commit"; inspect why `runs` didn't grow |
-
-Debug locally with the exact inputs: download the run artifact (reports) or `git pull` (manifests, logs,
-advisory raw HTML), then `--from-raw` / `--from-html` to replay.
-
----
-
-## Part E — What V2 is *not* (yet)
-
-- **Not n8n.** That's Stage B (Nov 16+): n8n receives `latest.report.json` via a webhook and routes failures
-  vs changes to Telegram/email. The commented-out `curl` at the end of the workflow is where it plugs in.
-  The division of labour from the roadmap: Python owns fetching/diffing/state; n8n owns delivery and routing.
-- **Not object storage.** Git is the store until size says otherwise.
-- **Not Databricks.** Silver history accumulates in git; Gold tables come when there's enough of it to be
-  worth modelling (roadmap Stage C, late Nov–Dec).
-- **Not a dashboard.** Reports are Markdown. A per-month DQ dashboard is a later, separate deliverable.
-
-The point of V2 is a boring, reliable loop you can stop thinking about. If the Actions tab is green for two
-weeks straight, V2 did its job.
+**Further reading:** [V1 pipeline and tests](02-v1-explained.md) · [Engineering decisions and lessons](01-what-happened-today.md) · [Current GitHub workflow](../.github/workflows/collect.yml)
