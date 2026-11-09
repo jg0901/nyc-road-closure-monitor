@@ -1,0 +1,4 @@
+2026-11-09 21:25:08,063 INFO nyc_road_closure_monitor.advisory: advisory[weekend] run 20261109T212507Z start
+2026-11-09 21:25:08,130 INFO src.snapshot: dataset unchanged since 20261107T165013Z; no new snapshot written
+2026-11-09 21:25:08,132 INFO src.report: report written: data/advisory/weekend/reports/20261109T212507Z.report.json
+2026-11-09 21:25:08,132 INFO nyc_road_closure_monitor.advisory: advisory[weekend] run 20261109T212507Z success: period 2026-11-06..2026-11-08, {'closure': 210, 'event': 1}, diff {'added': 0, 'modified': 0, 'unchanged': 210, 'missing': 0}

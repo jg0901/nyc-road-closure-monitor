@@ -1,11 +1,11 @@
-# Run 20261108T170207Z — SUCCESS
+# Run 20261109T212507Z — SUCCESS
 
 - Dataset: NYC DOT Weekly Traffic Advisory
 - Source URL: https://www.nyc.gov/html/dot/html/motorist/weektraf.shtml
 - Source last updated (UTC): n/a
-- Fetched at (UTC): 2026-11-08T17:02:08Z
+- Fetched at (UTC): 2026-11-09T21:25:07Z
 - Rows fetched: 21  |  normalized: 21
-- Log: logs/advisory/weekly/20261108T170207Z.log
+- Log: logs/advisory/weekly/20261109T212507Z.log
 
 ## Changes vs 20261107T165013Z
 | added | modified | unchanged | missing |
