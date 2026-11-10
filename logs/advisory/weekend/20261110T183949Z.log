@@ -1,0 +1,3 @@
+2026-11-10 18:39:49,579 INFO nyc_road_closure_monitor.advisory: advisory[weekend] run 20261110T183949Z start
+2026-11-10 18:39:49,851 ERROR nyc_road_closure_monitor.advisory: ParseError: no closure/event records parsed — page layout probably changed
+2026-11-10 18:39:49,852 INFO src.report: report written: data/advisory/weekend/reports/20261110T183949Z.report.json

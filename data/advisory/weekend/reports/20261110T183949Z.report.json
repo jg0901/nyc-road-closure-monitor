@@ -1,0 +1,24 @@
+{
+  "run_id": "20261110T183949Z",
+  "status": "failure",
+  "error": "ParseError: no closure/event records parsed — page layout probably changed",
+  "warnings": [],
+  "source": {
+    "source_id": null,
+    "source_url": null,
+    "dataset_name": null,
+    "source_rows_updated_at_utc": null,
+    "fetched_at_utc": null,
+    "pages": null
+  },
+  "counts": {
+    "rows_fetched": null,
+    "rows_normalized": null,
+    "diff": null
+  },
+  "quality": null,
+  "field_change_counts": null,
+  "snapshot": null,
+  "compared_to_run_id": null,
+  "log_path": "logs/advisory/weekend/20261110T183949Z.log"
+}

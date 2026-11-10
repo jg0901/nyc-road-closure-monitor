@@ -57,6 +57,12 @@
       "row_count": 211,
       "fetched_at_utc": "2026-11-09T21:25:08Z",
       "raw_path": "data/advisory/weekend/raw/20261109T212507Z.advisory.html.gz"
+    },
+    {
+      "run_id": "20261110T183949Z",
+      "status": "failure",
+      "error": "ParseError: no closure/event records parsed — page layout probably changed",
+      "snapshot_written": false
     }
   ]
 }
