@@ -1,24 +1,1975 @@
 {
-  "run_id": "20261110T183949Z",
-  "status": "failure",
-  "error": "ParseError: no closure/event records parsed — page layout probably changed",
-  "warnings": [],
+  "run_id": "20261110T223040Z",
+  "status": "success",
+  "error": null,
+  "warnings": [
+    "1 location(s) listed more than once in the same section; keys suffixed"
+  ],
   "source": {
-    "source_id": null,
-    "source_url": null,
-    "dataset_name": null,
+    "source_id": "nyc_dot_weekend_traffic_advisory",
+    "source_url": "https://www.nyc.gov/html/dot/html/motorist/wkndtraf.shtml",
+    "dataset_name": "NYC DOT Weekend Traffic Advisory",
     "source_rows_updated_at_utc": null,
-    "fetched_at_utc": null,
-    "pages": null
+    "fetched_at_utc": "2026-11-10T22:30:40Z",
+    "pages": 1
   },
   "counts": {
-    "rows_fetched": null,
-    "rows_normalized": null,
-    "diff": null
+    "rows_fetched": 178,
+    "rows_normalized": 178,
+    "diff": {
+      "added": 41,
+      "modified": 5,
+      "unchanged": 132,
+      "missing": 73
+    }
   },
-  "quality": null,
-  "field_change_counts": null,
-  "snapshot": null,
-  "compared_to_run_id": null,
-  "log_path": "logs/advisory/weekend/20261110T183949Z.log"
+  "quality": {
+    "row_count": 178,
+    "ok": false,
+    "by_kind": {
+      "closure": 178
+    },
+    "sections": 5,
+    "updated_flagged": 0,
+    "duplicate_key_count": 0,
+    "null_key_rows": 0,
+    "missing_required": {},
+    "unparseable_dates": {},
+    "absent_fields": [],
+    "parse_warnings": [
+      "1 location(s) listed more than once in the same section; keys suffixed"
+    ]
+  },
+  "field_change_counts": {
+    "description": 5
+  },
+  "snapshot": {
+    "run_id": "20261110T223040Z",
+    "status": "success",
+    "snapshot_written": true,
+    "snapshot_hash": "ec7c950dd2e4c94dfb65484899422ddb25760cb07636076485a759008f88b4c9",
+    "row_count": 178,
+    "fetched_at_utc": "2026-11-10T22:30:40Z",
+    "raw_path": "data/advisory/weekend/raw/20261110T223040Z.advisory.html.gz"
+  },
+  "compared_to_run_id": "20261107T165013Z",
+  "log_path": "logs/advisory/weekend/20261110T223040Z.log",
+  "diff": {
+    "counts": {
+      "added": 41,
+      "modified": 5,
+      "unchanged": 132,
+      "missing": 73
+    },
+    "field_change_counts": {
+      "description": 5
+    },
+    "added": [
+      {
+        "key": "ca5268a9be80c00a",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Manhattan",
+          "section_id": "manhattan",
+          "category": null,
+          "name": "West 24 Street between 6th Avenue and 5th Avenue",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 10pm to 6am nightly to facilitate crane operation through November 15, 2026."
+        }
+      },
+      {
+        "key": "3b8cb32e8c5307db",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Manhattan",
+          "section_id": "manhattan",
+          "category": null,
+          "name": "West 28th Street between 7th Avenue and 6th Avenue",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 5am to 11:59am Sunday for building inspection from boom truck."
+        }
+      },
+      {
+        "key": "ada523f882db21aa",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Manhattan",
+          "section_id": "manhattan",
+          "category": null,
+          "name": "West 30th Street between Broadway and 5th Avenue",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 9pm to 5am Saturday to facilitate crane operation."
+        }
+      },
+      {
+        "key": "28bcc8f2d0d9c5b1",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Manhattan",
+          "section_id": "manhattan",
+          "category": null,
+          "name": "West 37th Street between 8th Avenue and 7th Avenue",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 1am to 8am Saturday to facilitate crane operation."
+        }
+      },
+      {
+        "key": "dc761aa5e4808f3e",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Manhattan",
+          "section_id": "manhattan",
+          "category": null,
+          "name": "West 38 Street between 6th Avenue and 5th Avenue",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 5am 2pm Saturday and Sunday to facilitate crane operation."
+        }
+      },
+      {
+        "key": "e8d326c14a177cb5-2",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Manhattan",
+          "section_id": "manhattan",
+          "category": null,
+          "name": "West 40th Street between 10th Avenue and Dyer Avenue",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 9pm to 5am Friday through November 14, 2026 for steel placement over West 40th Street.",
+          "occurrence": 2
+        }
+      },
+      {
+        "key": "74058151b0aa5362",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Manhattan",
+          "section_id": "manhattan",
+          "category": null,
+          "name": "East 69th Street between 1st Avenue and York Avenue",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 9am to 4pm Friday through December 13, 2026 to lift and remove materials from roof with use of knuckle boom."
+        }
+      },
+      {
+        "key": "c3970b041e816a94",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Manhattan",
+          "section_id": "manhattan",
+          "category": null,
+          "name": "East 73rd Street between Lexington Avenue and 3rd Avenue",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 8am to 6pm Saturday and 9am to 6pm Sunday through November 22, 2026 to facilitate crane operation."
+        }
+      },
+      {
+        "key": "42f0fa86acf89ce2",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Manhattan",
+          "section_id": "manhattan",
+          "category": null,
+          "name": "West 74th Street between West End Avenue and Broadway",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 8am to 6pm Saturday and 9am to 6pm Sunday through November 29, 2026 for building inspection from boom truck."
+        }
+      },
+      {
+        "key": "5046fc0ccee83724",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Manhattan",
+          "section_id": "manhattan",
+          "category": null,
+          "name": "East 81st Street between 5th Avenue and Madison Avenue",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 8am to 6pm Saturday and 9am to 6pm Sunday through November 22, 2026 to facilitate crane operation."
+        }
+      },
+      {
+        "key": "f010e6b86edd6613",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Manhattan",
+          "section_id": "manhattan",
+          "category": null,
+          "name": "East 82nd Street between 5th Avenue and Madison Avenue",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 8am to 6pm Saturday and 9am to 6pm Sunday through November 22, 2026 to facilitate crane operation."
+        }
+      },
+      {
+        "key": "52152373300b7f01",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Manhattan",
+          "section_id": "manhattan",
+          "category": null,
+          "name": "East 91st Street between Ditmas Avenue and Dead End",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 9pm to 6am Monday to Friday through November 30, 2026 to facilitate crane operation."
+        }
+      },
+      {
+        "key": "ee92190cfc1ea028",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Manhattan",
+          "section_id": "manhattan",
+          "category": null,
+          "name": "West 121st Street between Broadway and Amsterdam Avenue",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 9am to 3pm Monday to Friday through November 16, 2026 for use of boom truck for facade repair."
+        }
+      },
+      {
+        "key": "3ba902803cde8656",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Manhattan",
+          "section_id": "manhattan",
+          "category": null,
+          "name": "West 153rd Street between St. Nicholas Place and St. Nicholas Avenue",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 8am to 6pm Saturday and 9am to 6pm Sunday through November 29, 2026 for building inspection from boom truck."
+        }
+      },
+      {
+        "key": "3f90f7c84b7fdb37",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Manhattan",
+          "section_id": "manhattan",
+          "category": null,
+          "name": "Charles Street between Bleecker Street and West 4 Street",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 9am to 4pm Friday through December 11, 2026 to lift and remove materials from roof with use of knuckle boom."
+        }
+      },
+      {
+        "key": "1e15b543d127b347",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Manhattan",
+          "section_id": "manhattan",
+          "category": null,
+          "name": "Broome Street between Clinton Street and Suffolk Street",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 8am to 6pm Saturday and 9am to 6pm Sunday through December 27, 2026 installation of conduit for system reinforcement."
+        }
+      },
+      {
+        "key": "a90d9a51b9862c24",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Manhattan",
+          "section_id": "manhattan",
+          "category": null,
+          "name": "Warren Street between Church Street and Broadway",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 8am to 6pm Saturday and 9am to 6pm Sunday for building inspection from boom truck."
+        }
+      },
+      {
+        "key": "e2b9a3fc5f344acd",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Bronx",
+          "section_id": "bronx",
+          "category": null,
+          "name": "East 142nd Street between Wales Avenue and Southern Boulevard",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 9am to 4pm Friday through November 20, 2026 to facilitate crane operation."
+        }
+      },
+      {
+        "key": "f1d1298eeee8df30",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Bronx",
+          "section_id": "bronx",
+          "category": null,
+          "name": "East 153rd Street between 3rd Avenue and Bergen Avenue",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 9am to 4pm Monday to Friday through December 5, 2026 for new building/booming."
+        }
+      },
+      {
+        "key": "0683a02c33aa025d",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Bronx",
+          "section_id": "bronx",
+          "category": null,
+          "name": "East 173rd Street between Eastburn Avenue and Weeks Avenue",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 8am to 6pm Saturday and 9am to 6pm Sunday through December 13, 2026 for electric major service/equipment, backhoe, dump truck."
+        }
+      },
+      {
+        "key": "ad26d278905a3ef6",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Bronx",
+          "section_id": "bronx",
+          "category": null,
+          "name": "East 179th Street between Jerome Avenue and Walton Avenue",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 6am Friday to 4pm Saturday and 5am to 9pm Sunday through November 22, 2026 for mainline track repairs."
+        }
+      },
+      {
+        "key": "3bfa0e827ead7a29",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Bronx",
+          "section_id": "bronx",
+          "category": null,
+          "name": "Inwood Avenue between Clarke Place West and West 170th Street",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 9am to 4pm Friday through November 29, 2026 for use of knuckle boom and concrete pumps for foundation phase."
+        }
+      },
+      {
+        "key": "e2ff44e1b55b6a98",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Bronx",
+          "section_id": "bronx",
+          "category": null,
+          "name": "Clinton Avenue between Crotona Park North and East 175 Street",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 9am to 4pm Friday through January 6, 2027 for boom truck operations, 9 story building."
+        }
+      },
+      {
+        "key": "3f94b48bcb9b6f9d",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Bronx",
+          "section_id": "bronx",
+          "category": null,
+          "name": "Morris Avenue between East 183rd Street and East 182nd Street",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 9am to 4pm Friday through November 16, 2026 for new building."
+        }
+      },
+      {
+        "key": "5967e1440844694d",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Bronx",
+          "section_id": "bronx",
+          "category": null,
+          "name": "East 201st Street between Valentine Avenue and Briggs Avenue",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 9am to 4pm Friday through November 23, 2026 for booming and pouring concrete."
+        }
+      },
+      {
+        "key": "e5006b7278bc6353",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Bronx",
+          "section_id": "bronx",
+          "category": null,
+          "name": "Kimberly Place between Broadway and Godwin Terrace",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 9am to 2pm Friday through November 20, 2026 for concrete operations and boom truck operations."
+        }
+      },
+      {
+        "key": "03b22f1e6d911cad",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Bronx",
+          "section_id": "bronx",
+          "category": null,
+          "name": "Waterloo Place between Crotona Park North and East 176th Street",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 9am to 4pm Monday to Friday through November 24, 2026 for use of boom, knuckle boom and concrete pump to work on new building."
+        }
+      },
+      {
+        "key": "b24b6122e3ed1867",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Bronx",
+          "section_id": "bronx",
+          "category": null,
+          "name": "Homes Street between Fox Street and Simpson Street",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 9am to 4pm Monday to Friday through December 2, 2026 for concrete pump and boom truck."
+        }
+      },
+      {
+        "key": "8bdab3899e2f933f",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Bronx",
+          "section_id": "bronx",
+          "category": null,
+          "name": "Carpenter Avenue between East 233rd Street and East 234th Street",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 9am to 2pm (when school is in session) and 9am to 4pm Friday (when school is not in session) through November 13, 2026 for booming and concrete pouring."
+        }
+      },
+      {
+        "key": "7bc678d91344858b",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Bronx",
+          "section_id": "bronx",
+          "category": null,
+          "name": "Wales Avenue between Bruckner Boulevard and East 141st Street",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 10pm to 6am Monday to Friday through November 27, 2026 for boom truck/bucket truck-sign work-banner installation."
+        }
+      },
+      {
+        "key": "bf8a2613a9d628f1",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Bronx",
+          "section_id": "bronx",
+          "category": null,
+          "name": "Eastchester Road and Sackett Avenue and Bassett Avenue",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 4pm Friday to 5am Monday through November 16, 2026 for crane-bridge construction for MTA contract CBX001."
+        }
+      },
+      {
+        "key": "b5d038bf402f1276",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Bronx",
+          "section_id": "bronx",
+          "category": null,
+          "name": "Riverview Place between West 239th Street and Van Courtlandt Park South",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 8am to 6pm Monday to Friday through December 26, 2026 for concrete pumping, booming and deliveries."
+        }
+      },
+      {
+        "key": "65a1c903e51067cb",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Brooklyn",
+          "section_id": "brooklyn",
+          "category": null,
+          "name": "West 28 Street between Mermaid Avenue and Surf Avenue",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 9am to 4pm Monday to Friday through November 27, 2026 to place boom in the roadway to install for major gas line under bridge."
+        }
+      },
+      {
+        "key": "da21b992060cee22",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Brooklyn",
+          "section_id": "brooklyn",
+          "category": null,
+          "name": "Boerum Place between Pacific Street and Atlantic Avenue",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 9am to 4pm Friday through November 23, 2026 for installing water and sewer services."
+        }
+      },
+      {
+        "key": "da2b2dbf34377c3a",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Brooklyn",
+          "section_id": "brooklyn",
+          "category": null,
+          "name": "Vine Street between Columbia Heights and McKenney Street (BQE entrance Old Fulton Street",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 9am to 4pm Monday to Friday through November 19, 2026 for facade inspection with boom truck."
+        }
+      },
+      {
+        "key": "67f6fde8975c6ed0",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Brooklyn",
+          "section_id": "brooklyn",
+          "category": null,
+          "name": "Columbia Heights between Doughty Street and Cranberry Street",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 9am to 4pm Monday to Friday through November 19, 2026 for facade inspection with boom truck."
+        }
+      },
+      {
+        "key": "8ad45d2591e41e75",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Queens",
+          "section_id": "queens",
+          "category": null,
+          "name": "148 Street between 94th Avenue and 95th Avenue",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 9am to 4pm Friday through February 10, 2027 for concrete pump and booming operations."
+        }
+      },
+      {
+        "key": "7612cdf5a1ea940e",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Queens",
+          "section_id": "queens",
+          "category": null,
+          "name": "Continental Avenue between Austin Street and Burns Street",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be fully closed from 10pm to 7pm Saturday and Sunday to facilitate crane operation."
+        }
+      },
+      {
+        "key": "de1c55d2b9f99d5b",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Queens",
+          "section_id": "queens",
+          "category": null,
+          "name": "Northbound Clearview Expressway Exits 4E/4W",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "The exit ramps to Westbound and Eastbound Long Island Expressway will be reduced from two to one lane 24/7 from November 16, 2026, to December 31, 2026, for maintenance as permitted by NYSDOT."
+        }
+      },
+      {
+        "key": "3f74e66bc934cf4e",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Queens",
+          "section_id": "queens",
+          "category": null,
+          "name": "Roosevelt Avenue Bridge between 126th Street (aka Seaver Way) and Janet Place",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 5am to 9pm Saturday and Sunday for mainline track repairs."
+        }
+      },
+      {
+        "key": "0f51dbfe0ff43487",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Staten Island",
+          "section_id": "statenisland",
+          "category": null,
+          "name": "Hillside Avenue between Howard Avenue and Van Duzer Street",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 9am to 4pm Friday through December 31, 2026 for pole removal."
+        }
+      }
+    ],
+    "modified": [
+      {
+        "key": "d5eadcece49b1370",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 12:01am Saturday to 9pm Sunday through November 8, 2026 to facilitate crane operation.",
+            "to": "This street will be closed from 12:01am Saturday to 9pm Sunday through November 22, 2026 to facilitate crane operation."
+          }
+        }
+      },
+      {
+        "key": "10f4e31577af5459",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 11pm to 5am Friday through December 10, 2026 for Dyer deck over; initial crane setup and steel deliveries.",
+            "to": "This street will be closed from 11pm to 5am Friday through December 10, 2026 for Dyer deck over; initial crane set up and steel deliveries."
+          }
+        }
+      },
+      {
+        "key": "e8d326c14a177cb5",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 9pm to 5am Friday through November 14, 2026 for steel placement over West 40th Street.",
+            "to": "This street will be closed from 5am to 3pm Saturday and Sunday through February 15, 2027 for steel placement over West 40th Street."
+          }
+        }
+      },
+      {
+        "key": "2de3222ce2e53b29",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 9am to 4pm Friday for facade inspection.",
+            "to": "This street will be closed from 8am to 6pm Saturday through November 14, 2026 to facilitate crane operation."
+          }
+        }
+      },
+      {
+        "key": "fda2d15466c8242a",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 8am to 6pm Saturday, and 9am to 6pm Sunday through November 14, 2026 to pour concrete to a new roof.",
+            "to": "This street will be closed from 8am to 6pm Saturday and 9am to 6pm Sunday through November 14, 2026 to pour concrete to a new roof."
+          }
+        }
+      }
+    ],
+    "missing": [
+      {
+        "key": "dccd19658eaa0095",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Manhattan",
+          "section_id": "manhattan",
+          "category": null,
+          "name": "West 16th Street between 7th Avenue and 8th Avenue",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 9am to 6pm Sunday through November 8, 2026 to facilitate crane operation."
+        }
+      },
+      {
+        "key": "ad277b98cc16ecde",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Manhattan",
+          "section_id": "manhattan",
+          "category": null,
+          "name": "East 19 Street between Park Avenue South and Irving Place",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 6:30am to 11:59am Sunday for facade inspection."
+        }
+      },
+      {
+        "key": "3ef974f785b8053c",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Manhattan",
+          "section_id": "manhattan",
+          "category": null,
+          "name": "West 22nd Street between 5th Avenue and 6th Avenue",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 6am to 1pm Saturday and Sunday through November 8, 2026 to facilitate crane operation."
+        }
+      },
+      {
+        "key": "4711f216c0ce32b1",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Manhattan",
+          "section_id": "manhattan",
+          "category": null,
+          "name": "West 25th Street between 10th Avenue and 11th Avenue",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 6am to 2pm Saturday and Sunday through November 8, 2026 for building inspection from boom truck."
+        }
+      },
+      {
+        "key": "b6ab9920ef01d049",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Manhattan",
+          "section_id": "manhattan",
+          "category": null,
+          "name": "East 29 Street between Madison Avenue and Park Avenue South",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 6am to 12:30pm Saturday and Sunday through November 8, 2026 for facade inspection."
+        }
+      },
+      {
+        "key": "4b5f1e495b2bd04f",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Manhattan",
+          "section_id": "manhattan",
+          "category": null,
+          "name": "East 29 Street between Madison Avenue and 5th Avenue",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 5am to 1pm Saturday and Sunday through November 8, 2026 for building inspection and facade repairs from boom truck."
+        }
+      },
+      {
+        "key": "a72672e097b1a786",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Manhattan",
+          "section_id": "manhattan",
+          "category": null,
+          "name": "West 29 Street between Broadway and 5 Avenue",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 6am to 1pm Saturday and/or Sunday for facade inspection."
+        }
+      },
+      {
+        "key": "aefa204e59a58536",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Manhattan",
+          "section_id": "manhattan",
+          "category": null,
+          "name": "West 33rd Street between Broadway and 5th Avenue",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 1am to 1pm Saturday and Sunday to facilitate crane operation."
+        }
+      },
+      {
+        "key": "ac7214fbf41f3149",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Manhattan",
+          "section_id": "manhattan",
+          "category": null,
+          "name": "East 35th Street between Park Avenue and Madison Avenue",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 6:30am to 2pm Saturday and Sunday through November 8, 2026 for building inspection and facade repairs from boom truck."
+        }
+      },
+      {
+        "key": "43ab628edd8b0cc9",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Manhattan",
+          "section_id": "manhattan",
+          "category": null,
+          "name": "West 35th Street between 5th Avenue and 6th Avenue",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 6am to 4pm Saturday and Sunday to facilitate crane operation."
+        }
+      },
+      {
+        "key": "8acbbe6446247961",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Manhattan",
+          "section_id": "manhattan",
+          "category": null,
+          "name": "West 39th Street between 7th Avenue and 8th Avenue",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 5am to 3pm Saturday and Sunday through November 14, 2026 to facilitate crane operation."
+        }
+      },
+      {
+        "key": "90e49f57a7b72bfc",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Manhattan",
+          "section_id": "manhattan",
+          "category": null,
+          "name": "West 43rd Street between Broadway and 6th Avenue",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 11:59pm to 6am nightly Sunday through November 12, 2026 to facilitate crane operation."
+        }
+      },
+      {
+        "key": "038c677ac85cb01e",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Manhattan",
+          "section_id": "manhattan",
+          "category": null,
+          "name": "West 44th Street between 5th Avenue and 6th Avenue",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 10pm to 6am nightly Sunday through November 6, 2026 lifting HVAC components thru the 3rd floor louver."
+        }
+      },
+      {
+        "key": "dda2f09edb5c9881",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Manhattan",
+          "section_id": "manhattan",
+          "category": null,
+          "name": "West 54th Street between Broadway and 7th Avenue",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 10pm Friday to 11:59pm Sunday to facilitate crane operation."
+        }
+      },
+      {
+        "key": "fb6e8a375946f03b",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Manhattan",
+          "section_id": "manhattan",
+          "category": null,
+          "name": "West 54th Street between 9th Avenue and 8th Avenue",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 8am to 6pm Saturday and 9am to 6pm Sunday to facilitate crane operation."
+        }
+      },
+      {
+        "key": "2756a5e194522143",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Manhattan",
+          "section_id": "manhattan",
+          "category": null,
+          "name": "West 68th Street between Amsterdam Avenue and Broadway",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 8am to 6pm Saturday and 9am to 6pm Sunday through November 8, 2026 for building inspection from boom truck."
+        }
+      },
+      {
+        "key": "6c14a2b8c1bfe792",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Manhattan",
+          "section_id": "manhattan",
+          "category": null,
+          "name": "West 84th Street between Amsterdam Avenue and Columbus Avenue",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 8am to 6pm Saturday, and 9am to 6pm Sunday through November 8, 2026 for building inspection and minor repairs from boom truck."
+        }
+      },
+      {
+        "key": "8757168349a49052",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Manhattan",
+          "section_id": "manhattan",
+          "category": null,
+          "name": "West 88th Street between Amsterdam Avenue and Columbus Avenue",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 8am to 6pm Saturday and 9am to 6pm Sunday through November 8, 2026 for building inspection and minor repairs from boom truck."
+        }
+      },
+      {
+        "key": "1741ba7931c18059",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Manhattan",
+          "section_id": "manhattan",
+          "category": null,
+          "name": "East 102nd Street between 5th Avenue and Madison Avenue",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 8am to 6pm Saturday, and 9am to 6pm Sunday through November 8, 2026 to facilitate crane operation."
+        }
+      },
+      {
+        "key": "05b497342424d745",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Manhattan",
+          "section_id": "manhattan",
+          "category": null,
+          "name": "East 105th Street between FDR Drive (service road) and 1st Avenue",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 8am to 6pm Saturday, and 9am to 6pm Sunday through November 8, 2026 to facilitate crane operation."
+        }
+      },
+      {
+        "key": "cb981b6fd9b10c2d",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Manhattan",
+          "section_id": "manhattan",
+          "category": null,
+          "name": "West 173rd Street between Fort Washington Avenue and Broadway",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 8am to 6pm Saturday and 9am to 6pm Sunday through November 1, 2026 to facilitate crane operation."
+        }
+      },
+      {
+        "key": "c15c109b1a919bbd",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Manhattan",
+          "section_id": "manhattan",
+          "category": null,
+          "name": "Lexington Avenue between East 21st Street and East 22nd Street",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 6am to 6pm Saturday and Sunday to facilitate crane operation."
+        }
+      },
+      {
+        "key": "ef4c664e4fa6fc03",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Manhattan",
+          "section_id": "manhattan",
+          "category": null,
+          "name": "Walker Street between Lafayette Street and Centre Street",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 8am to 6pm Saturday, and 9am to 6pm Sunday through November 8, 2026 to facilitate crane operation."
+        }
+      },
+      {
+        "key": "48eac9e1ff1f553e",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Manhattan",
+          "section_id": "manhattan",
+          "category": null,
+          "name": "Wooster Street between Broome Street and Grand Street",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 9am to 2pm Monday to Friday through November 9, 2026 for building inspection from boom truck."
+        }
+      },
+      {
+        "key": "ded6b2396db2f3ec",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Manhattan",
+          "section_id": "manhattan",
+          "category": null,
+          "name": "William Street between Fulton Street and John Street",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 9pm to 5am Friday to place forklift on roadway and sidewalk to remove equipment."
+        }
+      },
+      {
+        "key": "b4b8f6908dd9ab04",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Manhattan",
+          "section_id": "manhattan",
+          "category": null,
+          "name": "Rector Street between Trinity Place and Greenwich Street",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 8am to 6pm Saturday and Sunday 9am to 6pm through November 8, 2026 for repair underground structure."
+        }
+      },
+      {
+        "key": "88936de0662a91c5",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Manhattan",
+          "section_id": "manhattan",
+          "category": null,
+          "name": "Murray Street between Broadway and Church Street",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 8am to 6pm Saturday, and 9am to 6pm Sunday through November 8, 2026 for facade work from boom truck."
+        }
+      },
+      {
+        "key": "703a7e10f9bb9a0f",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Manhattan",
+          "section_id": "manhattan",
+          "category": null,
+          "name": "Bank Street between Waverly Place and West 4th Street",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 9am to 4pm Friday through November 11, 2026 for use of knuckle boom for lifting/hoisting window treatment materials."
+        }
+      },
+      {
+        "key": "2ce24b9dcf09e26a",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Manhattan",
+          "section_id": "manhattan",
+          "category": null,
+          "name": "Greene Street between Washington Place and Waverly Place",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 8am to 6pm Saturday, and 9am to 6pm Sunday through November 8, 2026 to facilitate crane operation."
+        }
+      },
+      {
+        "key": "883b902dafb89663",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Manhattan",
+          "section_id": "manhattan",
+          "category": null,
+          "name": "FDR Drive (service road) between East 105th Street and East 106th Street",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 8am to 6pm Saturday, and 9am to 6pm Sunday through November 8, 2026 to facilitate crane operation."
+        }
+      },
+      {
+        "key": "6b941d1138b33309",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Bronx/Brooklyn",
+          "section_id": "bronx",
+          "category": null,
+          "name": "Brown Place between Bruckner Boulevard and East 132nd Street",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 9am to 4pm Monday to Friday through November 2, 2026 to facilitate crane operation."
+        }
+      },
+      {
+        "key": "f19dcf1551242eea",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Bronx/Brooklyn",
+          "section_id": "bronx",
+          "category": null,
+          "name": "East 142nd Street between Wales Avenue and Southern Boulevard",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 9am to 4pm Friday through November 20, 2026 to facilitate crane operation."
+        }
+      },
+      {
+        "key": "bd5a8aa121b39008",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Bronx/Brooklyn",
+          "section_id": "bronx",
+          "category": null,
+          "name": "West East 142nd Street between Wales Avenue and Southern Boulevard",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 9am to 4pm Monday to Friday through October 27, 2026 for use of concrete pump."
+        }
+      },
+      {
+        "key": "0d170fd2c11219ca",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Bronx/Brooklyn",
+          "section_id": "bronx",
+          "category": null,
+          "name": "Bergen Avenue between East 152nd Street and East 153rd Street",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 9am to 4pm Monday to Friday through October 28, 2026 for booming and pouring concrete."
+        }
+      },
+      {
+        "key": "f4b27cdff9c23d8f",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Bronx/Brooklyn",
+          "section_id": "bronx",
+          "category": null,
+          "name": "East 153rd Street between 3rd Avenue and Bergen Avenue",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 9am to 4pm Monday to Friday through December 5, 2026 for new building/booming."
+        }
+      },
+      {
+        "key": "d3b1b50d07ad75fe",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Bronx/Brooklyn",
+          "section_id": "bronx",
+          "category": null,
+          "name": "West 162nd Street between Anderson Avenue and Woodycrest Avenue",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 9am to 5pm Monday to Friday through November 1, 2026 for booming and pouring concrete."
+        }
+      },
+      {
+        "key": "0e782ba3b3e5a36e",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Bronx/Brooklyn",
+          "section_id": "bronx",
+          "category": null,
+          "name": "East 179th Street between Jerome Avenue and Walton Avenue",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 6am Friday to 4pm Saturday and 5am to 9pm Sunday through November 22, 2026 for mainline track repairs."
+        }
+      },
+      {
+        "key": "c3591f9188bfc0b7",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Bronx/Brooklyn",
+          "section_id": "bronx",
+          "category": null,
+          "name": "Findlay Avenue between East 167th Street and East 168th Street",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 9am to 2pm Monday to Friday (when school is in session) and 9am to 4pm Monday to Friday (when school is not in session), and 8am to 6pm Saturday through November 9, 2026 for major alteration."
+        }
+      },
+      {
+        "key": "88fba83b16778e57",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Bronx/Brooklyn",
+          "section_id": "bronx",
+          "category": null,
+          "name": "Inwood Avenue between Clarke Place West and West 170th Street",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 9am to 4pm Friday through November 29, 2026 for use of knuckle boom and concrete pumps for foundation phase."
+        }
+      },
+      {
+        "key": "8671a945fad124ae",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Bronx/Brooklyn",
+          "section_id": "bronx",
+          "category": null,
+          "name": "Clinton Avenue between Crotona Park North and East 175 Street",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 9am to 4pm Friday through January 6, 2027 for boom truck operations, 9 story building."
+        }
+      },
+      {
+        "key": "61003f88c1ea3be4",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Bronx/Brooklyn",
+          "section_id": "bronx",
+          "category": null,
+          "name": "West 177th Street between West Tremont Avenue and Davidson Avenue",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 8am to 6pm Saturday, and 9am to 6pm Sunday through October 31, 2026 for building inspection from boom truck."
+        }
+      },
+      {
+        "key": "1d75c8bc7357466a",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Bronx/Brooklyn",
+          "section_id": "bronx",
+          "category": null,
+          "name": "Morris Avenue between East 183rd Street and East 182nd Street",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 9am to 4pm Friday through November 16, 2026 for new building."
+        }
+      },
+      {
+        "key": "5100e332c12134be",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Bronx/Brooklyn",
+          "section_id": "bronx",
+          "category": null,
+          "name": "East 201st Street between Valentine Avenue and Briggs Avenue",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 9am to 4pm Friday through November 23, 2026 for booming and pouring concrete."
+        }
+      },
+      {
+        "key": "23b4f4d9d081241f",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Bronx/Brooklyn",
+          "section_id": "bronx",
+          "category": null,
+          "name": "Hutchinson River Parkway (Northbound Service Road) between Schley Avenue and Lafayette Avenue",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 10pm to 5am Monday to Friday through November 12, 2026 for roadway resurfacing for contract HW349tour."
+        }
+      },
+      {
+        "key": "cf351ab1ef7f1bc8",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Bronx/Brooklyn",
+          "section_id": "bronx",
+          "category": null,
+          "name": "Kimberly Place between Broadway and Godwin Terrace",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 9am to 2pm Friday through November 20, 2026 for concrete operations and boom truck operations."
+        }
+      },
+      {
+        "key": "932a1dee28275753",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Bronx/Brooklyn",
+          "section_id": "bronx",
+          "category": null,
+          "name": "Broadway between West 228th Street and West 230th Street",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed Friday from 12:01am to 5am Monday to repair/replace steel on the overhead structure."
+        }
+      },
+      {
+        "key": "e066495c70fe0156",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Bronx/Brooklyn",
+          "section_id": "bronx",
+          "category": null,
+          "name": "Waterloo Place between Crotona Park North and East 176th Street",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 9am to 4pm Monday to Friday through November 24, 2026 for use of boom, knuckle boom and concrete pump to work on new building."
+        }
+      },
+      {
+        "key": "dc64e892f89c5d41",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Bronx/Brooklyn",
+          "section_id": "bronx",
+          "category": null,
+          "name": "Homes Street between Fox Street and Simpson Street",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 9am to 4pm Monday to Friday through December 2, 2026 for concrete pump and boom truck."
+        }
+      },
+      {
+        "key": "0964ac2e26507152",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Bronx/Brooklyn",
+          "section_id": "bronx",
+          "category": null,
+          "name": "Carpenter Avenue between East 233rd Street and East 234th Street",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 9am to 2pm (when school is in session) and 9am to 4pm Friday (when school is not in session) through November 13, 2026 for booming and concrete pouring."
+        }
+      },
+      {
+        "key": "39a76097efe22619",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Bronx/Brooklyn",
+          "section_id": "bronx",
+          "category": null,
+          "name": "Eastchester Road and Sackett Avenue and Bassett Avenue",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 4pm Friday to 5am Monday through November 16, 2026 for crane-bridge construction for MTA contract CBX001."
+        }
+      },
+      {
+        "key": "fdfa666407de0d13",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Bronx/Brooklyn",
+          "section_id": "bronx",
+          "category": null,
+          "name": "Riverview Place between West 239th Street and Van Courtlandt Park South",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 8am to 6pm Monday to Friday through December 26, 2026 for concrete pumping, booming and deliveries."
+        }
+      },
+      {
+        "key": "b9aa726e2377b4fd",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Brooklyn",
+          "section_id": "brooklyn",
+          "category": null,
+          "name": "East 2nd Street between Elmwood Avenue and Avenue I",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 7am to 4pm Monday to Friday through November 4, 2026 for mainline track repairs."
+        }
+      },
+      {
+        "key": "4af0596eafc47c47",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Brooklyn",
+          "section_id": "brooklyn",
+          "category": null,
+          "name": "72nd Street between 11th Avenue and 12th Avenue",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 9am to 4pm Monday to Friday through November 11, 2026 to facilitate crane operation."
+        }
+      },
+      {
+        "key": "05d786365e314ad9",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Brooklyn",
+          "section_id": "brooklyn",
+          "category": null,
+          "name": "East 94th Street between Willmohr Street and Church Avenue",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 9am to 4pm Monday to Friday through October 30, 2026 for pouring structure and foundation for new building."
+        }
+      },
+      {
+        "key": "73f19192c8127bf1",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Brooklyn",
+          "section_id": "brooklyn",
+          "category": null,
+          "name": "Avenue I between McDonald Avenue and East 2nd Street",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 7am to 4pm Monday to Friday through November 4, 2026 for mainline track repairs."
+        }
+      },
+      {
+        "key": "06cf241df72db786",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Brooklyn",
+          "section_id": "brooklyn",
+          "category": null,
+          "name": "Avenue J between McDonald Avenue and East 2nd Street",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 7am to 4pm Monday to Friday through November 4, 2026 for mainline track repairs."
+        }
+      },
+      {
+        "key": "1f343dd5ea23b043",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Brooklyn",
+          "section_id": "brooklyn",
+          "category": null,
+          "name": "Linden Boulevard (South Service Road) between Essex Street and Shepherd Avenue",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 9am to 4pm Friday through November 6, 2026 for major gas install."
+        }
+      },
+      {
+        "key": "e13819eb4ae94906",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Brooklyn",
+          "section_id": "brooklyn",
+          "category": null,
+          "name": "Liberty Avenue between Junius Street and Van Sinderen Avenue",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 5am to 9pm Saturday and Sunday through November 1, 2026 for mainline track repairs."
+        }
+      },
+      {
+        "key": "fe6a704a180be449",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Brooklyn",
+          "section_id": "brooklyn",
+          "category": null,
+          "name": "Liberty Avenue between Van Sinderen Avenue and Snediker Avenue",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 5am to 9pm Saturday and Sunday through November 1, 2026 for mainline track repairs."
+        }
+      },
+      {
+        "key": "9c62d599c87fafe9",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Brooklyn",
+          "section_id": "brooklyn",
+          "category": null,
+          "name": "Glenmore Avenue between Junius Street and Van Sinderen Avenue",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 5am to 9pm Saturday and Sunday through November 1, 2026 for mainline track repairs."
+        }
+      },
+      {
+        "key": "6220ac62d529ef61",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Brooklyn",
+          "section_id": "brooklyn",
+          "category": null,
+          "name": "Van Sinderen Avenue between Fulton Street and Truxton Street",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 7am Saturday to 7pm Sunday through November 1, 2026 for installation of pedestrian bridge."
+        }
+      },
+      {
+        "key": "04ce75fca4f47b71",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Brooklyn",
+          "section_id": "brooklyn",
+          "category": null,
+          "name": "Elmwood Avenue between McDonald Avenue and East 2nd Street",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 7am to 4pm Monday to Friday through November 4, 2026 for mainline track repairs."
+        }
+      },
+      {
+        "key": "8fa56783fd84161c",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Brooklyn",
+          "section_id": "brooklyn",
+          "category": null,
+          "name": "Elmwood Avenue between East 2nd Street and East 3rd Street",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 7am to 4pm Monday to Friday through November 4, 2026 for mainline track repairs."
+        }
+      },
+      {
+        "key": "cc532effa0fffb7d",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Brooklyn",
+          "section_id": "brooklyn",
+          "category": null,
+          "name": "Ashland Place between Hanson Place and Lafayette Avenue",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 11pm to 5am nightly through November 4, 2026 for MTA contract job# R-50804 for concession and billboards."
+        }
+      },
+      {
+        "key": "c00b09b09e54431f",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Brooklyn",
+          "section_id": "brooklyn",
+          "category": null,
+          "name": "Hanson Place between Ashland lace and St. Felix Street",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 11pm to 5am nightly through November 4, 2026 for MTA contract job# R-50804 for concession and billboards."
+        }
+      },
+      {
+        "key": "f3d07f55a033f9c8",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Brooklyn",
+          "section_id": "brooklyn",
+          "category": null,
+          "name": "Joralemon Street between Court Street and Adams Street",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 9pm Friday to 10pm Sunday for MTA contract A-37145 design build services accessibility upgrades Borough Hall Station Lexington Avenue line."
+        }
+      },
+      {
+        "key": "d3111a5855126c62",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Brooklyn",
+          "section_id": "brooklyn",
+          "category": null,
+          "name": "Charles Place Willoughby Avenue and Dead End",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 9am to 4pm Friday through November 10, 2026 for booming and concrete pour."
+        }
+      },
+      {
+        "key": "fdf28e5f2b34a8be",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Brooklyn",
+          "section_id": "brooklyn",
+          "category": null,
+          "name": "Willoughby Avenue between Wyckoff Avenue and St. Nicholas Avenue",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 9am to 2pm Monday to Friday through November 11, 2026 to facilitate crane operation."
+        }
+      },
+      {
+        "key": "914b13c1348999f1",
+        "fields": {
+          "page": "weekend",
+          "kind": "event",
+          "section": "Brooklyn",
+          "section_id": "brooklyn",
+          "category": "Festivals, Parades and Events",
+          "name": "8th Annual Veterans Appreciation Parade and Resource Fair",
+          "embargo": null,
+          "updated": false,
+          "streets": {
+            "Formation": [
+              "Park Place between Howard Avenue and Ralph Avenue"
+            ],
+            "Route": [
+              "Ralph Avenue between Park Place and Fulton Street",
+              "Fulton Street between Ralph Avenue and New York Avenue"
+            ],
+            "Dispersal": [
+              "New York Avenue between Fulton Street and Atlantic Avenue"
+            ]
+          },
+          "description": "The following streets will be closed Saturday November 7, 2026, for the 8th Annual Veterans Appreciation Parade and Resource Fair event at the Discretion of the NYPD in Brooklyn"
+        }
+      },
+      {
+        "key": "4fcb248700df99c4",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Queens",
+          "section_id": "queens",
+          "category": null,
+          "name": "34th Avenue between Seaver Way (126 Street) and 126 Place",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 7am to 7pm Monday to Friday, 6am to 7pm Saturday and Sunday and 7pm to 7am nightly to install a storm and sanitary sewer main (on piles)."
+        }
+      },
+      {
+        "key": "967abc22c8aa79d5",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Queens",
+          "section_id": "queens",
+          "category": null,
+          "name": "52nd Street between Roosevelt Avenue and Queens Boulevard",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 5am to 7pm Sunday for MTA contract A-46026 (5) stations rehab."
+        }
+      },
+      {
+        "key": "64d5252e6237c08f",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Queens",
+          "section_id": "queens",
+          "category": null,
+          "name": "65th Street between 43rd Avenue and Queens Boulevard",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 9am to 4pm Monday to Friday through November 12, 2026 to facilitate crane operation."
+        }
+      },
+      {
+        "key": "f72697d4f8f5a1ea",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Staten Island",
+          "section_id": "statenisland",
+          "category": null,
+          "name": "Curtis Place between Westervelt Avenue and Hamilton Avenue",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 9am to 4pm Friday to facilitate crane operation."
+        }
+      }
+    ],
+    "unchanged_keys": [
+      "03c8e22d76450382",
+      "c588e7efd47e7feb",
+      "69394d8ffbbf4632",
+      "0d87645e4adff04e",
+      "30ee33cb852ccb16",
+      "e07421b39aabf9f5",
+      "cab056fe9f854deb",
+      "2c59e2704298c305",
+      "dd63b5e4232428c5",
+      "633a336fb0108087",
+      "8b942ec9e6efdfc7",
+      "d70f07185d305ffb",
+      "895915e077c76de8",
+      "89c8d31e1d4ee1f5",
+      "777e75c19f41b76a",
+      "5405273d6cc7d465",
+      "4a3ab09af81fb621",
+      "0316bb8e4d1c175a",
+      "394ca5547c26b288",
+      "24993232e2ecf102",
+      "626abd614cd7f658",
+      "6fa8e3d8d95bce19",
+      "c8fa3bfb0b434181",
+      "3d2a5ec71658d9f7",
+      "6ca0e57e0dd60934",
+      "980910c79d919e87",
+      "57a55ca6cc6bcb79",
+      "96d731669a86da06",
+      "6bd6a99fdebfaddd",
+      "6366dd81eb667449",
+      "21c569c16ab09813",
+      "35852d984fc6a42c",
+      "f686ac51cb9fbe8c",
+      "202d9264e0e71ca5",
+      "c9a3c6004badd4a5",
+      "c808bca38860ac3a",
+      "dbdcd4cb18ce0967",
+      "d355b55126b3793f",
+      "2b6869bf736a5c3a",
+      "0bedf6b03141bab3",
+      "49d9c181ab75dd6e",
+      "9bde9d533cbeeae1",
+      "2f213dd9927ed7ba",
+      "e48cf71bbe2a5651",
+      "0e9da2e2f518fec4",
+      "0d0b01fcdb7b340a",
+      "7dfcc4a420f1f313",
+      "c2da3d5ab8736be7",
+      "a73be29ec05f9995",
+      "063901f30cc0864b",
+      "6c5d91a80f88961a",
+      "df6646e44e49bdea",
+      "e4d809eb05491e79",
+      "e9406b2159619ed3",
+      "1fb516b9e1685243",
+      "e31c588d9139dac0",
+      "f347595489a122d3",
+      "906167b1f79365b3",
+      "3ba7af1dfecd40e9",
+      "c0e0ff843a6b648e",
+      "0bf2fea41a640a8d",
+      "be5a2b3bfe1df54d",
+      "3090fa65b01e0734",
+      "851953e5907abdc3",
+      "b9082ad018927684",
+      "2477bd2dc34c36d9",
+      "b24f77209a737ced",
+      "dbc0693c7e19adb8",
+      "b281c50408178122",
+      "4a619fea0f91dbc7",
+      "8ca54baa181422c2",
+      "f86e45ed796781e0",
+      "38f7e115987c82cf",
+      "ff9b002ad4bbf833",
+      "1e5c285d11d5c68e",
+      "02d3c7eb46754870",
+      "2b0fa05f9f65b7b4",
+      "dad428ff573bee16",
+      "62af31b04d6e4079",
+      "4eab8ef843d10c1b",
+      "4b07daff7617449b",
+      "a8bae2677e9e1c64",
+      "a1c58b707467472d",
+      "78a3450682a8cc04",
+      "b4a2e6a8c8850740",
+      "7ebdf7dc484ea90b",
+      "d562e718de8cbe39",
+      "da1b102d7e0f9617",
+      "bc92b0ce1d7b04cf",
+      "d0f1a435cb5249ec",
+      "054390f3ff4931c8",
+      "e561d21060bbb456",
+      "01ae2f312bbd5b47",
+      "e49af089184a957c",
+      "92117fcdeaf25294",
+      "a2be0ec5cb2eb011",
+      "80ade3958ba01c24",
+      "c059d73db7118eb2",
+      "6f5260f2567b7618",
+      "dc65bd45c2e5f2d5",
+      "f64e37d91149116b",
+      "172ae85dd88b914f",
+      "ce1704dde2244cb8",
+      "cee6f31a9d30764a",
+      "a7d78697303288d1",
+      "b03d5dd021a4dc49",
+      "8a4c99df2bc22d72",
+      "bd0d8013ba169987",
+      "eca93fb6d7d4383c",
+      "2543f8d813b8b851",
+      "59164022e0346cc5",
+      "1d1b13442a622d18",
+      "03a50242ea8d09e4",
+      "8f5b2ec31aa6483e",
+      "ae3edd509d5c1d14",
+      "c70d24a04b346d5a",
+      "0b6e0420ea261399",
+      "2f3078fc24fd75db",
+      "8d7c2f99c8eeb0f5",
+      "b81d1fbd1d9789dc",
+      "d43b917c9dfdcdfc",
+      "c8488e91f92d5ab2",
+      "bde4679868cf5f18",
+      "ca01d9ce2c26b0f5",
+      "8b81a028c8ad8473",
+      "351a486a03400ea3",
+      "b832c9787e8f61e6",
+      "c3b80914c5f7fa12",
+      "425264e9c35f83c6",
+      "458572e23621acf8",
+      "a3a08ac9318d5d07",
+      "90f0bca49b7e52b9"
+    ]
+  }
 }

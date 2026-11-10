@@ -26,6 +26,32 @@
           "1 duplicate keys (same section + same name)"
         ]
       }
+    },
+    {
+      "run_id": "20261110T223040Z",
+      "snapshot_hash": "ec7c950dd2e4c94dfb65484899422ddb25760cb07636076485a759008f88b4c9",
+      "path": "data/advisory/weekend/snapshots/20261110T223040Z.snapshot.json.gz",
+      "row_count": 178,
+      "fetched_at_utc": "2026-11-10T22:30:40Z",
+      "source_rows_updated_at_utc": null,
+      "raw_path": "data/advisory/weekend/raw/20261110T223040Z.advisory.html.gz",
+      "quality": {
+        "row_count": 178,
+        "ok": false,
+        "by_kind": {
+          "closure": 178
+        },
+        "sections": 5,
+        "updated_flagged": 0,
+        "duplicate_key_count": 0,
+        "null_key_rows": 0,
+        "missing_required": {},
+        "unparseable_dates": {},
+        "absent_fields": [],
+        "parse_warnings": [
+          "1 location(s) listed more than once in the same section; keys suffixed"
+        ]
+      }
     }
   ],
   "runs": [
@@ -63,6 +89,15 @@
       "status": "failure",
       "error": "ParseError: no closure/event records parsed — page layout probably changed",
       "snapshot_written": false
+    },
+    {
+      "run_id": "20261110T223040Z",
+      "status": "success",
+      "snapshot_written": true,
+      "snapshot_hash": "ec7c950dd2e4c94dfb65484899422ddb25760cb07636076485a759008f88b4c9",
+      "row_count": 178,
+      "fetched_at_utc": "2026-11-10T22:30:40Z",
+      "raw_path": "data/advisory/weekend/raw/20261110T223040Z.advisory.html.gz"
     }
   ]
 }
