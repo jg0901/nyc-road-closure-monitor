@@ -261,3 +261,29 @@ def test_one_failing_page_does_not_block_the_other(tmp_path):
     assert load_manifest(_weekly(s).manifest)["snapshots"]             # weekly still wrote
     weekend = next(c for c in s.advisory if c.name == "weekend")
     assert load_manifest(weekend.manifest)["runs"][0]["status"] == "failure"
+
+
+# ------------------------------------------------------------------ regressions from scheduled runs
+
+def test_preliminary_heading_is_accepted():
+    # 2026-11-10 scheduled run: DOT replaced the weekend page mid-week with next weekend's preliminary version.
+    html = WEEKEND.replace("Weekend Traffic Advisory for Friday November 6, 2026, to Sunday November 8, 2026",
+                           "Preliminary Weekend Traffic Advisory for Friday November 13, 2026, to Sunday November 15, 2026")
+    a = adv.parse_advisory(html, page="weekend")
+    assert a.preliminary is True
+    assert (a.period_start, a.period_end) == ("2026-11-13", "2026-11-15")
+    assert len(a.records) == 8
+    assert adv.parse_advisory(WEEKEND, page="weekend").preliminary is False
+
+
+def test_repeated_location_in_same_section_keeps_both():
+    html = WEEK1.replace("<strong>Cross Bronx Expressway (I-95)</strong>", "<strong>Front Street between Wave Street and Hannah Street</strong>", 0)
+    html = WEEK1.replace(
+        '<strong>Front Street/Murray Hubert Avenue between Thompson Street and Bay Street</strong>',
+        '<strong>Front Street between Wave Street and Hannah Street</strong>')
+    a = adv.parse_advisory(html)
+    fronts = [r for r in a.records if r["fields"]["name"] == "Front Street between Wave Street and Hannah Street"]
+    assert len(fronts) == 2 and fronts[0]["key"] != fronts[1]["key"]
+    assert fronts[1]["key"].endswith("-2") and fronts[1]["fields"]["occurrence"] == 2
+    assert len({r["key"] for r in a.records}) == len(a.records)
+    assert any("listed more than once" in w for w in a.parse_warnings)

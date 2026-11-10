@@ -54,9 +54,9 @@ from ..normalize import content_hash, norm_text
 log = logging.getLogger("nyc_road_closure_monitor.advisory")
 
 _MONTHS = "January|February|March|April|May|June|July|August|September|October|November|December"
-_HEADING_RE = re.compile(r"^(weekly|weekend)\s+traffic\s+advisory\s+for\b", re.I)
+_HEADING_RE = re.compile(r"^(preliminary\s+)?(weekly|weekend)\s+traffic\s+advisory\s+for\b", re.I)
 _PERIOD_RE = re.compile(
-    rf"(?:Weekly|Weekend) Traffic Advisory for\s+(?:\w+\s+)?({_MONTHS})\s+(\d{{1,2}}),?\s+(\d{{4}}),?\s+to\s+(?:\w+\s+)?({_MONTHS})\s+(\d{{1,2}}),?\s+(\d{{4}})",
+    rf"(?:Preliminary\s+)?(?:Weekly|Weekend) Traffic Advisory for\s+(?:\w+\s+)?({_MONTHS})\s+(\d{{1,2}}),?\s+(\d{{4}}),?\s+to\s+(?:\w+\s+)?({_MONTHS})\s+(\d{{1,2}}),?\s+(\d{{4}})",
     re.I)
 _STRUCTURAL = {"h2", "h3", "h4", "strong", "p", "ul"}
 
@@ -70,6 +70,7 @@ class Advisory:
     period_start: str | None
     period_end: str | None
     period_text: str | None
+    preliminary: bool = False       # DOT posts next weekend's page mid-week with a "Preliminary" heading
     records: list[dict[str, Any]] = field(default_factory=list)
     sections: list[str] = field(default_factory=list)
     parse_warnings: list[str] = field(default_factory=list)
@@ -148,6 +149,7 @@ def parse_advisory(html: str, content_selector: str = "#_content", page: str = "
         if tag == "h2" and _HEADING_RE.match(text):
             started = True
             adv.period_text = text
+            adv.preliminary = text.lower().startswith("preliminary")
             adv.period_start, adv.period_end = parse_period(text)
             if not adv.period_start:
                 adv.parse_warnings.append(f"could not parse period from heading: {text!r}")
@@ -213,12 +215,19 @@ def parse_advisory(html: str, content_selector: str = "#_content", page: str = "
 
     if not adv.records:
         raise ParseError("no closure/event records parsed — page layout probably changed")
-    dup = {}
+    # Same section + same name listed twice (DOT does this): keep both, suffix the repeat's key with
+    # its ordinal so nothing is silently dropped by the diff. Different content → different hash anyway.
+    seen: dict[str, int] = {}
     for r in adv.records:
-        dup[r["key"]] = dup.get(r["key"], 0) + 1
-    dups = [k for k, n in dup.items() if n > 1]
-    if dups:
-        adv.parse_warnings.append(f"{len(dups)} duplicate keys (same section + same name)")
+        n = seen.get(r["key"], 0)
+        seen[r["key"]] = n + 1
+        if n:
+            r["fields"]["occurrence"] = n + 1
+            r["key"] = f"{r['key']}-{n + 1}"
+            r["content_hash"] = content_hash(r["fields"])
+    repeats = sum(1 for n in seen.values() if n > 1)
+    if repeats:
+        adv.parse_warnings.append(f"{repeats} location(s) listed more than once in the same section; keys suffixed")
     return adv
 
 
@@ -305,6 +314,7 @@ def run_page(cfg: AdvisoryConfig, session: Any = None, from_html: Path | None = 
                                      "advisory_period_start": adv.period_start,
                                      "advisory_period_end": adv.period_end,
                                      "advisory_period_text": adv.period_text,
+                                     "preliminary": adv.preliminary,
                                      "sections": adv.sections}
     retrieval["row_count"] = len(adv.records)
     retrieval["pages"] = 1
