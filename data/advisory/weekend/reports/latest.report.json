@@ -1,5 +1,5 @@
 {
-  "run_id": "20261112T185302Z",
+  "run_id": "20261113T183102Z",
   "status": "success",
   "error": null,
   "warnings": [
@@ -10,24 +10,24 @@
     "source_url": "https://www.nyc.gov/html/dot/html/motorist/wkndtraf.shtml",
     "dataset_name": "NYC DOT Weekend Traffic Advisory",
     "source_rows_updated_at_utc": null,
-    "fetched_at_utc": "2026-11-12T18:53:03Z",
+    "fetched_at_utc": "2026-11-13T18:31:02Z",
     "pages": 1
   },
   "counts": {
-    "rows_fetched": 178,
-    "rows_normalized": 178,
+    "rows_fetched": 206,
+    "rows_normalized": 206,
     "diff": {
-      "added": 0,
-      "modified": 0,
-      "unchanged": 178,
-      "missing": 0
+      "added": 29,
+      "modified": 166,
+      "unchanged": 11,
+      "missing": 1
     }
   },
   "quality": {
-    "row_count": 178,
+    "row_count": 206,
     "ok": false,
     "by_kind": {
-      "closure": 178
+      "closure": 206
     },
     "sections": 5,
     "updated_flagged": 0,
@@ -40,209 +40,1992 @@
       "1 location(s) listed more than once in the same section; keys suffixed"
     ]
   },
-  "field_change_counts": {},
+  "field_change_counts": {
+    "description": 166
+  },
   "snapshot": {
-    "run_id": "20261112T185302Z",
+    "run_id": "20261113T183102Z",
     "status": "success",
-    "snapshot_written": false,
-    "deduplicated_to": "20261110T223040Z",
-    "snapshot_hash": "ec7c950dd2e4c94dfb65484899422ddb25760cb07636076485a759008f88b4c9",
-    "row_count": 178,
-    "fetched_at_utc": "2026-11-12T18:53:03Z",
-    "raw_path": "data/advisory/weekend/raw/20261112T185302Z.advisory.html.gz"
+    "snapshot_written": true,
+    "snapshot_hash": "19d26f01138aede1db4a274f24598a38903e7a95058a03887aee8084a29fb7b2",
+    "row_count": 206,
+    "fetched_at_utc": "2026-11-13T18:31:02Z",
+    "raw_path": "data/advisory/weekend/raw/20261113T183102Z.advisory.html.gz"
   },
   "compared_to_run_id": "20261110T223040Z",
-  "log_path": "logs/advisory/weekend/20261112T185302Z.log",
+  "log_path": "logs/advisory/weekend/20261113T183102Z.log",
   "diff": {
     "counts": {
-      "added": 0,
-      "modified": 0,
-      "unchanged": 178,
-      "missing": 0
+      "added": 29,
+      "modified": 166,
+      "unchanged": 11,
+      "missing": 1
     },
-    "field_change_counts": {},
-    "added": [],
-    "modified": [],
-    "missing": [],
+    "field_change_counts": {
+      "description": 166
+    },
+    "added": [
+      {
+        "key": "9b9bee905dbded6f",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Manhattan",
+          "section_id": "manhattan",
+          "category": null,
+          "name": "West 11th Street between Waverly Place and West 4th Street",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 9am to 4pm Friday, through 12/31/26 for material delivery and concrete operations."
+        }
+      },
+      {
+        "key": "5a861ef299430241",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Manhattan",
+          "section_id": "manhattan",
+          "category": null,
+          "name": "West 12th Street between West Street and Washington Street",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 8am to 6pm Saturday and 9am to 6pm Sunday through 11/22/26 to facilitate crane operation."
+        }
+      },
+      {
+        "key": "444036844cf8beef",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Manhattan",
+          "section_id": "manhattan",
+          "category": null,
+          "name": "West 13th Street between 5th Avenue and 6th Avenue",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 8am to 6pm Saturday and 9am to 6pm Sunday through 11/28/26 for building inspection and minor repairs from boom truck."
+        }
+      },
+      {
+        "key": "2cbcb77a89976064",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Manhattan",
+          "section_id": "manhattan",
+          "category": null,
+          "name": "East 45th Street between Madison Avenue and Vanderbilt Avenue",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 12:01am to 6am Sunday through 12/16/26 for use of knuckle boom or crane to install hoist common platform."
+        }
+      },
+      {
+        "key": "96e4004eb2462cb6",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Manhattan",
+          "section_id": "manhattan",
+          "category": null,
+          "name": "West 53rd Street between 9th Avenue and 8th Avenue",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 8am to 6pm Saturday and 9am to 6pm Sunday through 11/14/26 to facilitate crane operation."
+        }
+      },
+      {
+        "key": "c00ec6475d017ffd",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Manhattan",
+          "section_id": "manhattan",
+          "category": null,
+          "name": "West 62nd Street between Broadway and Columbus Avenue",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 8am to 6pm Saturday for building inspection from boom truck."
+        }
+      },
+      {
+        "key": "4677ec784abafff2",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Manhattan",
+          "section_id": "manhattan",
+          "category": null,
+          "name": "East 73rd Street between Madison Avenue and Park Avenue",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 8am to 6pm Saturday and 9am to 6pm Sunday through 12/20/26 to facilitate crane operation."
+        }
+      },
+      {
+        "key": "4f1836faaeb53acf",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Manhattan",
+          "section_id": "manhattan",
+          "category": null,
+          "name": "Bedford Street between Grove Street and Barrow Street",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 9am to 4pm Friday through 11/20/26 for use of knuckle boom to hoist construction materials."
+        }
+      },
+      {
+        "key": "58b5c9b30c62f759",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Manhattan",
+          "section_id": "manhattan",
+          "category": null,
+          "name": "Mott Street between East Houston Street and Prince Street",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed 7am to 4pm Friday for building inspection and minor repairs from boom truck."
+        }
+      },
+      {
+        "key": "8f40c3246ced5760",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Manhattan",
+          "section_id": "manhattan",
+          "category": null,
+          "name": "Elizabeth Street between Prince Street and East Houston Street",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 7am to 3pm Friday for building inspection and minor repairs from boom truck."
+        }
+      },
+      {
+        "key": "0d7be38949abd626",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Manhattan",
+          "section_id": "manhattan",
+          "category": null,
+          "name": "Beaver Street between Broad Street and William Street",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 8am to 6pm Saturday and 9am to 6pm Sunday through 11/14/26 for building inspection from boom truck."
+        }
+      },
+      {
+        "key": "b2982e6926f6e045",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Manhattan",
+          "section_id": "manhattan",
+          "category": null,
+          "name": "South William Street between Mill Lane and William Street",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 8am to 6pm Saturday and 9am to 6pm Sunday through 11/14/26 for building inspection from boom truck."
+        }
+      },
+      {
+        "key": "6735a4ef77b4fa60",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Manhattan",
+          "section_id": "manhattan",
+          "category": null,
+          "name": "South William Street between Broad Street and Mill Lane",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 8am to 6pm Saturday and 9am to 6pm Sunday through 11/14/26 for building inspection from boom truck."
+        }
+      },
+      {
+        "key": "1a9a10a851914b03",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Manhattan",
+          "section_id": "manhattan",
+          "category": null,
+          "name": "Jane Street between Washington Street and Greenwich Street",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 7am to 4pm Monday to Friday through 11/18/26 for use of knuckle boom for lifting/hoisting machinery."
+        }
+      },
+      {
+        "key": "d734138802291cfd",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Manhattan",
+          "section_id": "manhattan",
+          "category": null,
+          "name": "Joseph P. Ward Street between West Street and Washington Street",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 10pm Friday to 5am Monday through 11/30/26 for associated closure for tower crane dismantle."
+        }
+      },
+      {
+        "key": "317251f5b6fad56e",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Manhattan",
+          "section_id": "manhattan",
+          "category": null,
+          "name": "Washington Street between Rector Street and Joseph P, Ward Street",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 10pm Friday to 5am Monday through 11/30/26 for associated closure for tower crane dismantle."
+        }
+      },
+      {
+        "key": "d3318e5c3999bdbb",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Bronx",
+          "section_id": "bronx",
+          "category": null,
+          "name": "Grant Avenue between East 162 Street and East 163 Street",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 9am to 6pm Sunday through 12/15/26 to hoist material up using knuckle boom."
+        }
+      },
+      {
+        "key": "141071e30f89717d",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Bronx",
+          "section_id": "bronx",
+          "category": null,
+          "name": "Anthony Avenue between East 180th Street and East 181st Street",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 8am to 6pm Saturday and 9am to 6pm Sunday through 12/15/26 to facilitate crane operation."
+        }
+      },
+      {
+        "key": "04b082550a88a51d",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Bronx",
+          "section_id": "bronx",
+          "category": null,
+          "name": "Sherman Avenue between East 161st Street and East 163rd Street",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 9am to 6pm Sunday through 12/15/26 to hoist material up using knuckle boom."
+        }
+      },
+      {
+        "key": "0ecb4c7954177520",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Bronx",
+          "section_id": "bronx",
+          "category": null,
+          "name": "Stebbins Avenue between East 170th Street and Boston Road",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 8am to 6pm Saturday and 9am to 6pm Sunday, through 11/22/26 to facilitate crane operation."
+        }
+      },
+      {
+        "key": "ef714a244c046601",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Bronx",
+          "section_id": "bronx",
+          "category": null,
+          "name": "Mt. Hope Place between Jerome Avenue and Walton Avenue",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 8am to 6pm Saturday and 9am to 6pm Sunday through 12/11/26 to facilitate crane operation."
+        }
+      },
+      {
+        "key": "5adbe482406cfceb",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Brooklyn",
+          "section_id": "brooklyn",
+          "category": null,
+          "name": "Neptune Avenue between Shell Road and West 6th Street",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 10pm to 6am Friday to Saturday morning through 11/22/26 to facilitate crane operation."
+        }
+      },
+      {
+        "key": "36e44d85ec3ea7ee",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Brooklyn",
+          "section_id": "brooklyn",
+          "category": null,
+          "name": "Charles Place between Willoughby Avenue and Dead End",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 9am to 4pm Friday through 12/10/26 for booming and concrete pour."
+        }
+      },
+      {
+        "key": "3ac75b65479cb72a",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Brooklyn",
+          "section_id": "brooklyn",
+          "category": null,
+          "name": "Emerson Place between Myrtle Avenue and Willoughby Avenue",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 9am to 4pm Friday through 12/14/26 for knuckle boom operations."
+        }
+      },
+      {
+        "key": "97ce668c64ac6f54",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Brooklyn",
+          "section_id": "brooklyn",
+          "category": null,
+          "name": "Pearl Street between Sands Street and High Street",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 8am to 6pm Saturday and 9am to 6pm Sunday through 11/22/26 for associated closure."
+        }
+      },
+      {
+        "key": "97172f264375a0c4",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Brooklyn",
+          "section_id": "brooklyn",
+          "category": null,
+          "name": "High Street between Pearl Street and Jay Street",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 8am to 6pm Saturday and 9am to 6pm Sunday through 11/22/26 to facilitate crane operation."
+        }
+      },
+      {
+        "key": "96c1fa5803b4cfdc",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Brooklyn",
+          "section_id": "brooklyn",
+          "category": null,
+          "name": "Carlton Avenue between Willoughby Avenue and Dekalb Avenue",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 9am to 2pm Monday to Friday and 8am to 4pm Saturday through 11/20/26 for utility and infrastructure upgrades for NYCDDC HWPR20MKL contract."
+        }
+      },
+      {
+        "key": "204bdb57b34822e7",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Brooklyn",
+          "section_id": "brooklyn",
+          "category": null,
+          "name": "Bartlett Street between Harrison Avenue and Throop Avenue",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 9am to 4pm Friday through 12/31/26 to facilitate crane operation."
+        }
+      },
+      {
+        "key": "b3942db411b1c3fb",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Queens",
+          "section_id": "queens",
+          "category": null,
+          "name": "Cornelia Street between Wyckoff Avenue and Cypress Avenue",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 9am to 4pm Friday to facilitate crane operation."
+        }
+      }
+    ],
+    "modified": [
+      {
+        "key": "03c8e22d76450382",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 1am to 7am Saturday and Sunday through November 15, 2026 for steel erection over 10th Avenue at West 40th Street (overhead bridge).",
+            "to": "This street will be closed from 1am to 7am Saturday and Sunday through 11/15/26 for steel erection over 10th Avenue at West 40th Street (overhead bridge)."
+          }
+        }
+      },
+      {
+        "key": "c588e7efd47e7feb",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 8am to 6pm Saturday and 9am to 6pm Sunday through November 14, 2026 to facilitate crane operation.",
+            "to": "This street will be closed from 8am to 6pm Saturday and 9am to 6pm Sunday through 11/14/26 to facilitate crane operation."
+          }
+        }
+      },
+      {
+        "key": "69394d8ffbbf4632",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 4am to 1pm Saturday and Sunday through November 14, 2026 for building inspection from boom truck.",
+            "to": "This street will be closed from 4am to 1pm Saturday and Sunday through 11/14/26 for building inspection from boom truck."
+          }
+        }
+      },
+      {
+        "key": "0d87645e4adff04e",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 4am to 1pm Saturday and Sunday through November 14, 2026 building inspection from boom truck.",
+            "to": "This street will be closed from 4am to 1pm Saturday and Sunday through 11/14/26 building inspection from boom truck."
+          }
+        }
+      },
+      {
+        "key": "30ee33cb852ccb16",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 8am to 6pm Saturday and 9am to 6pm Sunday through November 15, 2026 to facilitate crane operation.",
+            "to": "This street will be closed from 8am to 6pm Saturday and 9am to 6pm Sunday through 11/15/26 to facilitate crane operation."
+          }
+        }
+      },
+      {
+        "key": "e07421b39aabf9f5",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 8am to 6pm Saturday and 9am to 6pm Sunday through November 14, 2026 for system enhancements.",
+            "to": "This street will be closed from 8am to 6pm Saturday and 9am to 6pm Sunday through 11/14/26 for system enhancements."
+          }
+        }
+      },
+      {
+        "key": "d5eadcece49b1370",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 12:01am Saturday to 9pm Sunday through November 22, 2026 to facilitate crane operation.",
+            "to": "This street will be closed from 12:01am Saturday to 9pm Sunday through 11/22/26 to facilitate crane operation."
+          }
+        }
+      },
+      {
+        "key": "ca5268a9be80c00a",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 10pm to 6am nightly to facilitate crane operation through November 15, 2026.",
+            "to": "This street will be closed from 10pm to 6am nightly to facilitate crane operation through 11/15/26."
+          }
+        }
+      },
+      {
+        "key": "cab056fe9f854deb",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 6am to 2pm Saturday and Sunday through November 14, 2026 to facilitate crane operation.",
+            "to": "This street will be closed from 6am to 2pm Saturday and Sunday through 11/14/26 to facilitate crane operation."
+          }
+        }
+      },
+      {
+        "key": "2c59e2704298c305",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 5am to 3pm Saturday and Sunday through November 14, 2026 to facilitate crane operation.",
+            "to": "This street will be closed from 5am to 3pm Saturday and Sunday through 11/14/26 to facilitate crane operation."
+          }
+        }
+      },
+      {
+        "key": "dd63b5e4232428c5",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 7am to 1pm Saturday and Sunday through November 22, 2026 to facilitate crane operation.",
+            "to": "This street will be closed from 7am to 1pm Saturday and Sunday through 11/22/26 to facilitate crane operation."
+          }
+        }
+      },
+      {
+        "key": "633a336fb0108087",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 6am to 3pm Saturday and Sunday through November 22, 2026 for hoisting generator.",
+            "to": "This street will be closed from 6am to 3pm Saturday and Sunday through 11/22/26 for hoisting generator."
+          }
+        }
+      },
+      {
+        "key": "8b942ec9e6efdfc7",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 5am to 3pm Saturday and Sunday through November 14, 2026 to facilitate crane operation.",
+            "to": "This street will be closed from 5am to 3pm Saturday and Sunday through 11/14/26 to facilitate crane operation."
+          }
+        }
+      },
+      {
+        "key": "d70f07185d305ffb",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 8am to 5pm Saturday and Sunday through November 14, 2026 to facilitate crane operation.",
+            "to": "This street will be closed from 8am to 5pm Saturday and Sunday through 11/14/26 to facilitate crane operation."
+          }
+        }
+      },
+      {
+        "key": "10f4e31577af5459",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 11pm to 5am Friday through December 10, 2026 for Dyer deck over; initial crane set up and steel deliveries.",
+            "to": "This street will be closed from 11pm to 5am Friday through 12/10/26 for Dyer deck over; initial crane set up and steel deliveries."
+          }
+        }
+      },
+      {
+        "key": "89c8d31e1d4ee1f5",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 11pm to 5am Friday through December 10, 2026 for Dyer deck over; initial crane setup and steel deliveries.",
+            "to": "This street will be closed from 11pm to 5am Friday through 12/10/26 for Dyer deck over; initial crane setup and steel deliveries."
+          }
+        }
+      },
+      {
+        "key": "777e75c19f41b76a",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 5am to 3pm Saturday and Sunday through November 14, 2026 to facilitate crane operation.",
+            "to": "This street will be closed from 5am to 3pm Saturday and Sunday through 11/14/26 to facilitate crane operation."
+          }
+        }
+      },
+      {
+        "key": "e8d326c14a177cb5",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 5am to 3pm Saturday and Sunday through February 15, 2027 for steel placement over West 40th Street.",
+            "to": "This street will be closed from 5am to 3pm Saturday and Sunday through 2/15/27 for steel placement over West 40th Street."
+          }
+        }
+      },
+      {
+        "key": "e8d326c14a177cb5-2",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 9pm to 5am Friday through November 14, 2026 for steel placement over West 40th Street.",
+            "to": "This street will be closed from 9pm to 5am Friday through 11/14/26 for steel placement over West 40th Street."
+          }
+        }
+      },
+      {
+        "key": "5405273d6cc7d465",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 9am to 3pm Sunday through November 14, 2026 to facilitate crane operation.",
+            "to": "This street will be closed from 9am to 3pm Sunday through 11/14/26 to facilitate crane operation."
+          }
+        }
+      },
+      {
+        "key": "4a3ab09af81fb621",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 8am to 6pm Saturday and 9am to 6pm Sunday through November 15, 2026 to facilitate crane operation.",
+            "to": "This street will be closed from 8am to 6pm Saturday and 9am to 6pm Sunday through 11/15/26 to facilitate crane operation."
+          }
+        }
+      },
+      {
+        "key": "0316bb8e4d1c175a",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 11:30pm Sunday to 7am Friday through November 14, 2026 to facilitate crane operation.",
+            "to": "This street will be closed from 11:30pm Sunday to 7am Friday through 12/31/26 to facilitate crane operation."
+          }
+        }
+      },
+      {
+        "key": "394ca5547c26b288",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 9pm to 6am nightly through December 15, 2026 for GCT train shed project.",
+            "to": "This street will be closed from 9pm to 6am nightly through 12/15/26 for GCT train shed project."
+          }
+        }
+      },
+      {
+        "key": "24993232e2ecf102",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 9pm to 6am nightly through December 15, 2026 for GCT train shed project.",
+            "to": "This street will be closed from 9pm to 6am nightly through 12/15/26 for GCT train shed project."
+          }
+        }
+      },
+      {
+        "key": "626abd614cd7f658",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 11:30pm to 7am Sunday through November 30, 2026 for use of mobile crane and manlifts for facade and signage work.",
+            "to": "This street will be closed from 11:30pm to 7am Sunday through 11/30/26 for use of mobile crane and manlifts for facade and signage work."
+          }
+        }
+      },
+      {
+        "key": "6fa8e3d8d95bce19",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 11:30pm to 6am nightly through December 15, 2026 for GCT train shed project.",
+            "to": "This street will be closed from 11:30pm to 6am nightly through 12/15/26 for GCT train shed project."
+          }
+        }
+      },
+      {
+        "key": "c8fa3bfb0b434181",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 9pm to 6am nightly through December 15, 2026 for GCT train shed project.",
+            "to": "This street will be closed from 9pm to 6am nightly through 12/15/26 for GCT train shed project."
+          }
+        }
+      },
+      {
+        "key": "3d2a5ec71658d9f7",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 11:30am to 7am Sunday through November 30, 2026 for use of mobile crane and manlifts for facade and signage work.",
+            "to": "This street will be closed from 11:30am to 7am Sunday through 11/30/26 for use of mobile crane and manlifts for facade and signage work."
+          }
+        }
+      },
+      {
+        "key": "6ca0e57e0dd60934",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 6am to 8pm Saturday and Sunday through November 14, 2026 to facilitate crane operation.",
+            "to": "This street will be closed from 6am to 8pm Saturday and Sunday through 11/14/26 to facilitate crane operation."
+          }
+        }
+      },
+      {
+        "key": "980910c79d919e87",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 10pm to 6am nightly through November 14, 2026 to install conduit for system reliability.",
+            "to": "This street will be closed from 10pm to 6am nightly through 11/14/26 to install conduit for system reliability."
+          }
+        }
+      },
+      {
+        "key": "57a55ca6cc6bcb79",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 8am to 6pm Saturday and 9am to 6pm Sunday through November 15, 2026 to facilitate crane operation.",
+            "to": "This street will be closed from 8am to 6pm Saturday and 9am to 6pm Sunday through 11/15/26 to facilitate crane operation."
+          }
+        }
+      },
+      {
+        "key": "96d731669a86da06",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 9pm to 5am Friday through November 14, 2026 to facilitate test pit exploratory work to determine the location of existing underground water and sewer utilities.",
+            "to": "This street will be closed from 9pm to 5am Friday through 11/14/26 to facilitate test pit exploratory work to determine the location of existing underground water and sewer utilities."
+          }
+        }
+      },
+      {
+        "key": "6bd6a99fdebfaddd",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 8am to 6pm Saturday through November 14, 2026 to facilitate crane operation.",
+            "to": "This street will be closed from 8am to 6pm Saturday through 11/14/26 to facilitate crane operation."
+          }
+        }
+      },
+      {
+        "key": "6366dd81eb667449",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 9am to 3pm Monday to Friday through November 13, 2026 for knuckle boom placement for delivery of paintings.",
+            "to": "This street will be closed from 9am to 3pm Monday to Friday through 11/13/26 for knuckle boom placement for delivery of paintings."
+          }
+        }
+      },
+      {
+        "key": "74058151b0aa5362",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 9am to 4pm Friday through December 13, 2026 to lift and remove materials from roof with use of knuckle boom.",
+            "to": "This street will be closed from 9am to 4pm Friday through 12/13/26 to lift and remove materials from roof with use of knuckle boom."
+          }
+        }
+      },
+      {
+        "key": "2de3222ce2e53b29",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 8am to 6pm Saturday through November 14, 2026 to facilitate crane operation.",
+            "to": "This street will be closed from 8am to 6pm Saturday through 11/14/26 to facilitate crane operation."
+          }
+        }
+      },
+      {
+        "key": "c3970b041e816a94",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 8am to 6pm Saturday and 9am to 6pm Sunday through November 22, 2026 to facilitate crane operation.",
+            "to": "This street will be closed from 8am to 6pm Saturday and 9am to 6pm Sunday through 11/22/26 to facilitate crane operation."
+          }
+        }
+      },
+      {
+        "key": "21c569c16ab09813",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 9am to 4pm Friday through November 22, 2026 for inspection and minor repairs from boom truck.",
+            "to": "This street will be closed from 9am to 4pm Friday through 11/22/26 for inspection and minor repairs from boom truck."
+          }
+        }
+      },
+      {
+        "key": "35852d984fc6a42c",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 8am to 6pm Saturday and 9am to 6pm Sunday through November 14, 2026 for building inspection and minor repairs from boom truck.",
+            "to": "This street will be closed from 8am to 6pm Saturday and 9am to 6pm Sunday through 11/14/26 for building inspection and minor repairs from boom truck."
+          }
+        }
+      },
+      {
+        "key": "42f0fa86acf89ce2",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 8am to 6pm Saturday and 9am to 6pm Sunday through November 29, 2026 for building inspection from boom truck.",
+            "to": "This street will be closed from 8am to 6pm Saturday and 9am to 6pm Sunday through 11/29/26 for building inspection from boom truck."
+          }
+        }
+      },
+      {
+        "key": "f686ac51cb9fbe8c",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 8am to 4pm Saturday through November 21, 2026 for inspection and minor repairs from boom truck.",
+            "to": "This street will be closed from 8am to 4pm Saturday through 11/21/26 for inspection and minor repairs from boom truck."
+          }
+        }
+      },
+      {
+        "key": "fda2d15466c8242a",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 8am to 6pm Saturday and 9am to 6pm Sunday through November 14, 2026 to pour concrete to a new roof.",
+            "to": "This street will be closed from 8am to 6pm Saturday and 9am to 6pm Sunday through 11/14/26 to pour concrete to a new roof."
+          }
+        }
+      },
+      {
+        "key": "5046fc0ccee83724",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 8am to 6pm Saturday and 9am to 6pm Sunday through November 22, 2026 to facilitate crane operation.",
+            "to": "This street will be closed from 8am to 6pm Saturday and 9am to 6pm Sunday through 11/22/26 to facilitate crane operation."
+          }
+        }
+      },
+      {
+        "key": "f010e6b86edd6613",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 8am to 6pm Saturday and 9am to 6pm Sunday through November 22, 2026 to facilitate crane operation.",
+            "to": "This street will be closed from 8am to 6pm Saturday and 9am to 6pm Sunday through 11/22/26 to facilitate crane operation."
+          }
+        }
+      },
+      {
+        "key": "202d9264e0e71ca5",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 8am to 6pm Saturday, and 9am to 6pm Sunday through November 15, 2026 to facilitate crane operation.",
+            "to": "This street will be closed from 8am to 6pm Saturday, and 9am to 6pm Sunday through 11/15/26 to facilitate crane operation."
+          }
+        }
+      },
+      {
+        "key": "c9a3c6004badd4a5",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 7am to 7pm Sunday through November 15, 2026 to facilitate crane operation.",
+            "to": "This street will be closed from 7am to 7pm Sunday through 11/15/26 to facilitate crane operation."
+          }
+        }
+      },
+      {
+        "key": "c808bca38860ac3a",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 8am to 4pm Saturday through November 21, 2026 for building inspection from boom truck.",
+            "to": "This street will be closed from 8am to 4pm Saturday through 11/21/26 for building inspection from boom truck."
+          }
+        }
+      },
+      {
+        "key": "dbdcd4cb18ce0967",
+        "changes": {
+          "description": {
+            "from": "This street will be closed 9am to 4pm Friday through December 10, 2026 for test pits and borings for Second Avenue Subway.",
+            "to": "This street will be closed 9am to 4pm Friday through 12/10/26 for test pits and borings for Second Avenue Subway."
+          }
+        }
+      },
+      {
+        "key": "d355b55126b3793f",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 9am to 5pm Friday through December 31, 2026 for material delivery with knuckle booms, boom truck and concrete pouring.",
+            "to": "This street will be closed from 9am to 5pm Friday through 12/31/26 for material delivery with knuckle booms, boom truck and concrete pouring."
+          }
+        }
+      },
+      {
+        "key": "2b6869bf736a5c3a",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 9am to 4pm Monday Friday (when school is not in session), and 9am 2pm Monday to Friday (when school is in session) through December 10, 2026 for test pits and borings for Second Avenue Subway.",
+            "to": "This street will be closed from 9am to 4pm Monday Friday (when school is not in session), and 9am 2pm Monday to Friday (when school is in session) through 12/10/26 for test pits and borings for Second Avenue Subway."
+          }
+        }
+      },
+      {
+        "key": "0bedf6b03141bab3",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 9am to 4pm Monday Friday (when school is not in session), and 9am 2pm Monday to Friday (when school is in session) through December 10, 2026 for test pits and borings for Second Avenue Subway.",
+            "to": "This street will be closed from 9am to 4pm Monday Friday (when school is not in session), and 9am 2pm Monday to Friday (when school is in session) through 12/10/26 for test pits and borings for Second Avenue Subway."
+          }
+        }
+      },
+      {
+        "key": "49d9c181ab75dd6e",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 9am to 3pm Monday through Friday through November 20, 2026 for building inspection from boom truck.",
+            "to": "This street will be closed from 9am to 3pm Monday through Friday through 11/20/26 for building inspection from boom truck."
+          }
+        }
+      },
+      {
+        "key": "9bde9d533cbeeae1",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 9am to 6pm Monday to Friday through November 30, 2026 for conduit installation for use of knuckle boom and concrete pump operations.",
+            "to": "This street will be closed from 9am to 6pm Monday to Friday through 11/30/26 for conduit installation for use of knuckle boom and concrete pump operations."
+          }
+        }
+      },
+      {
+        "key": "ee92190cfc1ea028",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 9am to 3pm Monday to Friday through November 16, 2026 for use of boom truck for facade repair.",
+            "to": "This street will be closed from 9am to 3pm Monday to Friday through 11/16/26 for use of boom truck for facade repair."
+          }
+        }
+      },
+      {
+        "key": "2f213dd9927ed7ba",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 9am to 2pm (when school is in session) and 9am to 4pm (when school is not in session) through November 18, 2026 for gas work-system enhancement.",
+            "to": "This street will be closed from 9am to 2pm (when school is in session) and 9am to 4pm (when school is not in session) through 11/18/26 for gas work-system enhancement."
+          }
+        }
+      },
+      {
+        "key": "3ba902803cde8656",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 8am to 6pm Saturday and 9am to 6pm Sunday through November 29, 2026 for building inspection from boom truck.",
+            "to": "This street will be closed from 8am to 6pm Saturday and 9am to 6pm Sunday through 11/29/26 for building inspection from boom truck."
+          }
+        }
+      },
+      {
+        "key": "e48cf71bbe2a5651",
+        "changes": {
+          "description": {
+            "from": "This street will be fully closed from 1opm Friday to 5am Monday through November 23, 2026 for cable pulling of manholes.",
+            "to": "This street will be fully closed from 1opm Friday to 5am Monday through 11/23/26 for cable pulling of manholes."
+          }
+        }
+      },
+      {
+        "key": "0e9da2e2f518fec4",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 10am to 2pm Friday through November 27, 2026 for abrasive painting-installing bird spikes-Park Avenue viaduct-northbound.",
+            "to": "This street will be closed from 10am to 2pm Friday through 11/27/26 for abrasive painting-installing bird spikes-Park Avenue viaduct-northbound."
+          }
+        }
+      },
+      {
+        "key": "0d0b01fcdb7b340a",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 10am to 6pm Saturday through December 31, 2026 for boom operations.",
+            "to": "This street will be closed from 10am to 6pm Saturday through 12/31/26 for boom operations."
+          }
+        }
+      },
+      {
+        "key": "7dfcc4a420f1f313",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 9am to 4pm Friday through December 31, 2026 for concrete pour.",
+            "to": "This street will be closed from 9am to 4pm Friday through 12/31/26 for concrete pour."
+          }
+        }
+      },
+      {
+        "key": "c2da3d5ab8736be7",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 9am to 4pm Friday through November 30, 2026 for use of knuckle boom to hoist construction materials.",
+            "to": "This street will be closed from 9am to 4pm Friday through 11/30/26 for use of knuckle boom to hoist construction materials."
+          }
+        }
+      },
+      {
+        "key": "a73be29ec05f9995",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 4am to 1pm Saturday and Sunday through November 14, 2026 for building inspection from boom truck.",
+            "to": "This street will be closed from 4am to 1pm Saturday and Sunday through 11/14/26 for building inspection from boom truck."
+          }
+        }
+      },
+      {
+        "key": "063901f30cc0864b",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 7am to 3pm Monday to Friday through November 19, 2026 for new business service.",
+            "to": "This street will be closed from 7am to 3pm Monday to Friday through 11/19/26 for new business service."
+          }
+        }
+      },
+      {
+        "key": "6c5d91a80f88961a",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 8am to 4pm Saturday through November 20, 2026 for building inspection from boom truck.",
+            "to": "This street will be closed from 8am to 4pm Saturday through 11/20/26 for building inspection from boom truck."
+          }
+        }
+      },
+      {
+        "key": "df6646e44e49bdea",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 6am to 10am Monday to Friday through December 5, 2026 for utilizing the gantry rigging system to deliver material.",
+            "to": "This street will be closed from 6am to 10am Monday to Friday through 12/5/26 for utilizing the gantry rigging system to deliver material."
+          }
+        }
+      },
+      {
+        "key": "3f90f7c84b7fdb37",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 9am to 4pm Friday through December 11, 2026 to lift and remove materials from roof with use of knuckle boom.",
+            "to": "This street will be closed from 9am to 4pm Friday through 12/11/26 to lift and remove materials from roof with use of knuckle boom."
+          }
+        }
+      },
+      {
+        "key": "e4d809eb05491e79",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 7am to 1pm Monday to Friday through November 20, 2026 for building inspection from boom truck.",
+            "to": "This street will be closed from 7am to 1pm Monday to Friday through 11/20/26 for building inspection from boom truck."
+          }
+        }
+      },
+      {
+        "key": "e9406b2159619ed3",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 7am to 3pm Monday to Friday through November 13, 2026 to facilitate crane operation.",
+            "to": "This street will be closed from 7am to 3pm Monday to Friday through 11/13/26 to facilitate crane operation."
+          }
+        }
+      },
+      {
+        "key": "1fb516b9e1685243",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 8am to 6pm Saturday and 9am to 6pm Sunday through November 14, 2026 install conduit for system reliability.",
+            "to": "This street will be closed from 8am to 6pm Saturday and 9am to 6pm Sunday through 11/14/26 install conduit for system reliability."
+          }
+        }
+      },
+      {
+        "key": "e31c588d9139dac0",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 8am to 6pm Saturday and 9am to 6pm Sunday through November 14, 2026 install conduit for system reliability.",
+            "to": "This street will be closed from 8am to 6pm Saturday and 9am to 6pm Sunday through 11/14/26 install conduit for system reliability."
+          }
+        }
+      },
+      {
+        "key": "1e15b543d127b347",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 8am to 6pm Saturday and 9am to 6pm Sunday through December 27, 2026 installation of conduit for system reinforcement.",
+            "to": "This street will be closed from 8am to 6pm Saturday and 9am to 6pm Sunday through 12/27/26 installation of conduit for system reinforcement."
+          }
+        }
+      },
+      {
+        "key": "f347595489a122d3",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 8am to 6pm Saturday and 9am to 6pm Sunday through December 27, 2026 for installation of conduit for system reinforcement.",
+            "to": "This street will be closed from 8am to 6pm Saturday and 9am to 6pm Sunday through 12/27/26 for installation of conduit for system reinforcement."
+          }
+        }
+      },
+      {
+        "key": "906167b1f79365b3",
+        "changes": {
+          "description": {
+            "from": "This street will be closed 24/7 through December 31, 2026 for reconstruction of Nassau Street.",
+            "to": "This street will be closed 24/7 through 12/31/26 for reconstruction of Nassau Street."
+          }
+        }
+      },
+      {
+        "key": "3ba7af1dfecd40e9",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 7am to 4pm Friday, 8am to 6pm Saturday and Sunday through December 31, 2026 for the reconstruction of Nassau Street.",
+            "to": "This street will be closed from 7am to 4pm Friday, 8am to 6pm Saturday and Sunday through 12/31/26 for the reconstruction of Nassau Street."
+          }
+        }
+      },
+      {
+        "key": "c0e0ff843a6b648e",
+        "changes": {
+          "description": {
+            "from": "This street will be closed 24/7 through December 22, 2026 for water street streetscape improvements.",
+            "to": "This street will be closed 24/7 through 12/22/26 for water street streetscape improvements."
+          }
+        }
+      },
+      {
+        "key": "0bf2fea41a640a8d",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 9am to 4pm Friday through December 31, 2026 for SANDRESPC-East Side Coastal Resiliency.",
+            "to": "This street will be closed from 9am to 4pm Friday through 12/31/26 for SANDRESPC-East Side Coastal Resiliency."
+          }
+        }
+      },
+      {
+        "key": "be5a2b3bfe1df54d",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 11:30pm to 7am Sunday through November 30, 2026 for use of mobile crane and manlift for facade and signage work.",
+            "to": "This street will be closed from 11:30pm to 7am Sunday through 11/30/26 for use of mobile crane and manlift for facade and signage work."
+          }
+        }
+      },
+      {
+        "key": "3090fa65b01e0734",
+        "changes": {
+          "description": {
+            "from": "This street will be closed 24/7 through December 31, 2026 for new building construction at 200 Greenwich Street.",
+            "to": "This street will be closed 24/7 through 12/31/26 for new building construction at 200 Greenwich Street."
+          }
+        }
+      },
+      {
+        "key": "851953e5907abdc3",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 9am to 4pm Monday to Friday through November 25, 2026 for system upgrade.",
+            "to": "This street will be closed from 9am to 4pm Monday to Friday through 11/25/26 for system upgrade."
+          }
+        }
+      },
+      {
+        "key": "b9082ad018927684",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 8am to 6pm Saturday and 9am to 6pm Sunday through November 22, 2026 for building inspection from boom truck.",
+            "to": "This street will be closed from 8am to 6pm Saturday and 9am to 6pm Sunday through 11/22/26 for building inspection from boom truck."
+          }
+        }
+      },
+      {
+        "key": "2477bd2dc34c36d9",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 9am to 4pm Friday through November 16, 2026 for building inspection from boom truck.",
+            "to": "This street will be closed from 9am to 4pm Friday through 11/16/26 for building inspection from boom truck."
+          }
+        }
+      },
+      {
+        "key": "b24f77209a737ced",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 9am to 4pm Friday through November 16, 2026 for building inspection from boom truck.",
+            "to": "This street will be closed from 9am to 4pm Friday through 11/16/26 for building inspection from boom truck."
+          }
+        }
+      },
+      {
+        "key": "dbc0693c7e19adb8",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 8am to 6pm Saturday and 9am to 6pm Sunday through November 14, 2026 to facilitate crane operation.",
+            "to": "This street will be closed from 8am to 6pm Saturday and 9am to 6pm Sunday through 11/14/26 to facilitate crane operation."
+          }
+        }
+      },
+      {
+        "key": "b281c50408178122",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 7am to 6pm Monday to Friday through December 4, 2026 for booming and pumping operations for new building construction.",
+            "to": "This street will be closed from 7am to 6pm Monday to Friday through 12/4/26 for booming and pumping operations for new building construction."
+          }
+        }
+      },
+      {
+        "key": "4a619fea0f91dbc7",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 6am to 6pm Saturday and Sunday through November 15, 2026 to facilitate crane operation.",
+            "to": "This street will be closed from 6am to 6pm Saturday and Sunday through 11/15/26 to facilitate crane operation."
+          }
+        }
+      },
+      {
+        "key": "f86e45ed796781e0",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 9pm to 5am Friday and 9pm to 9am Saturday through November 13, 2026 for Montgomery Street flood gate installation and testing.",
+            "to": "This street will be closed from 9pm to 5am Friday and 9pm to 9am Saturday through 11/13/26 for Montgomery Street flood gate installation and testing."
+          }
+        }
+      },
+      {
+        "key": "38f7e115987c82cf",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 8am to 6pm Sunday through November 14, 2026 for building inspection from boom truck.",
+            "to": "This street will be closed from 8am to 6pm Sunday through 11/14/26 for building inspection from boom truck."
+          }
+        }
+      },
+      {
+        "key": "e2b9a3fc5f344acd",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 9am to 4pm Friday through November 20, 2026 to facilitate crane operation.",
+            "to": "This street will be closed from 9am to 4pm Friday through 11/20/26 to facilitate crane operation."
+          }
+        }
+      },
+      {
+        "key": "f1d1298eeee8df30",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 9am to 4pm Monday to Friday through December 5, 2026 for new building/booming.",
+            "to": "This street will be closed from 9am to 4pm Monday to Friday through 12/5/26 for new building/booming."
+          }
+        }
+      },
+      {
+        "key": "0683a02c33aa025d",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 8am to 6pm Saturday and 9am to 6pm Sunday through December 13, 2026 for electric major service/equipment, backhoe, dump truck.",
+            "to": "This street will be closed from 8am to 6pm Saturday and 9am to 6pm Sunday through 12/13/26 for electric major service/equipment, backhoe, dump truck."
+          }
+        }
+      },
+      {
+        "key": "ad26d278905a3ef6",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 6am Friday to 4pm Saturday and 5am to 9pm Sunday through November 22, 2026 for mainline track repairs.",
+            "to": "This street will be closed from 6am Friday to 4pm Saturday and 5am to 9pm Sunday through 11/22/26 for mainline track repairs."
+          }
+        }
+      },
+      {
+        "key": "3bfa0e827ead7a29",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 9am to 4pm Friday through November 29, 2026 for use of knuckle boom and concrete pumps for foundation phase.",
+            "to": "This street will be closed from 9am to 4pm Friday through 11/29/26 for use of knuckle boom and concrete pumps for foundation phase."
+          }
+        }
+      },
+      {
+        "key": "e2ff44e1b55b6a98",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 9am to 4pm Friday through January 6, 2027 for boom truck operations, 9 story building.",
+            "to": "This street will be closed from 9am to 4pm Friday through 1/6/27 for boom truck operations, 9 story building."
+          }
+        }
+      },
+      {
+        "key": "3f94b48bcb9b6f9d",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 9am to 4pm Friday through November 16, 2026 for new building.",
+            "to": "This street will be closed from 9am to 4pm Friday through 11/16/26 for new building."
+          }
+        }
+      },
+      {
+        "key": "5967e1440844694d",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 9am to 4pm Friday through November 23, 2026 for booming and pouring concrete.",
+            "to": "This street will be closed from 9am to 4pm Friday through 11/23/26 for booming and pouring concrete."
+          }
+        }
+      },
+      {
+        "key": "e5006b7278bc6353",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 9am to 2pm Friday through November 20, 2026 for concrete operations and boom truck operations.",
+            "to": "This street will be closed from 9am to 2pm Friday through 11/20/26 for concrete operations and boom truck operations."
+          }
+        }
+      },
+      {
+        "key": "03b22f1e6d911cad",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 9am to 4pm Monday to Friday through November 24, 2026 for use of boom, knuckle boom and concrete pump to work on new building.",
+            "to": "This street will be closed from 9am to 4pm Monday to Friday through 11/24/26 for use of boom, knuckle boom and concrete pump to work on new building."
+          }
+        }
+      },
+      {
+        "key": "b24b6122e3ed1867",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 9am to 4pm Monday to Friday through December 2, 2026 for concrete pump and boom truck.",
+            "to": "This street will be closed from 9am to 4pm Monday to Friday through 12/2/26 for concrete pump and boom truck."
+          }
+        }
+      },
+      {
+        "key": "8bdab3899e2f933f",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 9am to 2pm (when school is in session) and 9am to 4pm Friday (when school is not in session) through November 13, 2026 for booming and concrete pouring.",
+            "to": "This street will be closed from 9am to 2pm (when school is in session) and 9am to 4pm Friday (when school is not in session) through 11/13/26 for booming and concrete pouring."
+          }
+        }
+      },
+      {
+        "key": "7bc678d91344858b",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 10pm to 6am Monday to Friday through November 27, 2026 for boom truck/bucket truck-sign work-banner installation.",
+            "to": "This street will be closed from 10pm to 6am Monday to Friday through 11/27/26 for boom truck/bucket truck-sign work-banner installation."
+          }
+        }
+      },
+      {
+        "key": "bf8a2613a9d628f1",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 4pm Friday to 5am Monday through November 16, 2026 for crane-bridge construction for MTA contract CBX001.",
+            "to": "This street will be closed from 4pm Friday to 5am Monday through 11/16/26 for crane-bridge construction for MTA contract CBX001."
+          }
+        }
+      },
+      {
+        "key": "b5d038bf402f1276",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 8am to 6pm Monday to Friday through December 26, 2026 for concrete pumping, booming and deliveries.",
+            "to": "This street will be closed from 8am to 6pm Monday to Friday through 12/26/26 for concrete pumping, booming and deliveries."
+          }
+        }
+      },
+      {
+        "key": "1e5c285d11d5c68e",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 9am to 4pm Monday to Friday through December 12, 2026 for concrete pouring, material booming.",
+            "to": "This street will be closed from 9am to 4pm Monday to Friday through 12/12/26 for concrete pouring, material booming."
+          }
+        }
+      },
+      {
+        "key": "02d3c7eb46754870",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 10pm Friday to 5am Monday through November 16, 2026 for gas install/shut down tie in.",
+            "to": "This street will be closed from 10pm Friday to 5am Monday through 11/16/26 for gas install/shut down tie in."
+          }
+        }
+      },
+      {
+        "key": "2b0fa05f9f65b7b4",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 9am to 4pm Monday to Friday through December 2, 2026 for use of boom, knuckle boom and concrete pump to work on new building.",
+            "to": "This street will be closed from 9am to 4pm Monday to Friday through 12/2/26 for use of boom, knuckle boom and concrete pump to work on new building."
+          }
+        }
+      },
+      {
+        "key": "dad428ff573bee16",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 7am to 6pm weekdays through December 1, 2026 to facilitate crane operation.",
+            "to": "This street will be closed from 7am to 6pm weekdays through 12/1/26 to facilitate crane operation."
+          }
+        }
+      },
+      {
+        "key": "65a1c903e51067cb",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 9am to 4pm Monday to Friday through November 27, 2026 to place boom in the roadway to install for major gas line under bridge.",
+            "to": "This street will be closed from 9am to 4pm Monday to Friday through 11/27/26 to place boom in the roadway to install for major gas line under bridge."
+          }
+        }
+      },
+      {
+        "key": "62af31b04d6e4079",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 9am to 4pm Monday to Friday through December 5, 2026 for major gas install.",
+            "to": "This street will be closed from 9am to 4pm Monday to Friday through 12/5/26 for major gas install."
+          }
+        }
+      },
+      {
+        "key": "4eab8ef843d10c1b",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 9am to 4pm Monday to Friday through November 20, 2026 for DDC contractor major reconstruction.",
+            "to": "This street will be closed from 9am to 4pm Monday to Friday through 11/20/26 for DDC contractor major reconstruction."
+          }
+        }
+      },
+      {
+        "key": "4b07daff7617449b",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 9am to 4pm Monday to Friday through December 13, 2026 for installing vault and conduit.",
+            "to": "This street will be closed from 9am to 4pm Monday to Friday through 12/13/26 for installing vault and conduit."
+          }
+        }
+      },
+      {
+        "key": "a8bae2677e9e1c64",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 8am to 6pm Monday to Friday and 7am to 6pm Saturday through November 20, 2026 to facilitate crane operation.",
+            "to": "This street will be closed from 9pm to 6am Monday to Friday through 11/30/26 to facilitate crane operation."
+          }
+        }
+      },
+      {
+        "key": "a1c58b707467472d",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 9am to 4pm Monday to Friday through January 1, 2027 to install conduit.",
+            "to": "This street will be closed from 9am to 4pm Monday to Friday through 1/1/27 to install conduit."
+          }
+        }
+      },
+      {
+        "key": "78a3450682a8cc04",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 9am to 5pm Saturday and Sunday through December 20, 2026 to facilitate crane operation.",
+            "to": "This street will be closed from 9am to 5pm Saturday and Sunday through 12/20/26 to facilitate crane operation."
+          }
+        }
+      },
+      {
+        "key": "b4a2e6a8c8850740",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 9am to 2pm Monday to Friday through November 15, 2026 for working on gas main.",
+            "to": "This street will be closed from 9am to 2pm Monday to Friday through 11/15/26 for working on gas main."
+          }
+        }
+      },
+      {
+        "key": "7ebdf7dc484ea90b",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 9am to 2pm Monday to Friday through November 15, 2026 for working on gas main.",
+            "to": "This street will be closed from 9am to 2pm Monday to Friday through 11/15/26 for working on gas main."
+          }
+        }
+      },
+      {
+        "key": "da21b992060cee22",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 9am to 4pm Friday through November 23, 2026 for installing water and sewer services.",
+            "to": "This street will be closed from 9am to 4pm Friday through 11/23/26 for installing water and sewer services."
+          }
+        }
+      },
+      {
+        "key": "d562e718de8cbe39",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 9am to 4pm Monday to Friday through November 14, 2026 to lift and remove materials from roof top with use of knuckle boom,",
+            "to": "This street will be closed from 9am to 4pm Monday to Friday through 11/14/26 to lift and remove materials from roof top with use of knuckle boom,"
+          }
+        }
+      },
+      {
+        "key": "da1b102d7e0f9617",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 9am to 4pm Friday through November 21, 2026 for glass repair from boom truck.",
+            "to": "This street will be closed from 9am to 4pm Friday through 11/21/26 for glass repair from boom truck."
+          }
+        }
+      },
+      {
+        "key": "bc92b0ce1d7b04cf",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 9am to 4pm Friday through January 27, 2027 for major gas install.",
+            "to": "This street will be closed from 9am to 4pm Friday through 1/27/27 for major gas install."
+          }
+        }
+      },
+      {
+        "key": "d0f1a435cb5249ec",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 9am to 4pm Friday through December 17, 2026 for use of boom and knuckle boom to work on our new building.",
+            "to": "This street will be closed from 9am to 4pm Friday through 12/17/26 for use of boom and knuckle boom to work on our new building."
+          }
+        }
+      },
+      {
+        "key": "054390f3ff4931c8",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 8am to 4pm Monday to Friday through November 26, 2026 for steel erection and sub-mezzanine construction for MTA contract A-37140.",
+            "to": "This street will be closed from 8am to 4pm Monday to Friday through 11/26/26 for steel erection and sub-mezzanine construction for MTA contract A-37140."
+          }
+        }
+      },
+      {
+        "key": "e561d21060bbb456",
+        "changes": {
+          "description": {
+            "from": "This street will be closed 24/7 through November 22, 2026 for construction of new headhouse.",
+            "to": "This street will be closed 24/7 through 11/22/26 for construction of new headhouse."
+          }
+        }
+      },
+      {
+        "key": "01ae2f312bbd5b47",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 9am to 4pm Friday through December 2, 2026 for superstructure/booming.",
+            "to": "This street will be closed from 9am to 4pm Friday through 12/2/26 for superstructure/booming."
+          }
+        }
+      },
+      {
+        "key": "e49af089184a957c",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 9am to 5pm Friday through November 30, 2026 for concrete pumps and knuckle booms.",
+            "to": "This street will be closed from 9am to 5pm Friday through 11/30/26 for concrete pumps and knuckle booms."
+          }
+        }
+      },
+      {
+        "key": "92117fcdeaf25294",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 9am to 4pm Monday to Friday through November 14, 2026 to repair traffic signals.",
+            "to": "This street will be closed from 9am to 4pm Monday to Friday through 11/14/26 to repair traffic signals."
+          }
+        }
+      },
+      {
+        "key": "da2b2dbf34377c3a",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 9am to 4pm Monday to Friday through November 19, 2026 for facade inspection with boom truck.",
+            "to": "This street will be closed from 9am to 4pm Monday to Friday through 11/19/26 for facade inspection with boom truck."
+          }
+        }
+      },
+      {
+        "key": "67f6fde8975c6ed0",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 9am to 4pm Monday to Friday through November 19, 2026 for facade inspection with boom truck.",
+            "to": "This street will be closed from 9am to 4pm Monday to Friday through 11/19/26 for facade inspection with boom truck"
+          }
+        }
+      },
+      {
+        "key": "a2be0ec5cb2eb011",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 9am to 4pm Friday through November 15, 2026 to facilitate crane operation to deliver MTA Box (MTA contractor# P-36132).",
+            "to": "This street will be closed from 9am to 4pm Friday through 11/15/26 to facilitate crane operation to deliver MTA Box (MTA contractor# P-36132)."
+          }
+        }
+      },
+      {
+        "key": "80ade3958ba01c24",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 8am to 6pm Saturday and 9am to 6pm Sunday through December 6, 2026 knuckle boom operations to deliver condensers.",
+            "to": "This street will be closed from 8am to 6pm Saturday and 9am to 6pm Sunday through 12/6/26 knuckle boom operations to deliver condensers."
+          }
+        }
+      },
+      {
+        "key": "c059d73db7118eb2",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 9am to 4pm Friday through November 13, 2026 for use of boom truck to lift Con Ed transformers.",
+            "to": "This street will be closed from 9am to 4pm Friday through 11/13/26 for use of boom truck to lift Con Ed transformers."
+          }
+        }
+      },
+      {
+        "key": "6f5260f2567b7618",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 9am to 4pm Friday through November 13, 2026 for installation of temporary pumping structure.",
+            "to": "This street will be closed from 9am to 4pm Friday through 11/13/26 for installation of temporary pumping structure."
+          }
+        }
+      },
+      {
+        "key": "dc65bd45c2e5f2d5",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 9am to 4pm Friday through November 13, 2026 for installation of temporary pumping structure.",
+            "to": "This street will be closed from 9am to 4pm Friday through 11/13/26 for installation of temporary pumping structure."
+          }
+        }
+      },
+      {
+        "key": "f64e37d91149116b",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 9am to 4pm Friday through November 13, 2026 for installation of temporary pumping structure.",
+            "to": "This street will be closed from 9am to 4pm Friday through 11/13/26 for installation of temporary pumping structure."
+          }
+        }
+      },
+      {
+        "key": "172ae85dd88b914f",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 9am to 2pm Monday to Friday through December 3, 2026 to facilitate crane operation.",
+            "to": "This street will be closed from 9am to 2pm Monday to Friday through 12/3/26 to facilitate crane operation."
+          }
+        }
+      },
+      {
+        "key": "ce1704dde2244cb8",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 9am to 2pm Monday to Friday through December 3, 2026 to facilitate crane operation.",
+            "to": "This street will be closed from 9am to 2pm Monday to Friday through 12/3/26 to facilitate crane operation."
+          }
+        }
+      },
+      {
+        "key": "cee6f31a9d30764a",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 5am Saturday to 9pm Sunday through November 16, 2026 for track replacement and crane work for contract S-48019R.",
+            "to": "This street will be closed from 5am Saturday to 9pm Sunday through 11/16/26 for track replacement and crane work for contract S-48019R."
+          }
+        }
+      },
+      {
+        "key": "a7d78697303288d1",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 5am Saturday to 9pm Sunday through November 16, 2026 for track replacement and crane work for contract S-48019R.",
+            "to": "This street will be closed from 5am Saturday to 9pm Sunday through 11/16/26 for track replacement and crane work for contract S-48019R."
+          }
+        }
+      },
+      {
+        "key": "b03d5dd021a4dc49",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 5am Saturday to 9pm Sunday through November 16, 2026 for track replacement and crane work for contract S-48019R.",
+            "to": "This street will be closed from 5am Saturday to 9pm Sunday through 11/16/26 for track replacement and crane work for contract S-48019R."
+          }
+        }
+      },
+      {
+        "key": "8a4c99df2bc22d72",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 5am Saturday to 9pm Sunday through November 16, 2026 for track replacement and crane work for contract S-48019R.",
+            "to": "This street will be closed from 5am Saturday to 9pm Sunday through 11/16/26 for track replacement and crane work for contract S-48019R."
+          }
+        }
+      },
+      {
+        "key": "bd0d8013ba169987",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 5am Saturday to 9pm Sunday through November 16, 2026 for track replacement and crane work for contract S-48019R.",
+            "to": "This street will be closed from 5am Saturday to 9pm Sunday through 11/16/26 for track replacement and crane work for contract S-48019R."
+          }
+        }
+      },
+      {
+        "key": "eca93fb6d7d4383c",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 5am Saturday to 9pm Sunday through November 16, 2026 for track replacement and crane work for contract S-48019R.",
+            "to": "This street will be closed from 5am Saturday to 9pm Sunday through 11/16/26 for track replacement and crane work for contract S-48019R."
+          }
+        }
+      },
+      {
+        "key": "2543f8d813b8b851",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 5am Saturday to 9pm Sunday through November 16, 2026 for track replacement and crane work for contract S-48019R.",
+            "to": "This street will be closed from 5am Saturday to 9pm Sunday through 11/16/26 for track replacement and crane work for contract S-48019R."
+          }
+        }
+      },
+      {
+        "key": "59164022e0346cc5",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 5am Saturday to 9pm Sunday through November 16, 2026 for track replacement and crane work for contract S-48019R.",
+            "to": "This street will be closed from 5am Saturday to 9pm Sunday through 11/16/26 for track replacement and crane work for contract S-48019R."
+          }
+        }
+      },
+      {
+        "key": "1d1b13442a622d18",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 5am Saturday to 9pm Sunday through November 16, 2026 for track replacement and crane work for contract S-48019R.",
+            "to": "This street will be closed from 5am Saturday to 9pm Sunday through 11/16/26 for track replacement and crane work for contract S-48019R."
+          }
+        }
+      },
+      {
+        "key": "8ad45d2591e41e75",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 9am to 4pm Friday through February 10, 2027 for concrete pump and booming operations.",
+            "to": "This street will be closed from 9am to 4pm Friday through 2/10/27 for concrete pump and booming operations."
+          }
+        }
+      },
+      {
+        "key": "03a50242ea8d09e4",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 9am to 4pm Friday through November 13, 2026 for installation of temporary pumping structure.",
+            "to": "This street will be closed from 9am to 4pm Friday through 11/13/26 for installation of temporary pumping structure."
+          }
+        }
+      },
+      {
+        "key": "8f5b2ec31aa6483e",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 9am to 4pm Friday through November 13, 2026 for installation of temporary pumping structure.",
+            "to": "This street will be closed from 9am to 4pm Friday through 11/13/26 for installation of temporary pumping structure."
+          }
+        }
+      },
+      {
+        "key": "ae3edd509d5c1d14",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 7am to 6pm Monday to Friday through November 26, 2026 to facilitate crane operation.",
+            "to": "This street will be closed from 7am to 6pm Monday to Friday through 11/26/26 to facilitate crane operation."
+          }
+        }
+      },
+      {
+        "key": "c70d24a04b346d5a",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 7am to 6pm Monday to Friday through November 26, 2026 to facilitate crane operation.",
+            "to": "This street will be closed from 7am to 6pm Monday to Friday through 11/26/26 to facilitate crane operation."
+          }
+        }
+      },
+      {
+        "key": "0b6e0420ea261399",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 7am to 3:30pm Monday to Friday through November 30, 2026 for concrete restoration on the track of the Rockaway viaduct line.",
+            "to": "This street will be closed from 7am to 3:30pm Monday to Friday through 11/30/26 for concrete restoration on the track of the Rockaway viaduct line."
+          }
+        }
+      },
+      {
+        "key": "2f3078fc24fd75db",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 7am to 3:30pm Monday to Friday through November 30, 2026 for concrete restoration on the track of the Rockaway viaduct line.",
+            "to": "This street will be closed from 7am to 3:30pm Monday to Friday through 11/30/26 for concrete restoration on the track of the Rockaway viaduct line."
+          }
+        }
+      },
+      {
+        "key": "8d7c2f99c8eeb0f5",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 7am to 3:30pm Monday to Friday through November 30, 2026 for concrete restoration on the track of the Rockaway viaduct line.",
+            "to": "This street will be closed from 7am to 3:30pm Monday to Friday through 11/30/26 for concrete restoration on the track of the Rockaway viaduct line."
+          }
+        }
+      },
+      {
+        "key": "b81d1fbd1d9789dc",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 7am to 3:30pm Monday to Friday through November 30, 2026 for concrete restoration on the track of the Rockaway viaduct line.",
+            "to": "This street will be closed from 7am to 3:30pm Monday to Friday through 11/30/26 for concrete restoration on the track of the Rockaway viaduct line."
+          }
+        }
+      },
+      {
+        "key": "d43b917c9dfdcdfc",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 7am to 3:30pm Monday to Friday through November 30, 2026 for concrete restoration on the track of the Rockaway viaduct line.",
+            "to": "This street will be closed from 7am to 3:30pm Monday to Friday through 11/30/26 for concrete restoration on the track of the Rockaway viaduct line."
+          }
+        }
+      },
+      {
+        "key": "c8488e91f92d5ab2",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 7am to 3:30pm Monday to Friday through November 30, 2026 for concrete restoration on the track of the Rockaway viaduct line.",
+            "to": "This street will be closed from 7am to 3:30pm Monday to Friday through 11/30/26 for concrete restoration on the track of the Rockaway viaduct line."
+          }
+        }
+      },
+      {
+        "key": "bde4679868cf5f18",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 7am to 3:30pm Monday to Friday through November 30, 2026 for concrete restoration on the track of the Rockaway viaduct line.",
+            "to": "This street will be closed from 7am to 3:30pm Monday to Friday through 11/30/26 for concrete restoration on the track of the Rockaway viaduct line."
+          }
+        }
+      },
+      {
+        "key": "ca01d9ce2c26b0f5",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 7am to 3:30pm Monday to Friday through November 30, 2026 for concrete restoration on the track of the Rockaway viaduct line.",
+            "to": "This street will be closed from 7am to 3:30pm Monday to Friday through 11/30/26 for concrete restoration on the track of the Rockaway viaduct line."
+          }
+        }
+      },
+      {
+        "key": "8b81a028c8ad8473",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 7am to 3:30pm Monday to Friday through November 30, 2026 for concrete restoration on the track of the Rockaway viaduct line.",
+            "to": "This street will be closed from 7am to 3:30pm Monday to Friday through 11/30/26 for concrete restoration on the track of the Rockaway viaduct line."
+          }
+        }
+      },
+      {
+        "key": "351a486a03400ea3",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 7am to 3:30pm Monday to Friday through November 30, 2026 for concrete restoration on the track of the Rockaway viaduct line.",
+            "to": "This street will be closed from 7am to 3:30pm Monday to Friday through 11/30/26 for concrete restoration on the track of the Rockaway viaduct line."
+          }
+        }
+      },
+      {
+        "key": "b832c9787e8f61e6",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 7am to 3:30pm Monday to Friday through November 30, 2026 for concrete restoration on the track of the Rockaway viaduct line.",
+            "to": "This street will be closed from 7am to 3:30pm Monday to Friday through 11/30/26 for concrete restoration on the track of the Rockaway viaduct line."
+          }
+        }
+      },
+      {
+        "key": "c3b80914c5f7fa12",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 7am to 3:30pm Monday to Friday through November 30, 2026 for concrete restoration on the track of the Rockaway viaduct line.",
+            "to": "This street will be closed from 7am to 3:30pm Monday to Friday through 11/30/26 for concrete restoration on the track of the Rockaway viaduct line."
+          }
+        }
+      },
+      {
+        "key": "425264e9c35f83c6",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 7am to 3:30pm Monday to Friday through December 3, 2026 for concrete restoration on the track of the Rockaway viaduct line.",
+            "to": "This street will be closed from 7am to 3:30pm Monday to Friday through 12/3/26 for concrete restoration on the track of the Rockaway viaduct line."
+          }
+        }
+      },
+      {
+        "key": "0f51dbfe0ff43487",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 9am to 4pm Friday through December 31, 2026 for pole removal.",
+            "to": "This street will be closed from 9am to 4pm Friday through 12/31/26 for pole removal."
+          }
+        }
+      },
+      {
+        "key": "458572e23621acf8",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 7am to 6pm Monday to Friday through November 26, 2026 to facilitate crane operation.",
+            "to": "This street will be closed from 7am to 6pm Monday to Friday through 11/26/26 to facilitate crane operation."
+          }
+        }
+      },
+      {
+        "key": "a3a08ac9318d5d07",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 7am to 6pm Monday to Friday through December 20, 2026 for new Stapleton waterfront infrastructure.",
+            "to": "This street will be closed from 7am to 6pm Monday to Friday through 12/20/26 for new Stapleton waterfront infrastructure."
+          }
+        }
+      },
+      {
+        "key": "90f0bca49b7e52b9",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 7am to 6pm Monday to Friday through December 20, 2026 for new Stapleton waterfront infrastructure. Information about scheduled maintenance and construction on MTA Bridges and Tunnels can be found on the MTA Web site .",
+            "to": "This street will be closed from 7am to 6pm Monday to Friday through 12/20/26 for new Stapleton waterfront infrastructure. Information about scheduled maintenance and construction on MTA Bridges and Tunnels can be found on the MTA Web site ."
+          }
+        }
+      }
+    ],
+    "missing": [
+      {
+        "key": "52152373300b7f01",
+        "fields": {
+          "page": "weekend",
+          "kind": "closure",
+          "section": "Manhattan",
+          "section_id": "manhattan",
+          "category": null,
+          "name": "East 91st Street between Ditmas Avenue and Dead End",
+          "embargo": null,
+          "updated": false,
+          "streets": {},
+          "description": "This street will be closed from 9pm to 6am Monday to Friday through November 30, 2026 to facilitate crane operation."
+        }
+      }
+    ],
     "unchanged_keys": [
-      "03c8e22d76450382",
-      "c588e7efd47e7feb",
-      "69394d8ffbbf4632",
-      "0d87645e4adff04e",
-      "30ee33cb852ccb16",
-      "e07421b39aabf9f5",
-      "d5eadcece49b1370",
-      "ca5268a9be80c00a",
-      "cab056fe9f854deb",
       "3b8cb32e8c5307db",
-      "2c59e2704298c305",
-      "dd63b5e4232428c5",
-      "633a336fb0108087",
-      "8b942ec9e6efdfc7",
       "ada523f882db21aa",
-      "d70f07185d305ffb",
       "895915e077c76de8",
       "28bcc8f2d0d9c5b1",
-      "10f4e31577af5459",
       "dc761aa5e4808f3e",
-      "89c8d31e1d4ee1f5",
-      "777e75c19f41b76a",
-      "e8d326c14a177cb5",
-      "e8d326c14a177cb5-2",
-      "5405273d6cc7d465",
-      "4a3ab09af81fb621",
-      "0316bb8e4d1c175a",
-      "394ca5547c26b288",
-      "24993232e2ecf102",
-      "626abd614cd7f658",
-      "6fa8e3d8d95bce19",
-      "c8fa3bfb0b434181",
-      "3d2a5ec71658d9f7",
-      "6ca0e57e0dd60934",
-      "980910c79d919e87",
-      "57a55ca6cc6bcb79",
-      "96d731669a86da06",
-      "6bd6a99fdebfaddd",
-      "6366dd81eb667449",
-      "74058151b0aa5362",
-      "2de3222ce2e53b29",
-      "c3970b041e816a94",
-      "21c569c16ab09813",
-      "35852d984fc6a42c",
-      "42f0fa86acf89ce2",
-      "f686ac51cb9fbe8c",
-      "fda2d15466c8242a",
-      "5046fc0ccee83724",
-      "f010e6b86edd6613",
-      "202d9264e0e71ca5",
-      "c9a3c6004badd4a5",
-      "52152373300b7f01",
-      "c808bca38860ac3a",
-      "dbdcd4cb18ce0967",
-      "d355b55126b3793f",
-      "2b6869bf736a5c3a",
-      "0bedf6b03141bab3",
-      "49d9c181ab75dd6e",
-      "9bde9d533cbeeae1",
-      "ee92190cfc1ea028",
-      "2f213dd9927ed7ba",
-      "3ba902803cde8656",
-      "e48cf71bbe2a5651",
-      "0e9da2e2f518fec4",
-      "0d0b01fcdb7b340a",
-      "7dfcc4a420f1f313",
-      "c2da3d5ab8736be7",
-      "a73be29ec05f9995",
-      "063901f30cc0864b",
-      "6c5d91a80f88961a",
-      "df6646e44e49bdea",
-      "3f90f7c84b7fdb37",
-      "e4d809eb05491e79",
-      "e9406b2159619ed3",
-      "1fb516b9e1685243",
-      "e31c588d9139dac0",
-      "1e15b543d127b347",
-      "f347595489a122d3",
-      "906167b1f79365b3",
-      "3ba7af1dfecd40e9",
-      "c0e0ff843a6b648e",
-      "0bf2fea41a640a8d",
-      "be5a2b3bfe1df54d",
       "a90d9a51b9862c24",
-      "3090fa65b01e0734",
-      "851953e5907abdc3",
-      "b9082ad018927684",
-      "2477bd2dc34c36d9",
-      "b24f77209a737ced",
-      "dbc0693c7e19adb8",
-      "b281c50408178122",
-      "4a619fea0f91dbc7",
       "8ca54baa181422c2",
-      "f86e45ed796781e0",
-      "38f7e115987c82cf",
       "ff9b002ad4bbf833",
-      "e2b9a3fc5f344acd",
-      "f1d1298eeee8df30",
-      "0683a02c33aa025d",
-      "ad26d278905a3ef6",
-      "3bfa0e827ead7a29",
-      "e2ff44e1b55b6a98",
-      "3f94b48bcb9b6f9d",
-      "5967e1440844694d",
-      "e5006b7278bc6353",
-      "03b22f1e6d911cad",
-      "b24b6122e3ed1867",
-      "8bdab3899e2f933f",
-      "7bc678d91344858b",
-      "bf8a2613a9d628f1",
-      "b5d038bf402f1276",
-      "1e5c285d11d5c68e",
-      "02d3c7eb46754870",
-      "2b0fa05f9f65b7b4",
-      "dad428ff573bee16",
-      "65a1c903e51067cb",
-      "62af31b04d6e4079",
-      "4eab8ef843d10c1b",
-      "4b07daff7617449b",
-      "a8bae2677e9e1c64",
-      "a1c58b707467472d",
-      "78a3450682a8cc04",
-      "b4a2e6a8c8850740",
-      "7ebdf7dc484ea90b",
-      "da21b992060cee22",
-      "d562e718de8cbe39",
-      "da1b102d7e0f9617",
-      "bc92b0ce1d7b04cf",
-      "d0f1a435cb5249ec",
-      "054390f3ff4931c8",
-      "e561d21060bbb456",
-      "01ae2f312bbd5b47",
-      "e49af089184a957c",
-      "92117fcdeaf25294",
-      "da2b2dbf34377c3a",
-      "67f6fde8975c6ed0",
-      "a2be0ec5cb2eb011",
-      "80ade3958ba01c24",
-      "c059d73db7118eb2",
-      "6f5260f2567b7618",
-      "dc65bd45c2e5f2d5",
-      "f64e37d91149116b",
-      "172ae85dd88b914f",
-      "ce1704dde2244cb8",
-      "cee6f31a9d30764a",
-      "a7d78697303288d1",
-      "b03d5dd021a4dc49",
-      "8a4c99df2bc22d72",
-      "bd0d8013ba169987",
-      "eca93fb6d7d4383c",
-      "2543f8d813b8b851",
-      "59164022e0346cc5",
-      "1d1b13442a622d18",
-      "8ad45d2591e41e75",
-      "03a50242ea8d09e4",
-      "8f5b2ec31aa6483e",
-      "ae3edd509d5c1d14",
-      "c70d24a04b346d5a",
       "7612cdf5a1ea940e",
       "de1c55d2b9f99d5b",
-      "3f74e66bc934cf4e",
-      "0b6e0420ea261399",
-      "2f3078fc24fd75db",
-      "8d7c2f99c8eeb0f5",
-      "b81d1fbd1d9789dc",
-      "d43b917c9dfdcdfc",
-      "c8488e91f92d5ab2",
-      "bde4679868cf5f18",
-      "ca01d9ce2c26b0f5",
-      "8b81a028c8ad8473",
-      "351a486a03400ea3",
-      "b832c9787e8f61e6",
-      "c3b80914c5f7fa12",
-      "425264e9c35f83c6",
-      "0f51dbfe0ff43487",
-      "458572e23621acf8",
-      "a3a08ac9318d5d07",
-      "90f0bca49b7e52b9"
+      "3f74e66bc934cf4e"
     ]
   }
 }

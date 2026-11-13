@@ -52,6 +52,32 @@
           "1 location(s) listed more than once in the same section; keys suffixed"
         ]
       }
+    },
+    {
+      "run_id": "20261113T183102Z",
+      "snapshot_hash": "19d26f01138aede1db4a274f24598a38903e7a95058a03887aee8084a29fb7b2",
+      "path": "data/advisory/weekend/snapshots/20261113T183102Z.snapshot.json.gz",
+      "row_count": 206,
+      "fetched_at_utc": "2026-11-13T18:31:02Z",
+      "source_rows_updated_at_utc": null,
+      "raw_path": "data/advisory/weekend/raw/20261113T183102Z.advisory.html.gz",
+      "quality": {
+        "row_count": 206,
+        "ok": false,
+        "by_kind": {
+          "closure": 206
+        },
+        "sections": 5,
+        "updated_flagged": 0,
+        "duplicate_key_count": 0,
+        "null_key_rows": 0,
+        "missing_required": {},
+        "unparseable_dates": {},
+        "absent_fields": [],
+        "parse_warnings": [
+          "1 location(s) listed more than once in the same section; keys suffixed"
+        ]
+      }
     }
   ],
   "runs": [
@@ -118,6 +144,15 @@
       "row_count": 178,
       "fetched_at_utc": "2026-11-12T18:53:03Z",
       "raw_path": "data/advisory/weekend/raw/20261112T185302Z.advisory.html.gz"
+    },
+    {
+      "run_id": "20261113T183102Z",
+      "status": "success",
+      "snapshot_written": true,
+      "snapshot_hash": "19d26f01138aede1db4a274f24598a38903e7a95058a03887aee8084a29fb7b2",
+      "row_count": 206,
+      "fetched_at_utc": "2026-11-13T18:31:02Z",
+      "raw_path": "data/advisory/weekend/raw/20261113T183102Z.advisory.html.gz"
     }
   ]
 }
