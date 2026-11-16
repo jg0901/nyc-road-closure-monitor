@@ -1,5 +1,5 @@
 {
-  "run_id": "20261115T174208Z",
+  "run_id": "20261116T205926Z",
   "status": "success",
   "error": null,
   "warnings": [
@@ -10,7 +10,7 @@
     "source_url": "https://www.nyc.gov/html/dot/html/motorist/wkndtraf.shtml",
     "dataset_name": "NYC DOT Weekend Traffic Advisory",
     "source_rows_updated_at_utc": null,
-    "fetched_at_utc": "2026-11-15T17:42:08Z",
+    "fetched_at_utc": "2026-11-16T20:59:26Z",
     "pages": 1
   },
   "counts": {
@@ -42,17 +42,17 @@
   },
   "field_change_counts": {},
   "snapshot": {
-    "run_id": "20261115T174208Z",
+    "run_id": "20261116T205926Z",
     "status": "success",
     "snapshot_written": false,
     "deduplicated_to": "20261113T183102Z",
     "snapshot_hash": "19d26f01138aede1db4a274f24598a38903e7a95058a03887aee8084a29fb7b2",
     "row_count": 206,
-    "fetched_at_utc": "2026-11-15T17:42:08Z",
-    "raw_path": "data/advisory/weekend/raw/20261115T174208Z.advisory.html.gz"
+    "fetched_at_utc": "2026-11-16T20:59:26Z",
+    "raw_path": "data/advisory/weekend/raw/20261116T205926Z.advisory.html.gz"
   },
   "compared_to_run_id": "20261113T183102Z",
-  "log_path": "logs/advisory/weekend/20261115T174208Z.log",
+  "log_path": "logs/advisory/weekend/20261116T205926Z.log",
   "diff": {
     "counts": {
       "added": 0,

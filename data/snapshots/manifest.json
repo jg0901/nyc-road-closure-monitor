@@ -47,6 +47,30 @@
         ],
         "absent_fields": []
       }
+    },
+    {
+      "run_id": "20261116T205921Z",
+      "snapshot_hash": "0f0aa5fa4c1c33c230264d043e8ffda73c069d5ce5ac70876780fac36aed364c",
+      "path": "data/snapshots/20261116T205921Z.snapshot.json.gz",
+      "row_count": 3186,
+      "fetched_at_utc": "2026-11-16T20:59:21Z",
+      "source_rows_updated_at_utc": "2026-11-16T13:19:06Z",
+      "raw_path": "data/raw/20261116T205921Z.raw.json.gz",
+      "quality": {
+        "row_count": 3361,
+        "output_rows": 3186,
+        "ok": true,
+        "exact_duplicate_rows": 175,
+        "duplicate_key_count": 0,
+        "duplicate_keys_sample": {},
+        "null_key_rows": 0,
+        "missing_required": {},
+        "unparseable_dates": {},
+        "unexpected_fields": [
+          "the_geom"
+        ],
+        "absent_fields": []
+      }
     }
   ],
   "runs": [
@@ -147,6 +171,15 @@
       "row_count": 3546,
       "fetched_at_utc": "2026-11-15T17:42:04Z",
       "raw_path": "data/raw/20261115T174204Z.raw.json.gz"
+    },
+    {
+      "run_id": "20261116T205921Z",
+      "status": "success",
+      "snapshot_written": true,
+      "snapshot_hash": "0f0aa5fa4c1c33c230264d043e8ffda73c069d5ce5ac70876780fac36aed364c",
+      "row_count": 3186,
+      "fetched_at_utc": "2026-11-16T20:59:21Z",
+      "raw_path": "data/raw/20261116T205921Z.raw.json.gz"
     }
   ]
 }
