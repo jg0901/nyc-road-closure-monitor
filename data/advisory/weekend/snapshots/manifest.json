@@ -78,6 +78,31 @@
           "1 location(s) listed more than once in the same section; keys suffixed"
         ]
       }
+    },
+    {
+      "run_id": "20261117T194933Z",
+      "snapshot_hash": "b1daead8311a8ae25e70498b22be9e522e91f1987dc001201bfd473a048c0dd1",
+      "path": "data/advisory/weekend/snapshots/20261117T194933Z.snapshot.json.gz",
+      "row_count": 142,
+      "fetched_at_utc": "2026-11-17T19:49:33Z",
+      "source_rows_updated_at_utc": null,
+      "raw_path": "data/advisory/weekend/raw/20261117T194933Z.advisory.html.gz",
+      "quality": {
+        "row_count": 142,
+        "ok": true,
+        "by_kind": {
+          "closure": 141,
+          "event": 1
+        },
+        "sections": 6,
+        "updated_flagged": 0,
+        "duplicate_key_count": 0,
+        "null_key_rows": 0,
+        "missing_required": {},
+        "unparseable_dates": {},
+        "absent_fields": [],
+        "parse_warnings": []
+      }
     }
   ],
   "runs": [
@@ -183,6 +208,15 @@
       "row_count": 206,
       "fetched_at_utc": "2026-11-16T20:59:26Z",
       "raw_path": "data/advisory/weekend/raw/20261116T205926Z.advisory.html.gz"
+    },
+    {
+      "run_id": "20261117T194933Z",
+      "status": "success",
+      "snapshot_written": true,
+      "snapshot_hash": "b1daead8311a8ae25e70498b22be9e522e91f1987dc001201bfd473a048c0dd1",
+      "row_count": 142,
+      "fetched_at_utc": "2026-11-17T19:49:33Z",
+      "raw_path": "data/advisory/weekend/raw/20261117T194933Z.advisory.html.gz"
     }
   ]
 }
