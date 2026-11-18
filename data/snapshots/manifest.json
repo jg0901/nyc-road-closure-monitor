@@ -190,6 +190,16 @@
       "row_count": 3186,
       "fetched_at_utc": "2026-11-17T19:49:24Z",
       "raw_path": "data/raw/20261117T194924Z.raw.json.gz"
+    },
+    {
+      "run_id": "20261118T192321Z",
+      "status": "success",
+      "snapshot_written": false,
+      "deduplicated_to": "20261116T205921Z",
+      "snapshot_hash": "0f0aa5fa4c1c33c230264d043e8ffda73c069d5ce5ac70876780fac36aed364c",
+      "row_count": 3186,
+      "fetched_at_utc": "2026-11-18T19:23:21Z",
+      "raw_path": "data/raw/20261118T192321Z.raw.json.gz"
     }
   ]
 }
