@@ -1,0 +1,16 @@
+{
+  "source_id": "nyc_dot_weekly_traffic_advisory",
+  "source_url": "https://www.nyc.gov/html/dot/html/motorist/weektraf.shtml",
+  "fetched_at_utc": "2026-11-19T19:29:12Z",
+  "bytes": 36221,
+  "request_log": [
+    {
+      "url": "https://www.nyc.gov/html/dot/html/motorist/weektraf.shtml",
+      "params": null,
+      "status": 200,
+      "attempt": 1,
+      "elapsed_ms": 198
+    }
+  ],
+  "dataset_metadata": {}
+}
