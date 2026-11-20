@@ -1,5 +1,5 @@
 {
-  "run_id": "20261120T190528Z",
+  "run_id": "20261120T202715Z",
   "status": "success",
   "error": null,
   "warnings": [],
@@ -8,16 +8,16 @@
     "source_url": "https://www.nyc.gov/html/dot/html/motorist/wkndtraf.shtml",
     "dataset_name": "NYC DOT Weekend Traffic Advisory",
     "source_rows_updated_at_utc": null,
-    "fetched_at_utc": "2026-11-20T19:05:28Z",
+    "fetched_at_utc": "2026-11-20T20:27:16Z",
     "pages": 1
   },
   "counts": {
     "rows_fetched": 153,
     "rows_normalized": 153,
     "diff": {
-      "added": 11,
-      "modified": 1,
-      "unchanged": 141,
+      "added": 0,
+      "modified": 0,
+      "unchanged": 153,
       "missing": 0
     }
   },
@@ -37,208 +37,29 @@
     "absent_fields": [],
     "parse_warnings": []
   },
-  "field_change_counts": {
-    "description": 1
-  },
+  "field_change_counts": {},
   "snapshot": {
-    "run_id": "20261120T190528Z",
+    "run_id": "20261120T202715Z",
     "status": "success",
-    "snapshot_written": true,
+    "snapshot_written": false,
+    "deduplicated_to": "20261120T190528Z",
     "snapshot_hash": "ba212af2dbea9a30587300d35aec477b18d946bc6aadef6f88cd5d3f5bed690b",
     "row_count": 153,
-    "fetched_at_utc": "2026-11-20T19:05:28Z",
-    "raw_path": "data/advisory/weekend/raw/20261120T190528Z.advisory.html.gz"
+    "fetched_at_utc": "2026-11-20T20:27:16Z",
+    "raw_path": "data/advisory/weekend/raw/20261120T202715Z.advisory.html.gz"
   },
-  "compared_to_run_id": "20261117T194933Z",
-  "log_path": "logs/advisory/weekend/20261120T190528Z.log",
+  "compared_to_run_id": "20261120T190528Z",
+  "log_path": "logs/advisory/weekend/20261120T202715Z.log",
   "diff": {
     "counts": {
-      "added": 11,
-      "modified": 1,
-      "unchanged": 141,
+      "added": 0,
+      "modified": 0,
+      "unchanged": 153,
       "missing": 0
     },
-    "field_change_counts": {
-      "description": 1
-    },
-    "added": [
-      {
-        "key": "3a3f16295f9d06fb",
-        "fields": {
-          "page": "weekend",
-          "kind": "closure",
-          "section": "Manhattan",
-          "section_id": "manhattan",
-          "category": null,
-          "name": "East 105th Street between FDR Drive and East 106th Street",
-          "embargo": null,
-          "updated": false,
-          "streets": {},
-          "description": "This street will be closed from 8am to 8pm Saturday and Sunday through December 6, 2026 to facilitate crane operation."
-        }
-      },
-      {
-        "key": "1ef0b80bb138c6b8",
-        "fields": {
-          "page": "weekend",
-          "kind": "closure",
-          "section": "Bronx",
-          "section_id": "bronx",
-          "category": null,
-          "name": "Summit Avenue between West 164 Street and West 165 Street",
-          "embargo": null,
-          "updated": false,
-          "streets": {},
-          "description": "This street will be closed from 9am to 2pm Monday to Friday (when school is in session) and 9am to 4pm Monday to Friday (when school is not in session) through December 20, 2026 for new water installation."
-        }
-      },
-      {
-        "key": "19f95e3af0afdc32",
-        "fields": {
-          "page": "weekend",
-          "kind": "closure",
-          "section": "Bronx",
-          "section_id": "bronx",
-          "category": null,
-          "name": "Findlay Avenue between East 167th Street and East 168th Street",
-          "embargo": null,
-          "updated": false,
-          "streets": {},
-          "description": "This street will be closed from 9am to 2pm Monday to Friday (when school is in session) and 9am to 4pm Monday to Friday (when school is not in session) through December 13, 2026 for concrete pumping operations."
-        }
-      },
-      {
-        "key": "af73fc14029c1920",
-        "fields": {
-          "page": "weekend",
-          "kind": "closure",
-          "section": "Bronx",
-          "section_id": "bronx",
-          "category": null,
-          "name": "Anthony Avenue between East 175th Street and Prospect Place",
-          "embargo": null,
-          "updated": false,
-          "streets": {},
-          "description": "This street will be closed from 8am to 6pm Saturday and 9am to 6pm Sunday through December 20, 2026 to facilitate crane operation."
-        }
-      },
-      {
-        "key": "746518a600353cc4",
-        "fields": {
-          "page": "weekend",
-          "kind": "closure",
-          "section": "Brooklyn",
-          "section_id": "brooklyn",
-          "category": null,
-          "name": "North 8th Street between Meeker Avenue and Havemeyer Street",
-          "embargo": null,
-          "updated": false,
-          "streets": {},
-          "description": "This street will be closed from 9am to 4pm Friday through February 21, 2027 for concrete pump trucks, boom deliveries."
-        }
-      },
-      {
-        "key": "41eb9401049620a2",
-        "fields": {
-          "page": "weekend",
-          "kind": "closure",
-          "section": "Brooklyn",
-          "section_id": "brooklyn",
-          "category": null,
-          "name": "3rd Place between Clinton Street and Court Street",
-          "embargo": null,
-          "updated": false,
-          "streets": {},
-          "description": "This street will be closed from 9am to 4pm Friday through December 11, 2026 for water sewer relay."
-        }
-      },
-      {
-        "key": "8c7a1c2dd06a2ac7",
-        "fields": {
-          "page": "weekend",
-          "kind": "closure",
-          "section": "Brooklyn",
-          "section_id": "brooklyn",
-          "category": null,
-          "name": "22nd Street between 6th Avenue and 7th Avenue",
-          "embargo": null,
-          "updated": false,
-          "streets": {},
-          "description": "This street will be closed from 9am to 4pm Friday through December 3, 2026 to place boom to deliver roofing materials."
-        }
-      },
-      {
-        "key": "fa542c4539198689",
-        "fields": {
-          "page": "weekend",
-          "kind": "closure",
-          "section": "Brooklyn",
-          "section_id": "brooklyn",
-          "category": null,
-          "name": "Dikeman Street between Ferris Street and Conover Street",
-          "embargo": null,
-          "updated": false,
-          "streets": {},
-          "description": "This street will be closed from 8am to 6pm Saturday to facilitate crane operation."
-        }
-      },
-      {
-        "key": "244ef8867971b6ae",
-        "fields": {
-          "page": "weekend",
-          "kind": "closure",
-          "section": "Brooklyn",
-          "section_id": "brooklyn",
-          "category": null,
-          "name": "Clinton Avenue between Willoughby Avenue and Myrtle Avenue",
-          "embargo": null,
-          "updated": false,
-          "streets": {},
-          "description": "This street will be closed from 8am to 6pm Saturday, and 9am to 6pm Sunday through December 13, 2026 for use of knuckle boom to lift vaults."
-        }
-      },
-      {
-        "key": "1a1d6b25aa93fa3a",
-        "fields": {
-          "page": "weekend",
-          "kind": "closure",
-          "section": "Queens",
-          "section_id": "queens",
-          "category": null,
-          "name": "70th Drive between Sybilla Street and Metropolitan Avenue",
-          "embargo": null,
-          "updated": false,
-          "streets": {},
-          "description": "This street will be closed from 9am to 4pm Friday to facilitate crane operation."
-        }
-      },
-      {
-        "key": "f8877198d7294820",
-        "fields": {
-          "page": "weekend",
-          "kind": "closure",
-          "section": "Staten Island",
-          "section_id": "statenisland",
-          "category": null,
-          "name": "Bay View Terrace between Peare Place and Holdridge Avenue",
-          "embargo": null,
-          "updated": false,
-          "streets": {},
-          "description": "This street will be closed from 7am to 6pm Monday to Friday through November 29, 2026 to facilitate crane operation."
-        }
-      }
-    ],
-    "modified": [
-      {
-        "key": "4e873d61981842de",
-        "changes": {
-          "description": {
-            "from": "This street will be closed from 9am to 4pm Friday, 8am to 6pm Saturday and 9am to 6pm Sunday through December 21, 2026 for use of boom, pump and crane operation.",
-            "to": "This street will be closed from 9am to 6pm Friday, 8am to 6pm Saturday and 9am to 6pm Sunday through December 21, 2026 for use of boom, pump and crane operations."
-          }
-        }
-      }
-    ],
+    "field_change_counts": {},
+    "added": [],
+    "modified": [],
     "missing": [],
     "unchanged_keys": [
       "9b9bee905dbded6f",
@@ -276,6 +97,7 @@
       "8d1ca4bd31d4899a",
       "e33f252e5621699c",
       "60033ae9e9ba83eb",
+      "3a3f16295f9d06fb",
       "dbdcd4cb18ce0967",
       "d355b55126b3793f",
       "2b6869bf736a5c3a",
@@ -316,11 +138,15 @@
       "ad26d278905a3ef6",
       "943a7337d87900e4",
       "f3f2c4a6d2779024",
+      "4e873d61981842de",
       "04b082550a88a51d",
       "d3318e5c3999bdbb",
+      "1ef0b80bb138c6b8",
+      "19f95e3af0afdc32",
       "0ecb4c7954177520",
       "3bfa0e827ead7a29",
       "e2ff44e1b55b6a98",
+      "af73fc14029c1920",
       "141071e30f89717d",
       "25142ab97e09cd67",
       "5967e1440844694d",
@@ -330,9 +156,12 @@
       "b24b6122e3ed1867",
       "7bc678d91344858b",
       "b5d038bf402f1276",
+      "746518a600353cc4",
       "1e5c285d11d5c68e",
       "2b0fa05f9f65b7b4",
       "dad428ff573bee16",
+      "41eb9401049620a2",
+      "8c7a1c2dd06a2ac7",
       "65a1c903e51067cb",
       "62af31b04d6e4079",
       "4eab8ef843d10c1b",
@@ -342,8 +171,10 @@
       "a1c58b707467472d",
       "78a3450682a8cc04",
       "da21b992060cee22",
+      "fa542c4539198689",
       "36e44d85ec3ea7ee",
       "3ac75b65479cb72a",
+      "244ef8867971b6ae",
       "da1b102d7e0f9617",
       "3da235a2e4273033",
       "bc92b0ce1d7b04cf",
@@ -362,6 +193,7 @@
       "5d401263cd4522c1",
       "172ae85dd88b914f",
       "ce1704dde2244cb8",
+      "1a1d6b25aa93fa3a",
       "8ad45d2591e41e75",
       "ae3edd509d5c1d14",
       "c70d24a04b346d5a",
@@ -378,6 +210,7 @@
       "b832c9787e8f61e6",
       "c3b80914c5f7fa12",
       "425264e9c35f83c6",
+      "f8877198d7294820",
       "0f51dbfe0ff43487",
       "458572e23621acf8",
       "a3a08ac9318d5d07",

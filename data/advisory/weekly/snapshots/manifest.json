@@ -48,6 +48,31 @@
         "absent_fields": [],
         "parse_warnings": []
       }
+    },
+    {
+      "run_id": "20261120T202715Z",
+      "snapshot_hash": "e913b4c64be8a89132294f152f58320fb4cc740bde90a7355bf294cb09bdfab0",
+      "path": "data/advisory/weekly/snapshots/20261120T202715Z.snapshot.json.gz",
+      "row_count": 19,
+      "fetched_at_utc": "2026-11-20T20:27:15Z",
+      "source_rows_updated_at_utc": null,
+      "raw_path": "data/advisory/weekly/raw/20261120T202715Z.advisory.html.gz",
+      "quality": {
+        "row_count": 19,
+        "ok": true,
+        "by_kind": {
+          "closure": 17,
+          "event": 2
+        },
+        "sections": 8,
+        "updated_flagged": 2,
+        "duplicate_key_count": 0,
+        "null_key_rows": 0,
+        "missing_required": {},
+        "unparseable_dates": {},
+        "absent_fields": [],
+        "parse_warnings": []
+      }
     }
   ],
   "runs": [
@@ -194,6 +219,15 @@
       "status": "failure",
       "error": "ParseError: no closure/event records parsed — page layout probably changed",
       "snapshot_written": false
+    },
+    {
+      "run_id": "20261120T202715Z",
+      "status": "success",
+      "snapshot_written": true,
+      "snapshot_hash": "e913b4c64be8a89132294f152f58320fb4cc740bde90a7355bf294cb09bdfab0",
+      "row_count": 19,
+      "fetched_at_utc": "2026-11-20T20:27:15Z",
+      "raw_path": "data/advisory/weekly/raw/20261120T202715Z.advisory.html.gz"
     }
   ]
 }
