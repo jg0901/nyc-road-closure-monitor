@@ -287,3 +287,24 @@ def test_repeated_location_in_same_section_keeps_both():
     assert fronts[1]["key"].endswith("-2") and fronts[1]["fields"]["occurrence"] == 2
     assert len({r["key"] for r in a.records}) == len(a.records)
     assert any("listed more than once" in w for w in a.parse_warnings)
+
+
+def test_heading_without_for_is_accepted():
+    # 2026-11-20 scheduled run: DOT published "Weekly Traffic Advisory Saturday November 21, 2026, to Friday
+    # November 27, 2026" — no "for". Heading detection must key on "Traffic Advisory" + a date range only.
+    html = WEEK1.replace("Weekly Traffic Advisory for Saturday October 31, 2026, to Friday November 6, 2026",
+                         "Weekly Traffic Advisory Saturday November 21, 2026, to Friday November 27, 2026")
+    a = adv.parse_advisory(html)
+    assert (a.period_start, a.period_end) == ("2026-11-21", "2026-11-27")
+    assert len(a.records) == 8
+
+
+def test_period_heading_detection_is_about_dates_not_wording():
+    yes = ["Weekly Traffic Advisory for Saturday October 31, 2026, to Friday November 6, 2026",
+           "Preliminary Weekend Traffic Advisory for Friday November 13, 2026, to Sunday November 15, 2026",
+           "Weekly Traffic Advisory Saturday November 21, 2026, to Friday November 27, 2026",
+           "WEEKEND TRAFFIC ADVISORY: November 28 2026 to November 30 2026"]
+    no = ["Weekly Traffic Advisory", "Additional Resources", "Check NYC DOT's weekend traffic advisory",
+          "Traffic Advisory for November 2026"]
+    assert all(adv._is_period_heading(t) for t in yes)
+    assert not any(adv._is_period_heading(t) for t in no)

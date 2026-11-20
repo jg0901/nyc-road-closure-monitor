@@ -54,10 +54,21 @@ from ..normalize import content_hash, norm_text
 log = logging.getLogger("nyc_road_closure_monitor.advisory")
 
 _MONTHS = "January|February|March|April|May|June|July|August|September|October|November|December"
-_HEADING_RE = re.compile(r"^(preliminary\s+)?(weekly|weekend)\s+traffic\s+advisory\s+for\b", re.I)
+# The advisory period heading. DOT's wording drifts week to week (seen so far: "Weekly Traffic Advisory for
+# Saturday October 31, 2026, to Friday November 6, 2026"; "Preliminary Weekend Traffic Advisory for ...";
+# "Weekly Traffic Advisory Saturday November 21, 2026, to Friday November 27, 2026" with no "for").
+# So: anchor on "Traffic Advisory" + a parseable "<Month> <d>, <yyyy> ... to ... <Month> <d>, <yyyy>" range,
+# and tolerate anything in between. A heading that merely contains "Traffic Advisory" without dates
+# (the page title, "Additional Resources" links) does not start the content.
 _PERIOD_RE = re.compile(
-    rf"(?:Preliminary\s+)?(?:Weekly|Weekend) Traffic Advisory for\s+(?:\w+\s+)?({_MONTHS})\s+(\d{{1,2}}),?\s+(\d{{4}}),?\s+to\s+(?:\w+\s+)?({_MONTHS})\s+(\d{{1,2}}),?\s+(\d{{4}})",
-    re.I)
+    rf"traffic\s+advisory\b.*?({_MONTHS})\s+(\d{{1,2}}),?\s+(\d{{4}}),?\s+to\b.*?({_MONTHS})\s+(\d{{1,2}}),?\s+(\d{{4}})",
+    re.I | re.S)
+
+
+def _is_period_heading(text: str) -> bool:
+    return bool(_PERIOD_RE.search(text))
+
+
 _STRUCTURAL = {"h2", "h3", "h4", "strong", "p", "ul"}
 
 
@@ -146,10 +157,10 @@ def parse_advisory(html: str, content_selector: str = "#_content", page: str = "
         if not text and tag != "ul":
             continue
 
-        if tag == "h2" and _HEADING_RE.match(text):
+        if tag == "h2" and _is_period_heading(text):
             started = True
             adv.period_text = text
-            adv.preliminary = text.lower().startswith("preliminary")
+            adv.preliminary = "preliminary" in text.lower()
             adv.period_start, adv.period_end = parse_period(text)
             if not adv.period_start:
                 adv.parse_warnings.append(f"could not parse period from heading: {text!r}")
