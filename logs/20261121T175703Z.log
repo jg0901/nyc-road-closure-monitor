@@ -1,0 +1,11 @@
+2026-11-21 17:57:03,010 INFO nyc_mobility_lab: run 20261121T175703Z start
+2026-11-21 17:57:03,063 INFO src.ingest: window filter: work_end_date >= '2026-11-01T00:00:00.000' AND work_start_date <= '2027-01-31T23:59:59.999'
+2026-11-21 17:57:03,547 INFO src.ingest: page 1: 1000 rows (offset 0)
+2026-11-21 17:57:03,933 INFO src.ingest: page 2: 1000 rows (offset 1000)
+2026-11-21 17:57:04,347 INFO src.ingest: page 3: 1000 rows (offset 2000)
+2026-11-21 17:57:04,669 INFO src.ingest: page 4: 361 rows (offset 3000)
+2026-11-21 17:57:04,886 INFO src.ingest: raw saved: data/raw/20261121T175703Z.raw.json.gz (3361 rows)
+2026-11-21 17:57:04,999 INFO src.normalize: dropped 175 exact duplicate rows (same key and content)
+2026-11-21 17:57:05,002 INFO src.snapshot: dataset unchanged since 20261116T205921Z; no new snapshot written
+2026-11-21 17:57:05,027 INFO src.report: report written: data/reports/20261121T175703Z.report.json
+2026-11-21 17:57:05,027 INFO nyc_mobility_lab: run 20261121T175703Z success: {'added': 0, 'modified': 0, 'unchanged': 3186, 'missing': 0}
