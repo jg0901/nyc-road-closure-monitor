@@ -1,11 +1,11 @@
-# Run 20261121T175705Z — SUCCESS
+# Run 20261122T182918Z — SUCCESS
 
 - Dataset: NYC DOT Weekend Traffic Advisory
 - Source URL: https://www.nyc.gov/html/dot/html/motorist/wkndtraf.shtml
 - Source last updated (UTC): n/a
-- Fetched at (UTC): 2026-11-21T17:57:05Z
+- Fetched at (UTC): 2026-11-22T18:29:18Z
 - Rows fetched: 153  |  normalized: 153
-- Log: logs/advisory/weekend/20261121T175705Z.log
+- Log: logs/advisory/weekend/20261122T182918Z.log
 
 ## Changes vs 20261120T190528Z
 | added | modified | unchanged | missing |
