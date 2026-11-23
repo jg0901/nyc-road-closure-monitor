@@ -301,6 +301,16 @@
       "row_count": 153,
       "fetched_at_utc": "2026-11-22T18:29:18Z",
       "raw_path": "data/advisory/weekend/raw/20261122T182918Z.advisory.html.gz"
+    },
+    {
+      "run_id": "20261123T223715Z",
+      "status": "success",
+      "snapshot_written": false,
+      "deduplicated_to": "20261120T190528Z",
+      "snapshot_hash": "ba212af2dbea9a30587300d35aec477b18d946bc6aadef6f88cd5d3f5bed690b",
+      "row_count": 153,
+      "fetched_at_utc": "2026-11-23T22:37:15Z",
+      "raw_path": "data/advisory/weekend/raw/20261123T223715Z.advisory.html.gz"
     }
   ]
 }

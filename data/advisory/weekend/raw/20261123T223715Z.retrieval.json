@@ -1,0 +1,16 @@
+{
+  "source_id": "nyc_dot_weekend_traffic_advisory",
+  "source_url": "https://www.nyc.gov/html/dot/html/motorist/wkndtraf.shtml",
+  "fetched_at_utc": "2026-11-23T22:37:15Z",
+  "bytes": 58046,
+  "request_log": [
+    {
+      "url": "https://www.nyc.gov/html/dot/html/motorist/wkndtraf.shtml",
+      "params": null,
+      "status": 200,
+      "attempt": 1,
+      "elapsed_ms": 54
+    }
+  ],
+  "dataset_metadata": {}
+}
