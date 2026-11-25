@@ -1,5 +1,5 @@
 {
-  "run_id": "20261124T210909Z",
+  "run_id": "20261125T202754Z",
   "status": "success",
   "error": null,
   "warnings": [],
@@ -8,7 +8,7 @@
     "source_url": "https://data.cityofnewyork.us/resource/i6b5-j7bu.json",
     "dataset_name": "Street Closures due to Construction Activities by Block",
     "source_rows_updated_at_utc": "2026-11-23T13:21:56Z",
-    "fetched_at_utc": "2026-11-24T21:09:09Z",
+    "fetched_at_utc": "2026-11-25T20:27:55Z",
     "pages": 4
   },
   "counts": {
@@ -38,17 +38,17 @@
   },
   "field_change_counts": {},
   "snapshot": {
-    "run_id": "20261124T210909Z",
+    "run_id": "20261125T202754Z",
     "status": "success",
     "snapshot_written": false,
     "deduplicated_to": "20261123T223711Z",
     "snapshot_hash": "97120491198a468371254f8562e92704ab89d33148abdb88083b564f6f2997d2",
     "row_count": 3127,
-    "fetched_at_utc": "2026-11-24T21:09:09Z",
-    "raw_path": "data/raw/20261124T210909Z.raw.json.gz"
+    "fetched_at_utc": "2026-11-25T20:27:55Z",
+    "raw_path": "data/raw/20261125T202754Z.raw.json.gz"
   },
   "compared_to_run_id": "20261123T223711Z",
-  "log_path": "logs/20261124T210909Z.log",
+  "log_path": "logs/20261125T202754Z.log",
   "diff": {
     "counts": {
       "added": 0,

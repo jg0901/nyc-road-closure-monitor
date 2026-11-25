@@ -1,0 +1,86 @@
+{
+  "run_id": "20261125T202800Z",
+  "status": "success",
+  "error": null,
+  "warnings": [],
+  "source": {
+    "source_id": "nyc_dot_weekly_traffic_advisory",
+    "source_url": "https://www.nyc.gov/html/dot/html/motorist/weektraf.shtml",
+    "dataset_name": "NYC DOT Weekly Traffic Advisory",
+    "source_rows_updated_at_utc": null,
+    "fetched_at_utc": "2026-11-25T20:28:00Z",
+    "pages": 1
+  },
+  "counts": {
+    "rows_fetched": 19,
+    "rows_normalized": 19,
+    "diff": {
+      "added": 0,
+      "modified": 0,
+      "unchanged": 19,
+      "missing": 0
+    }
+  },
+  "quality": {
+    "row_count": 19,
+    "ok": true,
+    "by_kind": {
+      "closure": 17,
+      "event": 2
+    },
+    "sections": 8,
+    "updated_flagged": 2,
+    "duplicate_key_count": 0,
+    "null_key_rows": 0,
+    "missing_required": {},
+    "unparseable_dates": {},
+    "absent_fields": [],
+    "parse_warnings": []
+  },
+  "field_change_counts": {},
+  "snapshot": {
+    "run_id": "20261125T202800Z",
+    "status": "success",
+    "snapshot_written": false,
+    "deduplicated_to": "20261120T202715Z",
+    "snapshot_hash": "e913b4c64be8a89132294f152f58320fb4cc740bde90a7355bf294cb09bdfab0",
+    "row_count": 19,
+    "fetched_at_utc": "2026-11-25T20:28:00Z",
+    "raw_path": "data/advisory/weekly/raw/20261125T202800Z.advisory.html.gz"
+  },
+  "compared_to_run_id": "20261120T202715Z",
+  "log_path": "logs/advisory/weekly/20261125T202800Z.log",
+  "diff": {
+    "counts": {
+      "added": 0,
+      "modified": 0,
+      "unchanged": 19,
+      "missing": 0
+    },
+    "field_change_counts": {},
+    "added": [],
+    "modified": [],
+    "missing": [],
+    "unchanged_keys": [
+      "c21ce8eaef5c73f5",
+      "9a127f2b1a3cf74d",
+      "383c05fe0b7a7657",
+      "232f29e3f46d6331",
+      "da5585f6f290466f",
+      "d8bc1bba851df272",
+      "a955db609ba36922",
+      "61c09e84193f6529",
+      "7b3ce820af9c068c",
+      "6ef13efd992fd989",
+      "ab673aec7afc4106",
+      "28d25314408d42c0",
+      "9a822eff8626c105",
+      "9881a527b518d685",
+      "c068e5b9aca9c86c",
+      "11bf62275ead40fe",
+      "0877fc39d1a97f08",
+      "03d01a417fbf5c99",
+      "8b16253cb23c60cc"
+    ]
+  }
+}

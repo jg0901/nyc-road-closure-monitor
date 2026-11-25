@@ -1,11 +1,11 @@
-# Run 20261124T210909Z — SUCCESS
+# Run 20261125T202754Z — SUCCESS
 
 - Dataset: Street Closures due to Construction Activities by Block
 - Source URL: https://data.cityofnewyork.us/resource/i6b5-j7bu.json
 - Source last updated (UTC): 2026-11-23T13:21:56Z
-- Fetched at (UTC): 2026-11-24T21:09:09Z
+- Fetched at (UTC): 2026-11-25T20:27:55Z
 - Rows fetched: 3299  |  normalized: 3299
-- Log: logs/20261124T210909Z.log
+- Log: logs/20261125T202754Z.log
 
 ## Changes vs 20261123T223711Z
 | added | modified | unchanged | missing |
