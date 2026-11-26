@@ -1,5 +1,5 @@
 {
-  "run_id": "20261125T202800Z",
+  "run_id": "20261126T200853Z",
   "status": "success",
   "error": null,
   "warnings": [],
@@ -8,7 +8,7 @@
     "source_url": "https://www.nyc.gov/html/dot/html/motorist/weektraf.shtml",
     "dataset_name": "NYC DOT Weekly Traffic Advisory",
     "source_rows_updated_at_utc": null,
-    "fetched_at_utc": "2026-11-25T20:28:00Z",
+    "fetched_at_utc": "2026-11-26T20:08:53Z",
     "pages": 1
   },
   "counts": {
@@ -39,17 +39,17 @@
   },
   "field_change_counts": {},
   "snapshot": {
-    "run_id": "20261125T202800Z",
+    "run_id": "20261126T200853Z",
     "status": "success",
     "snapshot_written": false,
     "deduplicated_to": "20261120T202715Z",
     "snapshot_hash": "e913b4c64be8a89132294f152f58320fb4cc740bde90a7355bf294cb09bdfab0",
     "row_count": 19,
-    "fetched_at_utc": "2026-11-25T20:28:00Z",
-    "raw_path": "data/advisory/weekly/raw/20261125T202800Z.advisory.html.gz"
+    "fetched_at_utc": "2026-11-26T20:08:53Z",
+    "raw_path": "data/advisory/weekly/raw/20261126T200853Z.advisory.html.gz"
   },
   "compared_to_run_id": "20261120T202715Z",
-  "log_path": "logs/advisory/weekly/20261125T202800Z.log",
+  "log_path": "logs/advisory/weekly/20261126T200853Z.log",
   "diff": {
     "counts": {
       "added": 0,
