@@ -73,6 +73,31 @@
         "absent_fields": [],
         "parse_warnings": []
       }
+    },
+    {
+      "run_id": "20261127T195547Z",
+      "snapshot_hash": "556f836d3413d465f8646545a9161d7bcace02fed27fac1c208663cfd60880d2",
+      "path": "data/advisory/weekly/snapshots/20261127T195547Z.snapshot.json.gz",
+      "row_count": 18,
+      "fetched_at_utc": "2026-11-27T19:55:47Z",
+      "source_rows_updated_at_utc": null,
+      "raw_path": "data/advisory/weekly/raw/20261127T195547Z.advisory.html.gz",
+      "quality": {
+        "row_count": 18,
+        "ok": true,
+        "by_kind": {
+          "closure": 17,
+          "event": 1
+        },
+        "sections": 7,
+        "updated_flagged": 5,
+        "duplicate_key_count": 0,
+        "null_key_rows": 0,
+        "missing_required": {},
+        "unparseable_dates": {},
+        "absent_fields": [],
+        "parse_warnings": []
+      }
     }
   ],
   "runs": [
@@ -288,6 +313,15 @@
       "row_count": 19,
       "fetched_at_utc": "2026-11-26T20:08:53Z",
       "raw_path": "data/advisory/weekly/raw/20261126T200853Z.advisory.html.gz"
+    },
+    {
+      "run_id": "20261127T195547Z",
+      "status": "success",
+      "snapshot_written": true,
+      "snapshot_hash": "556f836d3413d465f8646545a9161d7bcace02fed27fac1c208663cfd60880d2",
+      "row_count": 18,
+      "fetched_at_utc": "2026-11-27T19:55:47Z",
+      "raw_path": "data/advisory/weekly/raw/20261127T195547Z.advisory.html.gz"
     }
   ]
 }

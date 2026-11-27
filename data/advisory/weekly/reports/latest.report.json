@@ -1,5 +1,5 @@
 {
-  "run_id": "20261126T200853Z",
+  "run_id": "20261127T195547Z",
   "status": "success",
   "error": null,
   "warnings": [],
@@ -8,28 +8,28 @@
     "source_url": "https://www.nyc.gov/html/dot/html/motorist/weektraf.shtml",
     "dataset_name": "NYC DOT Weekly Traffic Advisory",
     "source_rows_updated_at_utc": null,
-    "fetched_at_utc": "2026-11-26T20:08:53Z",
+    "fetched_at_utc": "2026-11-27T19:55:47Z",
     "pages": 1
   },
   "counts": {
-    "rows_fetched": 19,
-    "rows_normalized": 19,
+    "rows_fetched": 18,
+    "rows_normalized": 18,
     "diff": {
-      "added": 0,
-      "modified": 0,
-      "unchanged": 19,
-      "missing": 0
+      "added": 2,
+      "modified": 6,
+      "unchanged": 10,
+      "missing": 3
     }
   },
   "quality": {
-    "row_count": 19,
+    "row_count": 18,
     "ok": true,
     "by_kind": {
       "closure": 17,
-      "event": 2
+      "event": 1
     },
-    "sections": 8,
-    "updated_flagged": 2,
+    "sections": 7,
+    "updated_flagged": 5,
     "duplicate_key_count": 0,
     "null_key_rows": 0,
     "missing_required": {},
@@ -37,50 +37,227 @@
     "absent_fields": [],
     "parse_warnings": []
   },
-  "field_change_counts": {},
+  "field_change_counts": {
+    "description": 5,
+    "updated": 4
+  },
   "snapshot": {
-    "run_id": "20261126T200853Z",
+    "run_id": "20261127T195547Z",
     "status": "success",
-    "snapshot_written": false,
-    "deduplicated_to": "20261120T202715Z",
-    "snapshot_hash": "e913b4c64be8a89132294f152f58320fb4cc740bde90a7355bf294cb09bdfab0",
-    "row_count": 19,
-    "fetched_at_utc": "2026-11-26T20:08:53Z",
-    "raw_path": "data/advisory/weekly/raw/20261126T200853Z.advisory.html.gz"
+    "snapshot_written": true,
+    "snapshot_hash": "556f836d3413d465f8646545a9161d7bcace02fed27fac1c208663cfd60880d2",
+    "row_count": 18,
+    "fetched_at_utc": "2026-11-27T19:55:47Z",
+    "raw_path": "data/advisory/weekly/raw/20261127T195547Z.advisory.html.gz"
   },
   "compared_to_run_id": "20261120T202715Z",
-  "log_path": "logs/advisory/weekly/20261126T200853Z.log",
+  "log_path": "logs/advisory/weekly/20261127T195547Z.log",
   "diff": {
     "counts": {
-      "added": 0,
-      "modified": 0,
-      "unchanged": 19,
-      "missing": 0
+      "added": 2,
+      "modified": 6,
+      "unchanged": 10,
+      "missing": 3
     },
-    "field_change_counts": {},
-    "added": [],
-    "modified": [],
-    "missing": [],
+    "field_change_counts": {
+      "description": 5,
+      "updated": 4
+    },
+    "added": [
+      {
+        "key": "1c81ef27b2bb6581",
+        "fields": {
+          "page": "weekly",
+          "kind": "event",
+          "section": "Manhattan",
+          "section_id": "manhattan",
+          "category": "Festivals, Parades and Events",
+          "name": "Rockefeller Tree Lighting Ceremony",
+          "embargo": "Embargo: Special Event Construction Embargo / November 30, 2026, to December 2nd, 2026",
+          "updated": true,
+          "streets": {
+            "Locations": [
+              "46th Street between 5th Avenue and 6th Avenue",
+              "47th Street between 5th Avenue and 6th Avenue",
+              "48th Street between 5th Avenue and 6th Avenue",
+              "49th Street between 5th Avenue and 6th Avenue",
+              "50th Street between 5th Avenue and 6th Avenue",
+              "51st Street between 5th Avenue and 6th Avenue",
+              "52nd Street between 5th Avenue and 6th Avenue",
+              "Rockefeller Plaza between 48th Street and 51st Street",
+              "6th Avenue between 46th Street and 52nd Street",
+              "5th Avenue between 46th Street and 52nd Street"
+            ],
+            "Streets": [
+              "Madison Avenue between 42nd Street and 57th Street",
+              "6th Avenue between 42nd Street and 57th Street",
+              "5th Avenue between 42nd Street and 57th Street"
+            ]
+          },
+          "description": "The following streets will be closed Wednesday December 2, 2026, for the Rockefeller Tree Lighting Ceremony event at the Discretion of the NYPD in Manhattan Event Day Embargo Location(s)"
+        }
+      },
+      {
+        "key": "7369ee22b72e5ad1",
+        "fields": {
+          "page": "weekly",
+          "kind": "closure",
+          "section": "Brooklyn",
+          "section_id": "brooklyn",
+          "category": null,
+          "name": "Third Street Bridge over the Gowanus Canal",
+          "embargo": null,
+          "updated": true,
+          "streets": {},
+          "description": "As of Monday, November 30th, 2026, through Thursday, December 24th, 2026, the bridge will be fully closed between 11pm to 5am Tuesday nights into Wednesday mornings and Thursday night into Friday mornings. The bridge will be fully closed to cyclists, motorists, and pedestrians. These closures are necessary to conduct the continued repairs on the Third Street Bridge over Gowanus Canal."
+        }
+      }
+    ],
+    "modified": [
+      {
+        "key": "9a127f2b1a3cf74d",
+        "changes": {
+          "description": {
+            "from": "As of Sunday October 25th, 2026, through Friday November 20th, 2026, a full northbound and southbound tube will continue to be closed (not at the same time), will take place every week 10pm Sunday night to 5am Friday morning. Traffic will return to its original configuration after work hours. These closures are necessary for the continued work on flood mitigation construction activities on Battery Park Underpass, as permitted by NYCDOT Bridges.",
+            "to": "As of Sunday November 22nd, 2026, through Friday December 18th, 2026, a full northbound and southbound tube will continue to be closed (not at the same time), will take place every week 10pm Sunday night to 5am Friday morning. Traffic will return to its original configuration after work hours. These closures are necessary for the continued work on flood mitigation construction activities on Battery Park Underpass, as permitted by NYCDOT Bridges."
+          },
+          "updated": {
+            "from": false,
+            "to": true
+          }
+        }
+      },
+      {
+        "key": "6ef13efd992fd989",
+        "changes": {
+          "description": {
+            "from": "As of Sunday November 15th, 2026, and intermittently through Tuesday November 24th, 2026, an overnight full bridge closure will take place nightly, Sunday to Tuesday from 11pm to 5am, and daytime Saturdays from 7am to 2pm. The bridge will be fully closed to traffic during these working hours. Metropolitan Avenue may be used as an alternate route. These closures are necessary for continued structural repairs of the Grand Street Bridge over Newtown Creek. permitted by NYCDOT Bridges.",
+            "to": "As of Sunday November 29th, 2026, and intermittently through Saturday December 12th, 2026, an overnight full bridge closure will take place nightly, Sunday to Tuesday from 11pm to 5am, and daytime Saturdays from 7am to 2pm. The bridge will be fully closed to traffic during these working hours. Metropolitan Avenue may be used as an alternate route. These closures are necessary for continued structural repairs of the Grand Street Bridge over Newtown Creek. permitted by NYCDOT Bridges."
+          },
+          "updated": {
+            "from": false,
+            "to": true
+          }
+        }
+      },
+      {
+        "key": "ab673aec7afc4106",
+        "changes": {
+          "description": {
+            "from": "As of Monday November 2nd, 2026,intermittently through Friday November 27th, 2026, a single vehicular lane closure will take place in either Brooklyn-bound or Queens-bound direction (not at the same time) from 11pm to 5am. The Brooklyn-bound travel and bike lane will not be affected. The Queens-bound bike lane will be closed to cyclists. Saturday work may also be required from 7 a.m. to 1 p.m. These closures are necessary for conducting maintenance on Metropolitan Avenue Bridge over Newtown Creek, as permitted by NYCDOT Bridges.",
+            "to": "As of Monday November 30th, 2026, intermittently through Thursday December 24th, 2026, a single vehicular lane closure will take place in either Brooklyn-bound or Queens-bound direction (not at the same time) from 11pm to 5am. The Brooklyn-bound travel and bike lane will not be affected. The Queens-bound bike lane will be closed to cyclists. Saturday work may also be required from 7:00 a.m. to 1:00 p.m. These closures are necessary for conducting maintenance on Metropolitan Avenue Bridge over Newtown Creek, as permitted by NYCDOT Bridges."
+          },
+          "updated": {
+            "from": false,
+            "to": true
+          }
+        }
+      },
+      {
+        "key": "0877fc39d1a97f08",
+        "changes": {
+          "updated": {
+            "from": true,
+            "to": false
+          }
+        }
+      },
+      {
+        "key": "03d01a417fbf5c99",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 7am to 6pm Monday to Friday through December 20, 2026 for new Stapleton waterfront infrastructure.",
+            "to": "This street will be closed from 7am to 6pm Monday to Friday through 12/20/26 for new Stapleton waterfront infrastructure."
+          }
+        }
+      },
+      {
+        "key": "8b16253cb23c60cc",
+        "changes": {
+          "description": {
+            "from": "This street will be closed from 7am to 6pm Monday to Friday through December 20, 2026 for new Stapleton waterfront infrastructure.",
+            "to": "This street will be closed from 7am to 6pm Monday to Friday through 12/20/26 for new Stapleton waterfront infrastructure."
+          }
+        }
+      }
+    ],
+    "missing": [
+      {
+        "key": "c21ce8eaef5c73f5",
+        "fields": {
+          "page": "weekly",
+          "kind": "closure",
+          "section": "East River Bridge Crossings",
+          "section_id": "east",
+          "category": null,
+          "name": "Brooklyn Bridge",
+          "embargo": null,
+          "updated": true,
+          "streets": {},
+          "description": "Manhattan-bound single lane, rolling closure (one lane at a time) will be closed Saturday November 1, 2026, from midnight to 5am for maintenance on the bridge as permitted by NYCDOT."
+        }
+      },
+      {
+        "key": "232f29e3f46d6331",
+        "fields": {
+          "page": "weekly",
+          "kind": "event",
+          "section": "Manhattan",
+          "section_id": "manhattan",
+          "category": "Festivals, Parades and Events",
+          "name": "100th Annual Macys Thanksgiving Day Parade",
+          "embargo": "Embargo: Special Event Construction Embargo / November 17th, 2026, to November 26th, 2026",
+          "updated": false,
+          "streets": {
+            "Streets": [
+              "Review NYC DOT's construction embargos for special events"
+            ]
+          },
+          "description": "The following streets will be closed Thursday November 26th, 2026, for 100th Annual Macys Thanksgiving Day Parade event at the Discretion of the NYPD in Manhattan"
+        }
+      },
+      {
+        "key": "d8bc1bba851df272",
+        "fields": {
+          "page": "weekly",
+          "kind": "event",
+          "section": "Bronx/Manhattan",
+          "section_id": "bxman",
+          "category": "Festivals, Parades and Events",
+          "name": "NYC Public Schools – Heroes of Highbridge 2 Mile Walk/Run",
+          "embargo": null,
+          "updated": false,
+          "streets": {
+            "Formation": [
+              "Highbridge"
+            ],
+            "Route": [
+              "University Avenue between 170th Street and 168th Street",
+              "168th Street between University Avenue and 167th Street",
+              "167th Street between 168th Street and Sedgwick Avenue",
+              "Sedgwick Avenue between 167th Street and Depot Place",
+              "Depot Place between Sedgwick Avenue and Exterior Street",
+              "Bridge Park"
+            ],
+            "Dismissal": [
+              "University Avenue between 170th Street and 168th Street"
+            ]
+          },
+          "description": "The following streets will be closed Saturday November 21st, 2026, for NYC Public Schools-Heroes of Highbridge 2 Mile Walk/Run event at the Discretion of the NYPD in Bronx/Manhattan"
+        }
+      }
+    ],
     "unchanged_keys": [
-      "c21ce8eaef5c73f5",
-      "9a127f2b1a3cf74d",
       "383c05fe0b7a7657",
-      "232f29e3f46d6331",
       "da5585f6f290466f",
-      "d8bc1bba851df272",
       "a955db609ba36922",
       "61c09e84193f6529",
       "7b3ce820af9c068c",
-      "6ef13efd992fd989",
-      "ab673aec7afc4106",
       "28d25314408d42c0",
       "9a822eff8626c105",
       "9881a527b518d685",
       "c068e5b9aca9c86c",
-      "11bf62275ead40fe",
-      "0877fc39d1a97f08",
-      "03d01a417fbf5c99",
-      "8b16253cb23c60cc"
+      "11bf62275ead40fe"
     ]
   }
 }
